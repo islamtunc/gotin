@@ -50,14 +50,14 @@ export default function DeletePostDialog({
             onClick={() => mutation.mutate(post.id, { onSuccess: onClose })}
             loading={mutation.isPending}
           >
-            Delete
+            Jê bibe
           </LoadingButton>
           <Button
             variant="outline"
             onClick={onClose}
             disabled={mutation.isPending}
           >
-            Cancel
+            Betal bike
           </Button>
         </DialogFooter>
       </DialogContent>
