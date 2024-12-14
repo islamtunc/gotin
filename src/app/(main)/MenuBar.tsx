@@ -40,7 +40,7 @@ export default async function MenuBar({ className }: MenuBarProps) {
       >
         <Link href="/">
           <Home />
-          <span className="hidden lg:inline">Home</span>
+          <span className="hidden lg:inline">Malper</span>
         </Link>
       </Button>
       <NotificationsButton
@@ -50,7 +50,7 @@ export default async function MenuBar({ className }: MenuBarProps) {
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
-        title="Bookmarks"
+        title="Bêrika we"
         asChild
       >
         <Link href="/bookmarks">
