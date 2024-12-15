@@ -45,7 +45,7 @@ export default function PostEditor() {
         italic: false,
       }),
       Placeholder.configure({
-        placeholder: "What's crack-a-lackin'?",
+        placeholder: "Selam aleykum hevalê/a hêja ,kerem bike tişteki parve bike",
       }),
     ],
   });
