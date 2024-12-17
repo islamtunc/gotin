@@ -47,7 +47,7 @@ export default function SearchResults({ query }: SearchResultsProps) {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No posts found for this query.
+        Parvekirinên 
       </p>
     );
   }
