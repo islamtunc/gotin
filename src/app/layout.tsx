@@ -23,8 +23,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Gotin",
-    default: "Gotin",
+    template: "%s | Lebê",
+    default: "Lebê",
   },
   description: "Medyayek civakî",
 };
