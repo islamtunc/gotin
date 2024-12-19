@@ -9,7 +9,7 @@ import Link from "next/link";
 import SignUpForm from "./SignUpForm";
 
 export const metadata: Metadata = {
-  title: "Bibe Endam",
+  title: "Üye Ol",
 };
 
 export default function Page() {
