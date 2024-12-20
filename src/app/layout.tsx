@@ -14,6 +14,7 @@ import ReactQueryProvider from "./ReactQueryProvider";
 import SessionProvider from "./(main)/SessionProvider";
 import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";
+import MenuBar from "./(main)/MenuBar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,9 +39,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-   const session = await validateRequest();
-  
-    if (!session.user) redirect("/login");
   
   return (
     <html lang="en">
@@ -53,13 +51,9 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-
-           <SessionProvider value={session} >
+           
             {children}
 
-
-
-            </SessionProvider>
           </ThemeProvider>
         </ReactQueryProvider>
         <Toaster />
