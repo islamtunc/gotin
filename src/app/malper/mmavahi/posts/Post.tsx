@@ -10,12 +10,10 @@ import { MessageSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Comments from "../comments/Comments";
-import Linkify from "../Linkify";
-import UserAvatar from "../UserAvatar";
-import UserTooltip from "../UserTooltip";
+import Linkify from "@/components/Linkify";
+import UserAvatar from "@/components/UserAvatar";
+import UserTooltip from "@/components/UserTooltip";
 import BookmarkButton from "./BookmarkButton";
-import LikeButton from "./LikeButton";
 import PostMoreButton from "./PostMoreButton";
 
 interface PostProps {
