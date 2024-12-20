@@ -11,6 +11,9 @@ import { extractRouterConfig } from "uploadthing/server";
 import { fileRouter } from "./api/uploadthing/core";
 import "./globals.css";
 import ReactQueryProvider from "./ReactQueryProvider";
+import SessionProvider from "./(main)/SessionProvider";
+import { validateRequest } from "@/auth";
+import { redirect } from "next/navigation";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,17 +26,22 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Lebê ?",
-    default: "Lebê ?",
+    template: "%s | Müşterisi Burada",
+    default: "Müşterisi Burada",
   },
-  description: "Medyayek civakî",
+  description: "İnşaat ve ... ",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+   const session = await validateRequest();
+  
+    if (!session.user) redirect("/login");
+  
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -46,7 +54,12 @@ export default function RootLayout({
             disableTransitionOnChange
           >
 
+           <SessionProvider value={session} >
             {children}
+
+
+
+            </SessionProvider>
           </ThemeProvider>
         </ReactQueryProvider>
         <Toaster />

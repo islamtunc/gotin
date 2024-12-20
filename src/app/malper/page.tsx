@@ -13,7 +13,6 @@ function page() {
 
 
 
-<Button ref="/malper/mmavahi">Emlak</Button>      
 
     </div>
   )

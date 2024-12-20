@@ -74,6 +74,24 @@ model Post {
   @@map("posts")
 }
 
+
+
+model Mmal {
+  id                  String         @id @default(cuid())
+  content             String
+  userId              String
+  user                User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attachments         Media[]
+  likes               Like[]
+  bookmarks           Bookmark[]
+  comments            Comment[]
+  linkedNotifications Notification[]
+
+  createdAt DateTime @default(now())
+
+  @@map("mmal")
+}
+
 model Media {
   id     String    @id @default(cuid())
   postId String?
