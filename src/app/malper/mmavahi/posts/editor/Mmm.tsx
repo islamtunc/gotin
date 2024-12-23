@@ -16,7 +16,7 @@ const Mmm = () => {
     console.log('Selected location:', location);
 
     // Veritabanına kaydetme işlemi
-    await prisma.Mmal.create({
+    await prisma.mmal.create({
       data: {
         name: location,
       },
