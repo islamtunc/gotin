@@ -16,7 +16,7 @@ const Mmm = () => {
     console.log('Selected location:', location);
 
     // Veritabanına kaydetme işlemi
-    await prisma.location.create({
+    await prisma.Mmal.create({
       data: {
         name: location,
       },
@@ -34,6 +34,7 @@ const Mmm = () => {
             <option value="anotherOption">Doğa İçinde</option>
           </select>
         </FormItem>
+        
 
         <FormItem>
           <button type="submit">Gönder</button>
