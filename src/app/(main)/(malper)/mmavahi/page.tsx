@@ -26,7 +26,7 @@ export default function Home() {
 
           </TabsList>
           <TabsContent value="PostEditor">
-
+<PostEditor/>
 
           </TabsContent>
           <TabsContent value="following">

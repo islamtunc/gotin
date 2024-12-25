@@ -4,7 +4,7 @@
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 
-import Post from "../malper/mmavahi/mmcomp/posts/Post";
+import Post from "@/app/malper/mmavahi/mmcomp/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
@@ -24,7 +24,7 @@ export default function ForYouFeed() {
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          "/api/posts/mmmal",
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
