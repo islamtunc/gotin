@@ -2,7 +2,7 @@
 
 
 
-import ForYouFeed from "@/app/(main)/ForYouFeed";
+import ForYouFeed from "./ForYouFeed";
 import PostEditor from "./posts/editor/PostEditor";
 import SearchField from "@/components/SearchField";
 import TrendsSidebar from "@/components/TrendsSidebar";
