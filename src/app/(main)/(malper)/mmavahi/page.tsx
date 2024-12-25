@@ -1,13 +1,21 @@
 // Bismillahirahmanirahim
 
-
+// Elhamdulillahi Rabbul Alemin
+// Allahumme Salli ala Muhammedin ve ala ali Muhammed
+"use client";
 
 import PostEditor from "./mmcomp/posts/editor/PostEditor";
 import SearchField from "@/components/SearchField";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BadgeAlert } from "lucide-react";
+
 import ForYouFeed from "./ForYouFeed";
+import { useSession } from "../../SessionProvider";
 export default function Home() {
+
+
+
+
+  const { user } = useSession();
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
@@ -25,8 +33,9 @@ export default function Home() {
 
           </TabsList>
           <TabsContent value="PostEditor">
-<PostEditor/>
 
+
+{user ? <PostEditor /> : <p>İlan vermek için giriş yapmalısınız.</p>}
           </TabsContent>
           <TabsContent value="following">
 

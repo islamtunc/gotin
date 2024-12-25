@@ -38,7 +38,7 @@ export default function ForYouFeed() {
     return <PostsLoadingSkeleton />;
   }
 
-  if (status === "success" && !posts.length && !hasNextPage) {
+  if ( !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
         Kesî hê tiştek parvenekirye.
@@ -46,13 +46,7 @@ export default function ForYouFeed() {
     );
   }
 
-  if (status === "error") {
-    return (
-      <p className="text-center text-destructive">
-        An error occurred while loading posts.
-      </p>
-    );
-  }
+
 
   return (
     <InfiniteScrollContainer
