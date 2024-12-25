@@ -1,10 +1,10 @@
 // Bismillahirahmanirahim
 
-"use client";
+
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 
-import Post from "../malper/mmavahi/posts/Post";
+import Post from "./mmcomp/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";

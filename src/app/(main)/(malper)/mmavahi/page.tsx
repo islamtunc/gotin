@@ -2,12 +2,11 @@
 
 
 
-import ForYouFeed from "@/app/(main)/ForYouFeed";
 import PostEditor from "./mmcomp/posts/editor/PostEditor";
 import SearchField from "@/components/SearchField";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BadgeAlert } from "lucide-react";
-
+import ForYouFeed from "./ForYouFeed";
 export default function Home() {
   return (
     <main className="flex w-full min-w-0 gap-5">

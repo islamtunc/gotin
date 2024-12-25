@@ -1,10 +1,14 @@
 // Bismillahirahmanirahim
 
-"use client";
+
+
+{
+  /*
+
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 
-import Post from "../malper/mmavahi/mmcomp/posts/Post";
+import Post from "@/components/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
@@ -65,4 +69,11 @@ export default function ForYouFeed() {
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
     </InfiniteScrollContainer>
   );
+}
+
+
+*/
+
+
+
 }

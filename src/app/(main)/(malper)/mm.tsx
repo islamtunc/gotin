@@ -22,8 +22,8 @@ function Mmhome() {
 <div>
 <div style={{ borderColor:"green",borderWidth:5, width:95, height:129}}>
 
-<HomeIcon href='/malper/mmavahi' style={{width:75 ,height:75, color:"green"}}/>
-<Button ><a href='/malper/mmavahi'>Emlak</a></Button> 
+<HomeIcon href='/mmavahi' style={{width:75 ,height:75, color:"green"}}/>
+<Button ><a href='/mmavahi'>Emlak</a></Button> 
 
 
 
