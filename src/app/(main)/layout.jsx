@@ -6,6 +6,7 @@ import { validateRequest } from "@/auth";
 import MenuBar from "./MenuBar";
 import Navbar from "./Navbar";
 import SessionProvider, { useSession, SessionContext } from "./SessionProvider";
+import { redirect } from "next/dist/server/api-utils";
 
 export default async function Layout({ children }
  
@@ -14,7 +15,7 @@ export default async function Layout({ children }
 
   
   const session = await validateRequest();
-  
+  if(!session.user)redirect('/login')
   return (
       <div className="flex min-h-screen flex-col">
 
