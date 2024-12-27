@@ -1,13 +1,20 @@
-// Bismillahirahmanirahim
+// Bismillahirrahmanirrahim
 
 
-
+import { Button } from '@/components/ui/button'
+import { Link } from 'lucide-react'
 import React from 'react'
 
-function Mmal() {
+function page() {
   return (
-    <div>Mmal</div>
+    <div>
+
+
+
+
+      <a href='/mmavahi'>Emlak</a>
+    </div>
   )
 }
 
-export default Mmal
+export default page
