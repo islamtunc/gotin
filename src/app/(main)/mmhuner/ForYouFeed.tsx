@@ -40,7 +40,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Hê kesî tiştek parvenekirî ye
+        Henüz bir ilan bulumamaktadır
       </p>
     );
   }

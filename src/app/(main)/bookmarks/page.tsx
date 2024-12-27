@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import Bookmarks from "./Bookmarks";
 
 export const metadata: Metadata = {
-  title: "Bêrika We",
+  title: "Kaydedilenler",
 };
 
 export default function Page() {
