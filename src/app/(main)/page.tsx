@@ -20,9 +20,9 @@ function page() {
 
       <a href='/mmkedkar'>İnşaat iş ilanları</a><br></br>
 
-      <a href='/mmhuner'>İş ilanları</a><br></br>
+      <a href='/mmkargeh'>İş ilanları</a><br></br>
 
-      <a href='/mmkargeh'>Sanat ve el sanatları</a>
+      <a href='/mmhuner'>Sanat ve el sanatları</a>
 
     </div>
   )

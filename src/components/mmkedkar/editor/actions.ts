@@ -1,3 +1,5 @@
+// Bismillahirrahmanirrahim
+
 "use server";
 
 import { validateRequest } from "@/auth";
@@ -15,7 +17,7 @@ export async function submitPost(input: {
 
   const { content, mediaIds } = createPostSchema.parse(input);
 
-  const newPost = await prisma.post.create({
+  const newPost = await prisma.mmkedkar.create({
     data: {
       content,
       userId: user.id,

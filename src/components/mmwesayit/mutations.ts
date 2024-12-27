@@ -1,3 +1,7 @@
+
+
+
+
 import { PostsPage } from "@/lib/types";
 import {
   InfiniteData,
@@ -43,7 +47,7 @@ export function useDeletePostMutation() {
         description: "Post deleted",
       });
 
-      if (pathname === `/posts/${deletedPost.id}`) {
+      if (pathname === `/posts/mmwesayit/${deletedPost.id}`) {
         router.push(`/users/${deletedPost.user.username}`);
       }
     },

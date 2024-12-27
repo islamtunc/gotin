@@ -52,7 +52,7 @@ export default function PostEditor() {
 
 
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("wesayit");
 
   function onSubmit() {
     mutation.mutate(
@@ -82,7 +82,7 @@ export default function PostEditor() {
       <div className="flex gap-5">
         <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
         <div {...rootProps} className="w-full">
-       <h5> Yeni Emlak İlanı</h5>
+       <h5> Yeni Araç İlanı</h5>
           <select
             className="mt-3 p-2 border rounded"
             value={selectedOption}

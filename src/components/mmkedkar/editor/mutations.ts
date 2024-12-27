@@ -1,3 +1,7 @@
+// Bismillahirrahmanirrahim
+
+
+
 import { useSession } from "@/app/(main)/SessionProvider";
 import { useToast } from "@/components/ui/use-toast";
 import { PostsPage } from "@/lib/types";
@@ -60,7 +64,7 @@ export function useSubmitPostMutation() {
       });
 
       toast({
-        description: "Post created",
+        description: "İlan Yayınlandı",
       });
     },
     onError(error) {

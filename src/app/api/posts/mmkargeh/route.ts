@@ -1,5 +1,5 @@
 // Bismillahirahmanirahim
-
+//Elhamdulillahirabbilalemin
 
 
 import { validateRequest } from "@/auth";
@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const posts = await prisma.mmhuner.findMany({
+    const posts = await prisma.mmkargeh.findMany({
       include: getPostDataInclude(user.id),
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,

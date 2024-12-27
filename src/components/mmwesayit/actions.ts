@@ -1,3 +1,5 @@
+
+
 "use server";
 
 import { validateRequest } from "@/auth";
@@ -9,7 +11,7 @@ export async function deletePost(id: string) {
 
   if (!user) throw new Error("Unauthorized");
 
-  const post = await prisma.post.findUnique({
+  const post = await prisma.mmwesayit.findUnique({
     where: { id },
   });
 
@@ -17,7 +19,7 @@ export async function deletePost(id: string) {
 
   if (post.userId !== user.id) throw new Error("Unauthorized");
 
-  const deletedPost = await prisma.post.delete({
+  const deletedPost = await prisma.mmwesayit.delete({
     where: { id },
     include: getPostDataInclude(user.id),
   });
