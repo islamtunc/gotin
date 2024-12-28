@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 import SearchField from "@/components/SearchField";
+import ForYouFeed from "@/app/(main)/mmkinc/ForYouFeed";
 
 export default function Home() {
   return (
@@ -20,7 +21,9 @@ export default function Home() {
             <TabsTrigger value="mm">Yeni ilan Ver</TabsTrigger>
 
           </TabsList>
+
           <TabsContent value="for-you">
+            <ForYouFeed />
           </TabsContent>
           <TabsContent value="following">
 
