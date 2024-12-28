@@ -3,7 +3,6 @@
 
 
 import { validateRequest } from "@/auth";
-import FollowButton from "@/components/FollowButton";
 import FollowerCount from "@/components/FollowerCount";
 import Linkify from "@/components/Linkify";
 import TrendsSidebar from "@/components/TrendsSidebar";
@@ -18,6 +17,7 @@ import { cache } from "react";
 import EditProfileButton from "./EditProfileButton";
 import UserPosts from "./UserPosts";
 import { Button } from "@/components/ui/button";
+import Home from "./mmmmm";
 
 interface PageProps {
   params: { username: string };
@@ -71,6 +71,9 @@ export default async function Page({ params: { username } }: PageProps) {
       <div className="w-full min-w-0 space-y-5">
         <UserProfile user={user} loggedInUserId={loggedInUser.id} />
         <div className="rounded-2xl bg-card p-5 shadow-sm">
+        
+        {user? <Home/> : <div> </div>}
+
           <h2 className="text-center text-2xl font-bold">
             {user.displayName}&apos;ın İlanları
           </h2>
@@ -94,17 +97,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
       ({ followerId }) => followerId === loggedInUserId,
     ),
   };
-function mmpeyam() {
-  
 
-
-
-
-
-
-
-  
-}
   return (
     <div className="h-fit w-full space-y-5 rounded-2xl bg-card p-5 shadow-sm">
       <UserAvatar
@@ -138,6 +131,11 @@ function mmpeyam() {
       </div>
       {user.bio && (
         <>
+
+
+
+{user? <Home/> : <div> </div>}
+
           <hr />
           <Linkify>
             <div className="overflow-hidden whitespace-pre-line break-words">
