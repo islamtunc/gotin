@@ -11,8 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
-    "static": "next build && next export"
+    "postinstall": "prisma generate"
+   
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

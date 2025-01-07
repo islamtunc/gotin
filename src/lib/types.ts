@@ -12,20 +12,8 @@ export function getUserDataSelect(loggedInUserId: string) {
     avatarUrl: true,
     bio: true,
     createdAt: true,
-    followers: {
-      where: {
-        followerId: loggedInUserId,
-      },
-      select: {
-        followerId: true,
-      },
-    },
-    _count: {
-      select: {
-        posts: true,
-        followers: true,
-      },
-    },
+  
+
   } satisfies Prisma.UserSelect;
 }
 
@@ -39,28 +27,8 @@ export function getPostDataInclude(loggedInUserId: string) {
       select: getUserDataSelect(loggedInUserId),
     },
     attachments: true,
-    likes: {
-      where: {
-        userId: loggedInUserId,
-      },
-      select: {
-        userId: true,
-      },
-    },
-    bookmarks: {
-      where: {
-        userId: loggedInUserId,
-      },
-      select: {
-        userId: true,
-      },
-    },
-    _count: {
-      select: {
-        likes: true,
-        comments: true,
-      },
-    },
+
+
   } satisfies Prisma.PostInclude;
 }
 
