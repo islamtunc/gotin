@@ -64,7 +64,7 @@ export function useSubmitPostMutation() {
       });
 
       toast({
-        description: "Post created",
+        description: "ilan yayınlandı",
       });
     },
     onError(error) {
