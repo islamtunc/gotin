@@ -55,7 +55,7 @@ export default async function Page({ params: { postId } }: PageProps) {
   if (!user) {
     return (
       <p className="text-destructive">
-        You&apos;re not authorized to view this page.
+        ilan detaylarını görmek için giriş yapın 
       </p>
     );
   }
@@ -88,7 +88,7 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
 
   return (
     <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
-      <div className="text-xl font-bold">About this user</div>
+      <div className="text-xl font-bold">Bu kullanıcı ile ilgili</div>
       <UserTooltip user={user}>
         <Link
           href={`/users/${user.username}`}
