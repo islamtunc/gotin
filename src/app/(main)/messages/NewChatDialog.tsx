@@ -81,10 +81,10 @@ export default function NewChatDialog({
       onChatCreated();
     },
     onError(error) {
-      console.error("Error starting chat", error);
+      console.error("Konuşma başlatılamadı", error);
       toast({
         variant: "destructive",
-        description: "Error starting chat. Please try again.",
+        description: "Konuşma başlatılamadı, tekrar deneyin",
       });
     },
   });
@@ -93,13 +93,13 @@ export default function NewChatDialog({
     <Dialog open onOpenChange={onOpenChange}>
       <DialogContent className="bg-card p-0">
         <DialogHeader className="px-6 pt-6">
-          <DialogTitle>Axaftinekî nû</DialogTitle>
+          <DialogTitle>Yeni konuşma başlat</DialogTitle>
         </DialogHeader>
         <div>
           <div className="group relative">
             <SearchIcon className="absolute left-5 top-1/2 size-5 -translate-y-1/2 transform text-muted-foreground group-focus-within:text-primary" />
             <input
-              placeholder="Endamên Bigere"
+              placeholder="Kullanıcı ara"
               className="h-12 w-full pe-4 ps-14 focus:outline-none"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
@@ -139,13 +139,13 @@ export default function NewChatDialog({
               ))}
             {isSuccess && !data.users.length && (
               <p className="my-3 text-center text-muted-foreground">
-                Nehat dîtin
+                Bulunamadı 
               </p>
             )}
             {isFetching && <Loader2 className="mx-auto my-3 animate-spin" />}
             {isError && (
               <p className="my-3 text-center text-destructive">
-                Pirsgirek derket 
+                Sorun çıktı 
               </p>
             )}
           </div>
@@ -156,7 +156,7 @@ export default function NewChatDialog({
             loading={mutation.isPending}
             onClick={() => mutation.mutate()}
           >
-            Destpêbike 
+            Başla
           </LoadingButton>
         </DialogFooter>
       </DialogContent>
