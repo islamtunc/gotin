@@ -23,5 +23,5 @@ export async function logout() {
     sessionCookie.attributes,
   );
 
-  return redirect("/login");
+  return redirect("/malper");
 }
