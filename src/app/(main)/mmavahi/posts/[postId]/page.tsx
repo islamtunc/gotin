@@ -5,6 +5,7 @@
 import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
 import Post from "@/components/mmavahi/Post";
+import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
 import UserTooltip from "@/components/UserTooltip";
 import prisma from "@/lib/prisma";
@@ -14,6 +15,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cache, Suspense } from "react";
+import { StreamChat } from "stream-chat";
 
 interface PageProps {
   params: { postId: string };
@@ -22,6 +24,7 @@ interface PageProps {
 const getPost = cache(async (postId: string, loggedInUserId: string) => {
   const post = await prisma.mmavahi.findUnique({
     where: {
+
       id: postId,
     },
     include: getPostDataInclude(loggedInUserId),
@@ -86,6 +89,15 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
 
   if (!loggedInUser) return null;
 
+  const handleMessageClick = async () => {
+    const client = StreamChat.getInstance(process.env.NEXT_PUBLIC_STREAM_KEY!);
+    const channel = client.channel("messaging", {
+      members: [loggedInUser.id, user.id],
+    });
+    await channel.create();
+    window.location.href = `/messages/${channel.id}`;
+  };
+
   return (
     <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
       <div className="text-xl font-bold">Bu kullanıcı ile ilgili</div>
@@ -110,7 +122,11 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
           {user.bio}
         </div>
       </Linkify>
-     
+      {user.id !== loggedInUser.id && (
+        <Button onClick={handleMessageClick}>
+          Mesaj Yaz
+        </Button>
+      )}
     </div>
   );
 }
