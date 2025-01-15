@@ -54,11 +54,14 @@ export default function PostEditor() {
 
 
   const [selectedOption, setSelectedOption] = useState("mmal");
-
+  const input =
+  editor?.getText({
+    blockSeparator: "\n",
+  }) || "";
   function onSubmit() {
     mutation.mutate(
       {
-        content: "mmal",
+        content: input,
         mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
        
       },

@@ -71,7 +71,7 @@ export default async function Page({ params: { postId } }: PageProps) {
         <Post post={post} />
        
 
-       
+
         <UserInfoSidebar user={post.user} />
 
       </div>
