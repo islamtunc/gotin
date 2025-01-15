@@ -69,7 +69,11 @@ export default async function Page({ params: { postId } }: PageProps) {
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
         <Post post={post} />
-        <a>.....</a>
+       
+
+       
+        <UserInfoSidebar user={post.user} />
+
       </div>
       <div className="sticky top-[5.25rem] hidden h-fit w-80 flex-none lg:block">
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
@@ -99,7 +103,7 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
   };
 
   return (
-    <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
+    <div className="space-y-5 rounded-2xl bg-card p-5 ">
       <div className="text-xl font-bold">Bu kullanıcı ile ilgili</div>
       <UserTooltip user={user}>
         <Link
