@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ForYouFeed from "./ForYouFeed";
 
-import SearchField from "@/components/SearchField";
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="following">
 
-      <SearchField/>
           </TabsContent>
     
 

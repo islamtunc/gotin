@@ -14,7 +14,6 @@ export default function MmmNavbar() {
 
  Müşterisi Burada
         </Link>
-        <SearchField />
        <Button ><a href="/login">Giriş Yap</a></Button>
       </div>
     </header>

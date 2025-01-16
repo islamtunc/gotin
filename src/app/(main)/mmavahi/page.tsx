@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ForYouFeed from "./ForYouFeed";
 
-import SearchField from "@/components/mmavahi/SearchField";
 import MmHome from "@/components/mmavahi/mmmal/mm";
 import MmmmmmHome from "@/components/mmavahi/mm";
 
@@ -29,7 +28,6 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="following">
 
-      <SearchField/>
           </TabsContent>
     
 
