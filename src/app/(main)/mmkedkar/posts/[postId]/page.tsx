@@ -22,7 +22,7 @@ interface PageProps {
 }
 
 const getPost = cache(async (postId: string, loggedInUserId: string) => {
-  const post = await prisma.mmavahi.findUnique({
+  const post = await prisma.mmkedkar.findUnique({
     where: {
 
       id: postId,
@@ -129,8 +129,11 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
           {user.bio}
         </div>
       </Linkify>
-      {user.id !== loggedInUser.id && (
-        <Button onClick={handleMessageClick}>
+      {
+      
+            
+      user.id == loggedInUser.id && (
+        <Button onClick={ handleMessageClick}>
           Mesaj Yaz
         </Button>
       )}
