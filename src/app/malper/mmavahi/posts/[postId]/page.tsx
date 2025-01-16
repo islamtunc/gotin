@@ -1,8 +1,5 @@
 // Bismillahirrahmanirrahim
 
-
-
-import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
 import Post from "@/components/mmavahi/Post";
 import { Button } from "@/components/ui/button";
@@ -14,7 +11,7 @@ import { Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router"; // Updated import
 import { cache, Suspense } from "react";
 import { StreamChat } from "stream-chat";
 
@@ -22,31 +19,23 @@ interface PageProps {
   params: { postId: string };
 }
 
-const getPost = cache(async (postId: string, loggedInUserId: string) => {
+const getPost = cache(async (postId: string) => {
   const post = await prisma.mmavahi.findUnique({
     where: {
-
       id: postId,
     },
-    include: getPostDataInclude(loggedInUserId),
+    include: getPostDataInclude(""), // Pass an empty string or null if loggedInUserId is not needed
   });
 
   if (!post) notFound();
 
-
-
-  
   return post;
 });
 
 export async function generateMetadata({
   params: { postId },
 }: PageProps): Promise<Metadata> {
-  const { user } = await validateRequest();
-
-  if (!user) return {};
-
-  const post = await getPost(postId, user.id);
+  const post = await getPost(postId);
 
   return {
     title: `${post.user.displayName}: ${post.content.slice(0, 50)}...`,
@@ -54,27 +43,13 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params: { postId } }: PageProps) {
-  const { user } = await validateRequest();
-
-  if (!user) {
-    return (
-      <p className="text-destructive">
-        ilan detaylarını görmek için giriş yapın 
-      </p>
-    );
-  }
-
-  const post = await getPost(postId, user.id);
+  const post = await getPost(postId);
 
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
         <Post post={post} />
-       
-
-
         <UserInfoSidebar user={post.user} />
-
       </div>
       <div className="sticky top-[5.25rem] hidden h-fit w-80 flex-none lg:block">
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
@@ -89,20 +64,16 @@ interface UserInfoSidebarProps {
   user: UserData;
 }
 
-async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
-  const { user: loggedInUser } = await validateRequest();
-
-
-  const router = useRouter();
-  if (!loggedInUser) return null;
+function UserInfoSidebar({ user }: UserInfoSidebarProps) {
+  const router = useRouter(); // Use useRouter from next/router
 
   const handleMessageClick = async () => {
     const client = StreamChat.getInstance(process.env.NEXT_PUBLIC_STREAM_KEY!);
     const channel = client.channel("messaging", {
-      members: [loggedInUser.id, user.id],
+      members: [user.id],
     });
     await channel.create();
-   router.push(`/messages/${channel.id}`)
+    router.push(`/messages/${channel.id}`); // Use router.push from next/router
   };
 
   return (
@@ -129,11 +100,9 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
           {user.bio}
         </div>
       </Linkify>
-      {user.id !== loggedInUser.id && (
-        <Button onClick={handleMessageClick}>
-          Mesaj Yaz
-        </Button>
-      )}
+      <Button onClick={handleMessageClick}>
+        Mesaj Yaz
+      </Button>
     </div>
   );
 }
