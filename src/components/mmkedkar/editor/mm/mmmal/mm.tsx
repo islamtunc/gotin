@@ -8,7 +8,7 @@ import MmPostEditor from "../editor/mmkr";
 
 
 
-export default function MmmHome() {
+export default function MmHome() {
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
@@ -16,8 +16,10 @@ export default function MmmHome() {
         <Tabs defaultValue="mm">
           <TabsList>
             <TabsTrigger value="for-you">Satılık </TabsTrigger>
+            <TabsTrigger value="following">Kiralık</TabsTrigger>
             
             <TabsTrigger value="mmm">Devren Satılık </TabsTrigger>
+            <TabsTrigger value="mmmmm">Devren Kiralık</TabsTrigger>
 
           </TabsList>
          

@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ForYouFeed from "./ForYouFeed";
 
-import MmmmmmHome from "@/components/mmavahi/mm/mm";
+import MmmmmmHome from "@/components/mmavahi/editor/mm/mm";
 
 export default function Home() {
   return (

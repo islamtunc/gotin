@@ -4,10 +4,11 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import MmPostEditor from "../mmkr";
+
 import PostEditor from "../mmfrtn";
 
-import MmPostEditor from "@/components/mmhewcedari/mm/mmkr";
-export default function MmHome() {
+export default function MmmHome() {
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
@@ -15,10 +16,8 @@ export default function MmHome() {
         <Tabs defaultValue="mm">
           <TabsList>
             <TabsTrigger value="for-you">Satılık </TabsTrigger>
-            <TabsTrigger value="following">Kiralık</TabsTrigger>
             
             <TabsTrigger value="mmm">Devren Satılık </TabsTrigger>
-            <TabsTrigger value="mmmmm">Devren Kiralık</TabsTrigger>
 
           </TabsList>
          
