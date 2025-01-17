@@ -18,12 +18,6 @@ export default function MmmmmmHome() {
           <TabsList>
             <TabsTrigger value="for-you">Ev</TabsTrigger>
             <TabsTrigger value="following">Arsa</TabsTrigger>
-            <TabsTrigger value="for-you">İş Yeri</TabsTrigger>
-            <TabsTrigger value="following">Bina</TabsTrigger>
-            <TabsTrigger value="for-you">Devre Mülk</TabsTrigger>
-            <TabsTrigger value="following">Turistik Tesis</TabsTrigger>
-            
-            
             
             
           </TabsList>
