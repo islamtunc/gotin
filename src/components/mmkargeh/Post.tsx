@@ -21,7 +21,6 @@ interface PostProps {
 export default function Post({ post }: PostProps) {
   const { user } = useSession();
 
-  const [showComments, setShowComments] = useState(false);
 
   return (
     <article className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm">
@@ -42,7 +41,7 @@ export default function Post({ post }: PostProps) {
               </Link>
             </UserTooltip>
             <Link
-              href={`/mmhewcedari/posts/${post.id}`}
+              href={`/mmkargeh/posts/${post.id}`}
               className="block text-sm text-muted-foreground hover:underline"
               suppressHydrationWarning
             >
