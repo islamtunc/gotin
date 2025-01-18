@@ -115,11 +115,11 @@ export default function MmmmmmHome() {
             
           </TabsList>
          
-          <TabsContent value="for-you">
+          <TabsContent value="mm1">
          
          <MmHome/>
           </TabsContent>
-          <TabsContent value="following">
+          <TabsContent value="mm3">
 
 <MmmHome/>
           </TabsContent>
@@ -129,7 +129,164 @@ export default function MmmmmmHome() {
 
 
 
-        <TabsContent value="mm">
+        <TabsContent value="mm5">
+
+
+    </TabsContent>
+
+    <TabsContent value="mm7">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm9">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm11">
+
+
+    </TabsContent>
+    <TabsContent value="mm13">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm15">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm17">
+
+
+    </TabsContent>
+
+
+    <TabsContent value="mm19">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm21">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm23">
+
+
+    </TabsContent>
+
+
+    <TabsContent value="mm25">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm27">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm29">
+
+
+    </TabsContent>
+
+  
+    <TabsContent value="mm35">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm37">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm39">
+
+
+    </TabsContent>
+
+
+    <TabsContent value="mm41">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm43">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm45">
+
+
+    </TabsContent>
+
+
+    <TabsContent value="mm47">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm49">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm51">
+
+
+    </TabsContent>
+
+
+    <TabsContent value="mm53">
+         
+         <MmHome/>
+          </TabsContent>
+          <TabsContent value="mm55">
+
+<MmmHome/>
+          </TabsContent>
+    
+
+
+
+
+
+        <TabsContent value="mm57">
 
 
     </TabsContent>
