@@ -16,12 +16,53 @@ export default function MmmmmmHome() {
 
         <Tabs defaultValue="mm">
           <TabsList>
-            <TabsTrigger value="for-you">Ev</TabsTrigger>
-            <TabsTrigger value="following">Arsa</TabsTrigger>
-            <TabsTrigger value="for-you">İş Yeri</TabsTrigger>
-            <TabsTrigger value="following">Bina</TabsTrigger>
-            <TabsTrigger value="for-you">Devre Mülk</TabsTrigger>
-            <TabsTrigger value="following">Turistik Tesis</TabsTrigger>
+            <TabsTrigger value="for-you">Sağlık </TabsTrigger>
+            <TabsTrigger value="following">Hukuk</TabsTrigger>
+            <TabsTrigger value="for-you">Eğlence</TabsTrigger>
+            <TabsTrigger value="following">Güzellik ve Bakım</TabsTrigger>
+            <TabsTrigger value="for-you">IT ve Yazılım Kaynaakları</TabsTrigger>
+            <TabsTrigger value="following">İnsan Kaynakları</TabsTrigger>
+            
+            
+            
+            
+          </TabsList>
+
+
+
+
+
+          <TabsList>
+            <TabsTrigger value="for-you">İşletme ve Stratejik Yöntem </TabsTrigger>
+            <TabsTrigger value="following">Koruma ve Güvenlik</TabsTrigger>
+            <TabsTrigger value="for-you">Lojistik ve Taşıma</TabsTrigger>
+            <TabsTrigger value="following">Mağazacılık ve Perakendecilik</TabsTrigger>
+            <TabsTrigger value="for-you">Muhasebe ,Finans ve Bankacılık</TabsTrigger>
+            <TabsTrigger value="following">Mühendsilik</TabsTrigger>
+            
+            
+            
+            
+          </TabsList>
+          <TabsList>
+            <TabsTrigger value="for-you">Müşteeri Hizmetleri  </TabsTrigger>
+            <TabsTrigger value="following">Ofis Yönetimi ve İdari İşler</TabsTrigger>
+            <TabsTrigger value="for-you">Part Time ve Ek İş Fırsatları</TabsTrigger>
+            <TabsTrigger value="following">Pazarlama ve Ürün Yönetimi</TabsTrigger>
+            <TabsTrigger value="for-you">Radyo,Sinema ve Televizyon</TabsTrigger>
+            <TabsTrigger value="following">Restoran ve Konaklama</TabsTrigger>
+            
+            
+            
+            
+          </TabsList>
+          <TabsList>
+            <TabsTrigger value="for-you">Satış  </TabsTrigger>
+            <TabsTrigger value="following">Tamir ve Bakım</TabsTrigger>
+            <TabsTrigger value="for-you">Tasarım </TabsTrigger>
+            <TabsTrigger value="following">Tarım ve Hayvancılık</TabsTrigger>
+            <TabsTrigger value="for-you">Tekstil ve Konfeksiyon</TabsTrigger>
+            <TabsTrigger value="following">Üretim ve İmalat</TabsTrigger>
             
             
             
