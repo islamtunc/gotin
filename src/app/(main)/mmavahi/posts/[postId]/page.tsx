@@ -5,7 +5,7 @@
 
 import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
-import Post from "@/components/mmavahi/Post";
+import MmPost from "@/components/mmavahi/mmPost ";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
 import UserTooltip from "@/components/UserTooltip";
@@ -65,7 +65,7 @@ export default async function Page({ params: { postId } }: PageProps) {
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
-        <Post post={post} />
+        <MmPost post={post} />
         <UserInfoSidebar user={post.user} />
       </div>
       <div className="sticky top-[5.25rem] hidden h-fit w-80 flex-none lg:block">
