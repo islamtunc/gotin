@@ -18,6 +18,7 @@ import useMediaUpload, { Attachment } from "../../useMediaUpload";
 import { Input } from "@/components/ui/input";
 import { useSubmitPostMutation } from "../../mutations";
 
+
 export default function PostEditor() {
   const { user } = useSession();
 
@@ -52,12 +53,58 @@ export default function PostEditor() {
 
 
 
-  const [selectedOption, setSelectedOption] = useState("mmal");
+  const [selectedOption1, setSelectedOption1] = useState("Belirtilmemiş");
 
+  const [selectedOption3, setSelectedOption3] = useState("Belirtilmemiş");
+
+  const [selectedOption5, setSelectedOption5] = useState("Belirtilmemiş");
+
+  const [selectedOption7, setSelectedOption7] = useState("mm");
+
+
+
+  const [selectedOption9, setSelectedOption9] = useState("mm");
+
+  const [selectedOption11, setSelectedOption11] = useState("mm");
+
+  const [selectedOption13, setSelectedOption13] = useState("mm");
+
+  const [selectedOption15, setSelectedOption15] = useState("mm");
+
+  const [selectedOption17, setSelectedOption17] = useState("mm");
+
+  const [selectedOption19, setSelectedOption19] = useState("mm");
+
+  const [selectedOption21, setSelectedOption21] = useState("mmal");
+  const handleSelectChange1 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption1(event.target.value);
+  };
+
+  const handleSelectChange3 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption3(event.target.value);
+  };
+
+  const handleSelectChange5 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption5(event.target.value);
+  };
+
+  const handleSelectChange7 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption7(event.target.value);
+  };
+  const handleSelectChange9 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption9(event.target.value);
+  };
+  const handleSelectChange13= (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption13(event.target.value);
+  };
+
+  const handleSelectChange11 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption11(event.target.value);
+  };
   function onSubmit() {
     mutation.mutate(
       {
-        content: selectedOption,
+        content: ["Satılık Konut",selectedOption1,selectedOption5,selectedOption7,selectedOption9,selectedOption11,selectedOption13,selectedOption15,selectedOption17,selectedOption19,selectedOption21],
         mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
        
       },
@@ -82,9 +129,9 @@ export default function PostEditor() {
       <div className="flex gap-5">
         <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
         <div {...rootProps} className="w-full">
-       <h5> Yeni Devren Satılık Turistik Tesis İlanı</h5>
+       <h5> Yeni  Satılık Ev İlanı</h5>
 
-
+      <br></br>   <br></br>
 
 
 
@@ -107,53 +154,40 @@ export default function PostEditor() {
     
            <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption1}
+            onChange={handleSelectChange1}
           >
-            <option value="Şehir Merkezi">Konut Türü</option><br></br>
+            <option value="Belirtilmemiş">Konut Türü</option>
            <br></br>
-           <option value="option2">Daire</option>
+           <option value="Daire">Daire</option>
 
-            <option value="option2">Villa</option>
-            <option value="option3">Müstakil Ev</option>
+            <option value="Villa">Villa</option>
+            <option value="Müstakil Ev">Müstakil Ev</option>
          
-            <option value="option2">Residans</option>
+            <option value="Residans">Residans</option>
 
-            <option value="option2">Stüdyo Daire</option>
+            <option value="Stüdyo Daire">Stüdyo Daire</option>
        
-            <option value="option3">Dubleks/Tripleks</option>
+            <option value="Dubleks/Tripleks">Dubleks/Tripleks</option>
          
-         <option value="option2">Residans</option>
 
-         <option value="option2">Loft</option>
+         <option value="Loft">Loft</option>
 
-<option value="option2">Prefabrik Ev</option>
-<option value="option3">Çiftlik Evi</option>
+<option value="Prefabrik Ev">Prefabrik Ev</option>
+<option value="Çiftlik Evi">Çiftlik Evi</option>
 
-<option value="option2">Yatırım Amaçlı</option>
+<option value="Yatırım Amaçlı">Yatırım Amaçlı</option>
 
           </select>
+   
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption3}
+            onChange={handleSelectChange3}
           >
-            <option value="Şehir Merkezi">Konut Kullanımı</option>
-            <option value="option2">Satılık </option>
-            <option value="option3">Kiralık</option>
-            
-            <option value="Şehir Merkezi">Devren Kiralık</option>
-            <option value="option2">Devren Satılık </option>
-            <option value="option3">Devren Kiralık</option>
-          </select>
-          <select
-            className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
-          >
-            <option value="Şehir Merkezi">Oda Sayısı</option><br></br>
+            <option value="">Oda Sayısı</option><br></br>
            <br></br>
-           <option value="option2">1+1</option>
+           <option value="1+1">1+1</option>
 
             <option value="option2">2+1</option>
             <option value="option3">3+1</option>
@@ -165,12 +199,12 @@ export default function PostEditor() {
 
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption5}
+            onChange={handleSelectChange5}
           >
-            <option value="Şehir Merkezi">Isınma Sistemi</option>
-            <option value="option2">Doğal Gaz</option>
-            <option value="option3">Kömür Merkezi Sistem</option>
+            <option value="">Isınma Sistemi</option>
+            <option value="Doğal Gaz">Doğal Gaz</option>
+            <option value="Kömür Merkezi Sitem">Kömür Merkezi Sistem</option>
             <option value="Şehir Merkezi">Jeotermal </option>
             <option value="option2"></option>
           </select>
@@ -180,15 +214,16 @@ export default function PostEditor() {
 
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption7}
+            onChange={handleSelectChange7}
           >
 
             
 
-            <option value="Şehir Merkezi"> Asansor var</option>
-            <option value="option2">Asansor yok</option>
-            
+            <option value=""> Asansor durumu</option>
+            <option value="Asansör var">Asansor var</option>
+            <option value="Asansör yok">Asansor yok</option>
+
             
           </select>
 
@@ -197,26 +232,32 @@ export default function PostEditor() {
 
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption9}
+            onChange={handleSelectChange9}
           >
-            <option value="Şehir Merkezi">Otopark var</option>
-            <option value="option2">Otopark yok</option>
+            <option value="">Otopark durumu</option>
+            <option value="Otopark var">Otopark var</option>
+
+            <option value="Otopark yok">Otopark yok</option>
+
           </select>
 
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption11}
+            onChange={(e) => setSelectedOption11(e.target.value)}
           >
-            <option value="Şehir Merkezi">Bahçeli</option>
-            <option value="option2">Bahçesiz</option>
+            <option value="">Bahçe durumu</option>
+            <option value="Bahçesiz">Bahçesiz</option>
+
+            <option value="Bahçeli">Bahçesiz</option>
+
           </select>
 
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption13}
+            onChange={handleSelectChange13}
           >
             <option value="Şehir Merkezi">Havuz var</option>
             <option value="option2">Havuz yok</option>
@@ -225,24 +266,24 @@ export default function PostEditor() {
           
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption15}
+            onChange={(e) => setSelectedOption15(e.target.value)}
           >
             <option value="Şehir Merkezi">Balkon var</option>
             <option value="option2">Balkon yok</option>
           </select>
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption17}
+            onChange={(e) => setSelectedOption17(e.target.value)}
           >
             <option value="Şehir Merkezi">Teras var</option>
             <option value="option2">Teras yok</option>
           </select>
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption19}
+            onChange={(e) => setSelectedOption19(e.target.value)}
           >
             <option value="Şehir Merkezi">Klimalı</option>
             <option value="option2">Klimasız</option>
@@ -252,8 +293,8 @@ export default function PostEditor() {
            
           <select
             className="mt-3 p-2 border rounded"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={selectedOption21}
+            onChange={(e) => setSelectedOption21(e.target.value)}
           >
             <option value="Şehir Merkezi">Eşyalı</option>
             <option value="option2">Eşyasız</option>
@@ -294,7 +335,8 @@ export default function PostEditor() {
           loading={mutation.isPending}
           className="min-w-20"
         >
-          Parve bikin
+          
+          İlanı Yayınla
         </LoadingButton>
       </div>
     </div>
