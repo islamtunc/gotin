@@ -2,18 +2,18 @@
 
 
 
-import PostEditor from "@/components/mmhewcedari/editor/PostEditor";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ForYouFeed from "./ForYouFeed";
 
+import MmmmmmHome from "@/components/mmhewcedari/editor/mm/mm";
 
 export default function Home() {
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
 
-        <h1 className="text-3xl font-semibold">Ev Araçları</h1>
+        <h1 className="text-3xl font-semibold">Ev Araçları </h1>
         <Tabs defaultValue="for-you">
           <TabsList>
             <TabsTrigger value="for-you">İlanlar</TabsTrigger>
@@ -34,8 +34,7 @@ export default function Home() {
 
 
         <TabsContent value="mm">
-
-  <PostEditor />
+<MmmmmmHome/>
 
     </TabsContent>
     </Tabs>
