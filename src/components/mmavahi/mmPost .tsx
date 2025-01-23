@@ -66,11 +66,11 @@ export default async function MmPost({ post }: PostProps) {
 
 
 <Linkify>
-        <div className="whitespace-pre-line break-words">Tür :{post.content[0]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[0]}</div>
       </Linkify>
 
       <Linkify>
-        <div className="whitespace-pre-line break-words">Fiyat :{post.content[1]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[1]}</div>
       </Linkify>
 
 
@@ -86,7 +86,7 @@ export default async function MmPost({ post }: PostProps) {
 
 
 <Linkify>
-        <div className="whitespace-pre-line break-words"> Konum :{post.content[2]}</div>
+        <div className="whitespace-pre-line break-words"> {post.content[2]}</div>
       </Linkify>
 
 
@@ -96,43 +96,57 @@ export default async function MmPost({ post }: PostProps) {
 
 
       <Linkify>
-        <div className="whitespace-pre-line break-words"> Eşyalı :{post.content[3]}</div>
+        <div className="whitespace-pre-line break-words"> {post.content[3]}</div>
       </Linkify>
 
 <Linkify>
-        <div className="whitespace-pre-line break-words">Klima :{post.content[4]}</div>
-      </Linkify>
-
-
-
-<Linkify>
-        <div className="whitespace-pre-line break-words">Asansör :{post.content[5]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[4]}</div>
       </Linkify>
 
 
 
+<Linkify>
+        <div className="whitespace-pre-line break-words">{post.content[5]}</div>
+      </Linkify>
+
+
+
 
 
 
 
 <Linkify>
-        <div className="whitespace-pre-line break-words">Manzara :{post.content[6]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[6]}</div>
       </Linkify>
 
       <Linkify>
-        <div className="whitespace-pre-line break-words">Kat :{post.content[7]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[7]}</div>
       </Linkify>
 
 
 
 
 <Linkify>
-        <div className="whitespace-pre-line break-words">Oda Sayısı:{post.content[8]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[8]}</div>
       </Linkify>
 
       <Linkify>
-        <div className="whitespace-pre-line break-words">Kat :{post.content[9]}</div>
+        <div className="whitespace-pre-line break-words">{post.content[9]}</div>
       </Linkify>
+
+      <Linkify>
+        <div className="whitespace-pre-line break-words">{post.content[10]}</div>
+      </Linkify>
+
+      <Linkify>
+        <div className="whitespace-pre-line break-words">{post.content[11]}</div>
+      </Linkify>
+
+      <Linkify>
+        <div className="whitespace-pre-line break-words">{post.content[12]}</div>
+      </Linkify>
+
+      
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
         <div className="flex items-center gap-5">

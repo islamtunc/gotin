@@ -38,6 +38,9 @@ export default function PostEditor() {
   });
 
   const { onClick, ...rootProps } = getRootProps();
+  const ref = useRef<HTMLInputElement | null>(null);
+
+  const ref1 = useRef<HTMLInputElement | null>(null);
 
   const editor = useEditor({
     extensions: [
@@ -51,6 +54,7 @@ export default function PostEditor() {
     ],
   });
 
+  
 
 
   const [selectedOption1, setSelectedOption1] = useState("Belirtilmemiş");
@@ -104,7 +108,7 @@ export default function PostEditor() {
   function onSubmit() {
     mutation.mutate(
       {
-        content: ["Satılık Konut",selectedOption1,selectedOption5,selectedOption7,selectedOption9,selectedOption11,selectedOption13,selectedOption15,selectedOption17,selectedOption19,selectedOption21],
+        content: ["Kiralık Konut","Fyat:"+ref.current?.value || "",selectedOption1,selectedOption5,selectedOption7,selectedOption9,selectedOption11,selectedOption13,selectedOption15,selectedOption17,selectedOption19,selectedOption21,"Açıklama: "+ref1.current?.value || ""],
         mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
        
       },
@@ -159,24 +163,24 @@ export default function PostEditor() {
           >
             <option value="Belirtilmemiş">Konut Türü</option>
            <br></br>
-           <option value="Daire">Daire</option>
+           <option value="Konut Türü :Daire">Daire</option>
 
-            <option value="Villa">Villa</option>
-            <option value="Müstakil Ev">Müstakil Ev</option>
+            <option value="Konut Türü :Villa">Villa</option>
+            <option value="Konut Türü :Müstakil Ev">Müstakil Ev</option>
          
-            <option value="Residans">Residans</option>
+            <option value="Konut Türü :Residans">Residans</option>
 
-            <option value="Stüdyo Daire">Stüdyo Daire</option>
+            <option value="Konut Türü :Stüdyo Daire">Stüdyo Daire</option>
        
-            <option value="Dubleks/Tripleks">Dubleks/Tripleks</option>
+            <option value="Konut Türü :Dubleks/Tripleks">Dubleks/Tripleks</option>
          
 
-         <option value="Loft">Loft</option>
+         <option value="Konut Türü :Loft">Loft</option>
 
-<option value="Prefabrik Ev">Prefabrik Ev</option>
-<option value="Çiftlik Evi">Çiftlik Evi</option>
+<option value="Konut Türü :Prefabrik Ev">Prefabrik Ev</option>
+<option value="Konut Türü :Çiftlik Evi">Çiftlik Evi</option>
 
-<option value="Yatırım Amaçlı">Yatırım Amaçlı</option>
+<option value="Konut Türü :Yatırım Amaçlı">Yatırım Amaçlı</option>
 
           </select>
    
@@ -185,15 +189,15 @@ export default function PostEditor() {
             value={selectedOption3}
             onChange={handleSelectChange3}
           >
-            <option value="">Oda Sayısı</option><br></br>
+            <option value="Oda Sayısı :Belirtilmemiş">Oda Sayısı</option><br></br>
            <br></br>
-           <option value="1+1">1+1</option>
+           <option value="Oda Sayısı :1+1">1+1</option>
 
-            <option value="option2">2+1</option>
-            <option value="option3">3+1</option>
+            <option value="Oda Sayısı :2+1">2+1</option>
+            <option value=" Oda Sayısı :3+1">3+1</option>
             
-            <option value="option2">4+1 ve üzeri</option>
-            <option value="option3">1+0 (Studyo Daire)</option>
+            <option value="Oda Sayısı :4+1 ve üzeri">4+1 ve üzeri</option>
+            <option value="Oda Sayısı  :1+0">1+0 (Studyo Daire)</option>
           </select>
       
 
@@ -202,11 +206,10 @@ export default function PostEditor() {
             value={selectedOption5}
             onChange={handleSelectChange5}
           >
-            <option value="">Isınma Sistemi</option>
-            <option value="Doğal Gaz">Doğal Gaz</option>
-            <option value="Kömür Merkezi Sitem">Kömür Merkezi Sistem</option>
-            <option value="Şehir Merkezi">Jeotermal </option>
-            <option value="option2"></option>
+            <option value="Isınma Sistemi">Isınma Sistemi</option>
+            <option value="Isınma Sistemi :Doğal Gaz">Doğal Gaz</option>
+            <option value="Isınma Sistemi :Kömür Merkezi Sitem">Kömür Merkezi Sistem</option>
+            <option value="Isınma Sistemi :Jeotermal">Jeotermal </option>
           </select>
 
     
@@ -220,9 +223,9 @@ export default function PostEditor() {
 
             
 
-            <option value=""> Asansor durumu</option>
-            <option value="Asansör var">Asansor var</option>
-            <option value="Asansör yok">Asansor yok</option>
+            <option value="Asansor durumu"> Asansor durumu</option>
+            <option value="Asansor durumu :Asansör var">Asansor var</option>
+            <option value="Asansor durumu :Asansör yok">Asansor yok</option>
 
             
           </select>
@@ -235,10 +238,10 @@ export default function PostEditor() {
             value={selectedOption9}
             onChange={handleSelectChange9}
           >
-            <option value="">Otopark durumu</option>
-            <option value="Otopark var">Otopark var</option>
+            <option value="Otopark durumu">Otopark durumu</option>
+            <option value="Otopark durumu :Otopark var">Otopark var</option>
 
-            <option value="Otopark yok">Otopark yok</option>
+            <option value="Otopark durumu :Otopark yok">Otopark yok</option>
 
           </select>
 
@@ -247,10 +250,10 @@ export default function PostEditor() {
             value={selectedOption11}
             onChange={(e) => setSelectedOption11(e.target.value)}
           >
-            <option value="">Bahçe durumu</option>
-            <option value="Bahçesiz">Bahçesiz</option>
+            <option value="Bahçe durumu :">Bahçe durumu</option>
+            <option value="Bahçe durumu :Bahçesiz">Bahçesiz</option>
 
-            <option value="Bahçeli">Bahçesiz</option>
+            <option value="Bahçe durumu :Bahçeli">Bahçesiz</option>
 
           </select>
 
@@ -259,8 +262,10 @@ export default function PostEditor() {
             value={selectedOption13}
             onChange={handleSelectChange13}
           >
-            <option value="Şehir Merkezi">Havuz var</option>
-            <option value="option2">Havuz yok</option>
+                        <option value="Havuz :Havuz var">Havuz </option>
+
+            <option value="Havuz  :Havuz var">Havuz var</option>
+            <option value="Havuz :Havuz Yok">Havuz yok</option>
           </select>
 
           
@@ -269,24 +274,30 @@ export default function PostEditor() {
             value={selectedOption15}
             onChange={(e) => setSelectedOption15(e.target.value)}
           >
-            <option value="Şehir Merkezi">Balkon var</option>
-            <option value="option2">Balkon yok</option>
+                        <option value="Balkon :Belirtilmemiş ">Balkon </option>
+
+            <option value="Balkon :Balkon var ">Balkon var</option>
+            <option value="Balkon :Balkon yok">Balkon yok</option>
           </select>
           <select
             className="mt-3 p-2 border rounded"
             value={selectedOption17}
             onChange={(e) => setSelectedOption17(e.target.value)}
           >
-            <option value="Şehir Merkezi">Teras var</option>
-            <option value="option2">Teras yok</option>
+                        <option value="Teras : Belirtilmemiş">Teras </option>
+
+            <option value="Teras :Teras var">Teras var</option>
+            <option value="Teras :Teras yok">Teras yok</option>
           </select>
           <select
             className="mt-3 p-2 border rounded"
             value={selectedOption19}
             onChange={(e) => setSelectedOption19(e.target.value)}
           >
-            <option value="Şehir Merkezi">Klimalı</option>
-            <option value="option2">Klimasız</option>
+                        <option value="Klima :Belirtilmemiş">Klima</option>
+
+            <option value="Klima :Klimalı">Klimalı</option>
+            <option value="Klima :Klimasız">Klimasız</option>
           </select>
 
 
@@ -295,9 +306,10 @@ export default function PostEditor() {
             className="mt-3 p-2 border rounded"
             value={selectedOption21}
             onChange={(e) => setSelectedOption21(e.target.value)}
-          >
-            <option value="Şehir Merkezi">Eşyalı</option>
-            <option value="option2">Eşyasız</option>
+          >            <option value="Eşya :Belirtilmemiş">Eşya</option>
+
+            <option value="Eşya :Eşyalı">Eşyalı</option>
+            <option value="Eşya :Eşyasız">Eşyasız</option>
           </select>
          
 
@@ -307,11 +319,11 @@ export default function PostEditor() {
 
 
       
-      <Input placeholder="ilan fiyatı"/>
+      <Input ref={ref} placeholder="ilan fiyatı"/>
           <Input placeholder="Alan(metrekare)"/>
 
           
-          <Input placeholder="Açıklaması"/>
+          <Input ref={ref1} placeholder="Açıklaması"/>
 
       {!!attachments.length && (
         <AttachmentPreviews
