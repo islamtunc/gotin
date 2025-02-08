@@ -14,6 +14,7 @@ import { notFound, redirect } from "next/navigation";
 import { cache, Suspense } from "react";
 
 import NewChatDialog from "@/app/(main)/messages/NewChatDialog";
+import Mm from "../mm";
 interface PageProps {
   params: { postId: string };
 }
@@ -72,6 +73,7 @@ export default async function Page({ params: { postId } }: PageProps) {
 
 
 
+<Mm/>
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
         </Suspense>
       </div>
