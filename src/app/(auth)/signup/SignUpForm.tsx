@@ -2,6 +2,7 @@
 
 "use client";
 
+// Allah u Ekber
 import LoadingButton from "@/components/LoadingButton";
 import { PasswordInput } from "@/components/PasswordInput";
 import {
@@ -19,6 +20,7 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { signUp } from "./actions";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function SignUpForm() {
   const [error, setError] = useState<string>();
@@ -86,9 +88,11 @@ export default function SignUpForm() {
           )}
         />
         <Check>Kullanıcı Sözleşmesi</Check>
-        <LoadingButton loading={isPending} type="submit" className="w-full">
-          Üye Ol
-        </LoadingButton>
+
+        <Button onClick={() =>
+
+alert(" Lütden Kullanıcı Sözleşmesini okuyunuz. Üye olmak için uygulamayı silip play storeden  ödeme planı seçip indirin ve tekrar deneyin.")
+}>Üye Ol</Button>
       </form>
     </Form>
   );
