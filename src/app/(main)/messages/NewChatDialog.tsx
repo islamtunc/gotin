@@ -1,7 +1,7 @@
 // Bismillahirahmanirahim 
-
-
-
+// Elhamdulillahi Rabbil Alamin
+// Es Salatu Wassalamu ala Rasulina Muhammadin ve ala alihi ve sahbihi ecmain
+"use client";
 import LoadingButton from "@/components/LoadingButton";
 import {
   Dialog,

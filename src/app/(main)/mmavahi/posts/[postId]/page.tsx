@@ -2,6 +2,7 @@
 
 // Elhamdülillahirabbülalemin 
 
+// Allahu ekber
 import { validateRequest } from "@/auth";
 import MmPost from "@/components/mmavahi/mmPost ";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ import { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { cache, Suspense } from "react";
 
-import handleMessageClick from "../mm";
+import NewChatDialog from "@/app/(main)/messages/NewChatDialog";
 interface PageProps {
   params: { postId: string };
 }
@@ -65,23 +66,12 @@ export default async function Page({ params: { postId } }: PageProps) {
       <div className="w-full min-w-0 space-y-5">
         <MmPost post={post} />
 
-        {user.id !== post.user.id && (
 
 
 
 
 
 
-<form action={
-   handleMessageClick(post.user.id, user.id)
-}>
-  <Button type="submit">
-    Mesaj Yaz
-  </Button>
-</form>
-        )}
-      </div>
-      <div className="sticky top-[5.25rem] hidden h-fit w-80 flex-none lg:block">
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
         </Suspense>
       </div>

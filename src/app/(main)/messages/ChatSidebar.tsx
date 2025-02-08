@@ -93,24 +93,10 @@ function MenuHeader({ onClose }: MenuHeaderProps) {
           </Button>
         </div>
         <h1 className="me-auto text-xl font-bold md:ms-2">Mesajlar</h1>
-        <Button
-          size="icon"
-          variant="ghost"
-          title="Yeni konuşma başlat"
-          onClick={() => setShowNewChatDialog(true)}
-        >
-          <MailPlus className="size-5" />
-        </Button>
+     
       </div>
-      {showNewChatDialog && (
-        <NewChatDialog
-          onOpenChange={setShowNewChatDialog}
-          onChatCreated={() => {
-            setShowNewChatDialog(false);
-            onClose();
-          }}
-        />
-      )}
+     
+      
     </>
   );
 }
