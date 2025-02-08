@@ -23,6 +23,7 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function SignUpForm() {
+
   const [error, setError] = useState<string>();
 
   const [isPending, startTransition] = useTransition();
@@ -91,7 +92,7 @@ export default function SignUpForm() {
 
         <Button onClick={() =>
 
-alert(" Lütden Kullanıcı Sözleşmesini okuyunuz. Üye olmak için uygulamayı silip play storeden  ödeme planı seçip indirin ve tekrar deneyin.")
+alert(" Lütfen Kullanıcı Sözleşmesini okuyunuz. Üye olmak için uygulamayı silip play storeden  ödeme planı seçip indirin ve tekrar deneyin.")
 }>Üye Ol</Button>
       </form>
     </Form>
