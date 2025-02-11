@@ -11,24 +11,13 @@ import Linkify from "../Linkify";
 import UserTooltip from "../UserTooltip";
 import { Button } from "@/components/ui/button";
 import { StreamChat } from "stream-chat";
-import { useRouter } from "next/navigation";
 
 interface PostProps {
   post: PostData;
 }
 
 export default async function MmPost({ post }: PostProps) {
-  const router = useRouter();
 
-  const handleMessageClick = async (userId: string, loggedInUserId: string) => {
-    const client = StreamChat.getInstance(process.env.NEXT_PUBLIC_STREAM_KEY!);
-    const channel = client.channel("messaging", {
-      members: [loggedInUserId, userId],
-    });
-    await channel.create();
-
-    router.push(`/messages/${channel.id}`);
-  };
 
   return (
     <article className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm">
@@ -79,9 +68,7 @@ export default async function MmPost({ post }: PostProps) {
         </Linkify>
       ))}
 
-      <Button onClick={() => handleMessageClick(post.user.id, "loggedInUserId")}>
-        Mesaj Yaz
-      </Button>
+      
 
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
