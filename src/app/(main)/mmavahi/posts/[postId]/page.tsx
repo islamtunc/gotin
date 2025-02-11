@@ -11,10 +11,9 @@ import { getPostDataInclude, UserData } from "@/lib/types";
 import { Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { cache, Suspense } from "react";
-import { StreamChat } from "stream-chat";
+import { cache } from "react";
 
-import NewChatDialog from "@/app/(main)/messages/NewChatDialog";
+import NewChatDialogClient from "@/components/mmavahi/NewChatDialogClient";
 interface PageProps {
   params: { postId: string };
 }
@@ -64,13 +63,7 @@ export default async function Page({ params: { postId } }: PageProps) {
       <div className="w-full min-w-0 space-y-5">
         <MmPost post={post} />
 
-        <NewChatDialog 
-          onOpenChange={() => {}} 
-          onChatCreated={() => {}} 
-          userId={post.user.id} 
-        />
-        <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
-        </Suspense>
+        <NewChatDialogClient postUserId={post.user.id} />
       </div>
     </main>
   );
