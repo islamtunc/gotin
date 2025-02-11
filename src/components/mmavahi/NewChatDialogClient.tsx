@@ -26,6 +26,7 @@ const NewChatDialogClient: React.FC<NewChatDialogClientProps> = ({ postUserId })
   const handleCreateChat = () => {
     // Logic to create a new chat
     // This function will be passed to NewChatDialog
+    console.log("Creating chat...");
   };
 
   return (

@@ -100,6 +100,7 @@ export const NewChatDialog: React.FC<NewChatDialogProps> = ({ onOpenChange, onCh
 
   const handleCreateChat = () => {
     onCreateChat(); // Call the passed function
+    mutation.mutate(); // Trigger the mutation
   };
 
   return (
