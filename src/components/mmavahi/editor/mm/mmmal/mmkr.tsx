@@ -319,11 +319,11 @@ export default function PostEditor() {
 
 
       
-      <Input ref={ref} placeholder="ilan fiyatı"/>
+      <Input ref={ref} placeholder="tel no"/>
           <Input placeholder="Alan(metrekare)"/>
 
           
-          <Input ref={ref1} placeholder="Açıklaması"/>
+          <Input ref={ref1} placeholder="Whatsapp"/>
 
       {!!attachments.length && (
         <AttachmentPreviews
