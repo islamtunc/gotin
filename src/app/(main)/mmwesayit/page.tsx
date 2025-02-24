@@ -1,20 +1,20 @@
 // Bismillahirrahmanirrahim
-
-
+// Elhamdulillahirabbulalemin
+// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi.
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ForYouFeed from "./ForYouFeed";
 
-import MmmmmmHome from "@/components/mmwesayit/editor/mm/mm";
+import PostEditor from "@/components/mmavahi/editor/PostEditor";
 
 export default function Home() {
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
 
-        <h1 className="text-3xl font-semibold">Araç</h1>
-        <Tabs defaultValue="mm">
+        <h1 className="text-3xl font-semibold">Emlak </h1>
+        <Tabs defaultValue="for-you">
           <TabsList>
             <TabsTrigger value="for-you">İlanlar</TabsTrigger>
             <TabsTrigger value="following">Kategoride Ara</TabsTrigger>
@@ -34,7 +34,7 @@ export default function Home() {
 
 
         <TabsContent value="mm">
-<MmmmmmHome/>
+<PostEditor/>
 
     </TabsContent>
     </Tabs>

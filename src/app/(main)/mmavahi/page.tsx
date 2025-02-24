@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ForYouFeed from "./ForYouFeed";
 
-import MmmmmmHome from "@/components/mmavahi/editor/mm/mm";
+import PostEditor from "@/components/mmavahi/editor/PostEditor";
 
 export default function Home() {
   return (
@@ -34,7 +34,7 @@ export default function Home() {
 
 
         <TabsContent value="mm">
-<MmmmmmHome/>
+<PostEditor/>
 
     </TabsContent>
     </Tabs>
