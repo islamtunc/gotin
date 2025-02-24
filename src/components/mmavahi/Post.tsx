@@ -35,7 +35,7 @@ export default async function Post({ post }: PostProps) {
               >
                 {post.user.displayName}
               </Link>
-          
+              
           {post.user?  <Link
               href={`/mmavahi/posts/${post.id}`}
               className="block text-sm text-muted-foreground hover:underline"
