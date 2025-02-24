@@ -11,6 +11,7 @@ import Linkify from "../Linkify";
 import UserTooltip from "../UserTooltip";
 import { Button } from "@/components/ui/button";
 import { StreamChat } from "stream-chat";
+import { Phone } from "lucide-react";
 
 interface PostProps {
   post: PostData;
@@ -72,7 +73,7 @@ export default async function MmPost({ post }: PostProps) {
 
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
-        <a href="+905549765692">Ara</a>
+        <Phone href="+905549765692">Ara</Phone>
         <div className="flex items-center gap-5"></div>
       </div>
     </article>
