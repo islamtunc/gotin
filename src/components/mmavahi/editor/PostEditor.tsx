@@ -53,31 +53,31 @@ export default function PostEditor() {
 
 
   const mmtel = useRef<HTMLInputElement>(null);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("Belirtilmemiş");
 
-  const [selectedOption1, setSelectedOption1] = useState("");
+  const [selectedOption1, setSelectedOption1] = useState("Belirtilmemiş");
 
-  const [selectedOption3, setSelectedOption3] = useState("");
+  const [selectedOption3, setSelectedOption3] = useState("Belirtilmemiş");
 
-  const [selectedOption5, setSelectedOption5] = useState("");
+  const [selectedOption5, setSelectedOption5] = useState("Belirtilmemiş");
 
-  const [selectedOption7, setSelectedOption7] = useState("");
+  const [selectedOption7, setSelectedOption7] = useState("Belirtilmemiş");
 
   
 
 
 
-  const [selectedOption9, setSelectedOption9] = useState("");
+  const [selectedOption9, setSelectedOption9] = useState("Belirtilmemiş");
 
 
 
-  const [selectedOption11, setSelectedOption11] = useState("");
+  const [selectedOption11, setSelectedOption11] = useState("Belirtilmemiş");
 
-  const [selectedOption13, setSelectedOption13] = useState("");
+  const [selectedOption13, setSelectedOption13] = useState("Belirtilmemiş");
 
-  const [selectedOption15, setSelectedOption15] = useState("");
+  const [selectedOption15, setSelectedOption15] = useState("Belirtilmemiş");
 
-  const [selectedOption17, setSelectedOption17] = useState("");
+  const [selectedOption17, setSelectedOption17] = useState("Belirtilmemiş");
 
 
   function onSubmit() {
