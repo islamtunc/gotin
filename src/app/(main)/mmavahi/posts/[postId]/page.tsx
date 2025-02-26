@@ -110,9 +110,7 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
           {user.bio}
         </div>
       </Linkify>
-      {user.id == loggedInUser.id && (
-      <Phone href="+905549765692">Ara</Phone>
-      )}
+   
     </div>
   );
 }

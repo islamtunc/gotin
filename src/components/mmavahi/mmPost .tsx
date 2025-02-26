@@ -65,22 +65,18 @@ export default async function MmPost({ post }: PostProps) {
         <MediaPreviews attachments={post.attachments} />
       )}
 
-      {post.content.map((text, index) => (
-        <Linkify key={index}>
-          <div className="whitespace-pre-line break-words">{text}</div>
-        </Linkify>
-      ))}
+ 
 
       
 
       <hr className="text-muted-foreground" />
-      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[0]}</div>
+      <Linkify>      <div className="whitespace-pre-line break-words">İlan Adı :{post.content[0]}</div>
       </Linkify>
-      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[1]}</div>
+      <Linkify>      <div className="whitespace-pre-line break-words">İlan Fiyatı :{post.content[1]}</div>
       </Linkify>
-      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[2]}</div>
+      <Linkify>      <div className="whitespace-pre-line break-words">İlan Türü :{post.content[2]}</div>
       </Linkify>
-      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[3]}</div>
+      <Linkify>      <div className="whitespace-pre-line break-words">Kullanım :{post.content[3]}</div>
       </Linkify>
       <Linkify>      <div className="whitespace-pre-line break-words">{post.content[4]}</div>
       </Linkify>
