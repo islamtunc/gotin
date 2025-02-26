@@ -1,6 +1,7 @@
 // Bismillahirrahmanirrahim
 //ELhamdulillahi Rabbil Alemin
 //Es Salatu Es Selamu Ala Rasulina Muhammedin ve Ala Alihi ve Sahbihi Ecmain.
+"use client"
 import { PostData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
 import { Media } from "@prisma/client";
