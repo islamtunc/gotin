@@ -12,6 +12,7 @@ import UserTooltip from "../UserTooltip";
 import { Button } from "@/components/ui/button";
 import { StreamChat } from "stream-chat";
 import { Phone } from "lucide-react";
+import ReactWhatsapp from 'react-whatsapp';
 
 interface PostProps {
   post: PostData;
@@ -72,8 +73,37 @@ export default async function MmPost({ post }: PostProps) {
       
 
       <hr className="text-muted-foreground" />
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[0]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[1]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[2]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[3]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[4]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[5]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[6]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[7]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[8]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[9]}</div>
+      </Linkify>
+      <Linkify>      <div className="whitespace-pre-line break-words">{post.content[10]}</div>
+      </Linkify>
+
       <div className="flex justify-between gap-5">
         <Phone ><a href={`tel:${+905549765692}`}>Ara</a></Phone>
+
+
+
+
+
+        <ReactWhatsapp element="button" number={"+90"+ post.content[9]} message="Selam Aleyküm" />
         <div className="flex items-center gap-5"></div>
       </div>
     </article>

@@ -50,6 +50,9 @@ export default function PostEditor() {
     ],
   });
 
+
+
+  const mmtel = useRef<HTMLInputElement>(null);
   const [selectedOption, setSelectedOption] = useState("");
 
   const [selectedOption1, setSelectedOption1] = useState("");
@@ -80,7 +83,7 @@ export default function PostEditor() {
   function onSubmit() {
     mutation.mutate(
       {
-        content: [selectedOption, selectedOption1,selectedOption3,selectedOption5,selectedOption7,selectedOption9,selectedOption11,selectedOption13,selectedOption15,selectedOption17],
+        content: [selectedOption, selectedOption1,selectedOption3,selectedOption5,selectedOption7,selectedOption9,selectedOption11,selectedOption13,selectedOption15,mmtel.current?.value ?? ""],
         mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
       },
       {
@@ -106,7 +109,7 @@ export default function PostEditor() {
         <div {...rootProps} className="w-full">
           <h5>Yeni Emlak İlanı</h5>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <Input placeholder="İlan Adı" className="mt-3" />
+            <Input ref={mmtel} placeholder="İlan Adı" className="mt-3" />
             <Input placeholder="İlan Fiyatı" className="mt-3" />
             <Input placeholder="Alan (metrekare)" className="mt-3" />
             <Input placeholder="Açıklama" className="mt-3" />
@@ -262,7 +265,7 @@ export default function PostEditor() {
           loading={mutation.isPending}
           className="min-w-20"
         >
-          Parve bikin
+          İlanı Yayınlayın
         </LoadingButton>
       </div>
     </div>
