@@ -1,6 +1,6 @@
 // Bismillahirahmanirahim 
-
-import { Alert } from "react-bootstrap";
+// Elhamdulillahirabbulalemin
+// Esselatu ve esselamu alen Nebiyyi Muhammedin ve alen alihi ve sahbihi ecmain
 import Mmmnavbar from "./components/mmnav";
 
 import 'bootstrap/dist/css/bootstrap.css'

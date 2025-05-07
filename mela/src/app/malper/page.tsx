@@ -1,68 +1,151 @@
-// Bismillahirahmanirahim
-// Elhamdulillahirrabbulalemin
-// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
+// Bismillahirrahmanirahim
+// Elhamdulillahirabbulalemin
+// Esselatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
+"use client";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import BasicExample from "./components/mmslide";
+import { Alert, Card } from "react-bootstrap";
+import mm from "../../../public/rjd.jpg";
 
-import React from 'react'
-
-function page() {
+function ContainerFluidExample() {
   return (
-    <main className="flex-grow container mx-auto py-8">
-    {/* Dashboard Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* Card 1: Active Projects */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <img
-          src="https://via.placeholder.com/300x150"
-          alt="Active Projects"
-          className="w-full h-32 object-cover rounded-t-lg mb-4"
-        />
-        <h3 className="text-xl font-bold mb-2">Active Projects</h3>
-        <p className="text-gray-600">You currently have 5 active projects.</p>
-        <a href="#projects" className="text-blue-500 hover:underline mt-4 block">
-          View Projects
-        </a>
-      </div>
-  
-      {/* Card 2: Team Members */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <img
-          src="https://via.placeholder.com/300x150"
-          alt="Team Members"
-          className="w-full h-32 object-cover rounded-t-lg mb-4"
-        />
-        <h3 className="text-xl font-bold mb-2">Team Members</h3>
-        <p className="text-gray-600">Your team consists of 12 members.</p>
-        <a href="#team" className="text-blue-500 hover:underline mt-4 block">
-          Manage Team
-        </a>
-      </div>
-  
-      {/* Card 3: Upcoming Deadlines */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        <img
-          src="https://via.placeholder.com/300x150"
-          alt="Upcoming Deadlines"
-          className="w-full h-32 object-cover rounded-t-lg mb-4"
-        />
-        <h3 className="text-xl font-bold mb-2">Upcoming Deadlines</h3>
-        <p className="text-gray-600">3 deadlines are approaching this week.</p>
-        <a href="#deadlines" className="text-blue-500 hover:underline mt-4 block">
-          Check Deadlines
-        </a>
-      </div>
-    </div>
-  
-    {/* Recent Updates Section */}
-    <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Recent Updates</h2>
-      <ul className="list-disc pl-5 text-gray-700">
-        <li>New feature added to the project management tool.</li>
-        <li>Weekly team meeting scheduled for Friday.</li>
-        <li>System maintenance planned for Saturday night.</li>
-      </ul>
-    </div>
-  </main>
-  )
+    <Container fluid>
+      <br /> <br />
+      <Row>
+        <Col xs={12} md={4} className="mb-4">
+          <Card
+            style={{
+              width: "100%",
+              height: "100%",
+              opacity: 0.95,
+              textAlign: "center",
+            }}
+          >
+            <Card.Body>
+              <Card.Title>Sağlıklı Yaşamın Yolculuğuna Hoş Geldiniz</Card.Title>
+              <Card.Text>
+                <br />
+                Beslenme, sadece ne yediğimiz değil, nasıl hissettiğimizin de bir yansımasıdır.
+                <br />
+                <br />
+                Bilimsel temellere dayalı, kişiye özel beslenme planlarıyla hem bedeninizi hem de yaşam kalitenizi dönüştürmek mümkün.
+                <br />
+                <br />
+                Merak ettiğiniz ve doğru bildiğiniz beslenme ve sağlık bilgileri için sitemizi takip edin.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={12} md={4} className="mb-4 d-flex justify-content-center">
+          <Image
+            src={mm.src}
+            style={{
+              border: "5px solid white", // Beyaz çerçeve
+              borderRadius: "10px",
+              width: "100%", // Mobil uyumlu genişlik
+              maxWidth: "25rem", // Maksimum genişlik
+              height: "auto", // Oranlı yükseklik
+            }}
+            alt="ROJDA MUSA"
+            fluid
+          />
+        </Col>
+        <Col xs={12} md={4} className="mb-4">
+          <Card
+            style={{
+              width: "100%",
+              height: "100%",
+              opacity: 0.95,
+              color: "black",
+              textAlign: "center",
+            }}
+          >
+            <Card.Body>
+              <Card.Title>Merhaba</Card.Title>
+              <Card.Text>
+                <p>
+                  Ben Diyetisyen Rojda Musa, bu yolculukta size rehberlik etmek
+                  için buradayım. Kilo yönetimi, hastalıklarda beslenme, sporcu
+                  beslenmesi ve sürdürülebilir yaşam tarzı değişiklikleriyle
+                  hedeflerinize ulaşmanız için yanınızdayım.
+                </p>
+                <br />
+                <p>
+                  Gerçek sonuçlar için güvenilir bilgi, samimi iletişim ve
+                  sürdürülebilir çözümler arıyorsanız doğru yerdesiniz. Online
+                  Diyet ve Beslenme danışmanlığı için iletişim seçeneklerinden
+                  bizimle iletişime geçiniz.
+                </p>
+                <br />
+                <p>Sağlıklı bir geleceğe birlikte adım atalım.</p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <BasicExample
+            nav="Hastalıklar ve Beslenme"
+            nivis="Her hastalığın kendine özel beslenmesi bulunmaktadır ve sahip olunan hastalığa göre özel diyet içerikleri uygulanmalıdır. Hastalıklar ve Beslenme için detaylı bilgilere yazılarımızdan ulaşabilirsiniz."
+            cih="/malper/mmkargeh"
+            wene="/hsbs.jpg"
+          />
+        </Col>
+
+        <Col>
+          <BasicExample
+            nav="Psikoloji ve Beslenme"
+            nivis="Zaman zaman duygu durumlarımız değişiklik gösterebilmektedir ve bu durumda beslenme alışkanlıklarımızda değişebilmekte ve sağlıksız bir beslenme çeşidine yönelmekteyiz. Bu durumlarla nasıl başa çıkmalıyız? Detaylara yazılarımızdan ulaşabilirsiniz."
+            cih="/malper/mmkinc"
+            wene="/psbs.jpg"
+          />
+        </Col>
+
+        <Col>
+          <BasicExample
+            nav="Diyet Çeşitleri"
+            nivis="Belirli hastalık ve beslenme tarzlarında yapılan diyet farklılık gösterebilmektedir. Bazen yağdan, bazen karbonhidrattan ya da proteinden zengin beslenmeler öne çıkabilmektedir. Hangi hastalık durumunda hangi diyet çeşidini tercih etmeliyiz sorusu için detaylı bilgilere diyet çeşitleri yazılarımızdan ulaşabilirsiniz."
+            cih="/malper/mmwesayit"
+            wene="/mmdy.jpg"
+          />
+        </Col>
+      </Row>
+      <br />
+      <Row>
+        <Col>
+          <BasicExample
+            nav="Sporcu Beslenmesi"
+            nivis="Spor ve Beslenme birbirinden ayrılmaz bir ikilidir ve her spor çeşidinde beslenme farklılık gösterebilmektedir. Detaylı bilgilere spor ve beslenme yazılarımızdan ulaşabilirsiniz."
+            cih="/malper/mmavahi"
+            wene="spbs.jpg"
+          />
+        </Col>
+
+        <Col>
+          <BasicExample
+            nav="Çocuk ve Ergen"
+            nivis="Her yaş kategorisi farklı bir beslenme programı içermektedir. Belirli yaşlarda alınan vitamin ve mineraller önem göstermektedir. Çocuk ve ergenlerde beslenmede detaylı bilgilere yazılarımızdan ulaşabilirsiniz."
+            cih="/malper/mmhewcedari"
+            wene="ce.jpg"
+          />
+        </Col>
+
+        <Col>
+          <BasicExample
+            nav="Sağlıklı Tarifler"
+            nivis="Yaptığımız öğün sayısı ve aldığımız kalori kadar yediğimiz öğünlerin besin içerikleri de önemlidir. En sağlıklı beslenme tariflerine yazılarımızdan ulaşabilirsiniz."
+            cih="/malper/mmkedkar"
+            wene="/dy.jpg"
+          />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
-export default page
+export default ContainerFluidExample;
