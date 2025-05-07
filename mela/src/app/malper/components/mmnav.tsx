@@ -15,7 +15,7 @@ function Mmmnavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/malper">Home</Nav.Link>
+            <Nav.Link href="/malper">Anasayfa</Nav.Link>
             <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/malper/mmavahi">Web Sites</NavDropdown.Item>
               <NavDropdown.Item href="/malper/mmkinc">
