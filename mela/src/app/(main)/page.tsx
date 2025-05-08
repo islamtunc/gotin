@@ -1,108 +1,40 @@
 // Bismillahirrahmanirahim
-
+// Elhamdulillahirabbulalemin
+// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
+// Allahu Ekber velilahi'lhamd
+"use client";
 import React from "react";
-import { Alert, Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
-function AdminPage() {
+const categories = [
+  { id: 1, name: "Emlak", icon: "🏠" },
+  { id: 2, name: "Vasıta", icon: "🚗" },
+  { id: 3, name: "İkinci El ve Sıfır Alışveriş", icon: "🛒" },
+  { id: 4, name: "İş Makineleri", icon: "🚜" },
+  { id: 5, name: "Yedek Parça", icon: "🔧" },
+  { id: 6, name: "İş İlanları", icon: "💼" },
+  { id: 7, name: "Hayvanlar Alemi", icon: "🐾" },
+  { id: 8, name: "Hizmetler", icon: "🛠️" },
+];
+
+function Page() {
   return (
-    <Container fluid style={{ background: "#f8f9fa", minHeight: "100vh", padding: "20px" }}>
+    <Container className="mt-4">
+      <h1 className="text-center mb-4">Kategoriler</h1>
       <Row>
-        <Col>
-          <Alert variant="success" style={{ textAlign: "center", fontSize: "18px" }}>
-            Selam Aleykum dear Customer or Developer, Welcome to Admin Panel
-          </Alert>
-        </Col>
-      </Row>
-
-      <Row className="mb-4">
-        <Col>
-          <Alert
-            style={{
-              background: "green",
-              color: "white",
-              textAlign: "center",
-              fontSize: "16px",
-            }}
-          >
-            Sernameye name nameye Allah <br />
-            Be namaye nameye kemi wi Wallah
-          </Alert>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>Products</Card.Title>
-              <Card.Text>Access the main page of the admin panel.</Card.Text>
-              <Button variant="primary" href="/mmavahi">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>Courses</Card.Title>
-              <Card.Text>Edit or view the about page.</Card.Text>
-              <Button variant="primary" href="/mmkinc">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>Services</Card.Title>
-              <Card.Text>Manage nutrition programs.</Card.Text>
-              <Button variant="primary" href="/mmkargeh">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>For Developers</Card.Title>
-              <Card.Text>Edit or view your programs.</Card.Text>
-              <Button variant="primary" href="/mmwesayit">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>References</Card.Title>
-              <Card.Text>Manage and edit your blog posts.</Card.Text>
-              <Button variant="primary" href="/mmkedkar">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>The Website</Card.Title>
-              <Card.Text>Edit or view the website settings.</Card.Text>
-              <Button variant="primary" href="/malper">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
+        {categories.map((category) => (
+          <Col key={category.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
+            <Card className="h-100 text-center shadow-sm">
+              <Card.Body>
+                <div className="fs-1">{category.icon}</div>
+                <Card.Title className="mt-3">{category.name}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
       </Row>
     </Container>
   );
 }
 
-export default AdminPage;
+export default Page;

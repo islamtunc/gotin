@@ -2,7 +2,7 @@
 // Elhamdulillahirabbulalemin
 // Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
 // Allahu Ekber velilahi'lhamd
-
+"use client";
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
