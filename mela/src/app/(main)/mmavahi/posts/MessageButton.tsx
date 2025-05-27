@@ -1,18 +1,20 @@
 // Bismillahirrahmanirrahim
 // Elhamdulillahi Rabbul Alemin
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
-
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface MessageButtonProps {
   targetUserId: string;
 }
 
 const MessageButton: React.FC<MessageButtonProps> = ({ targetUserId }) => {
+  const router = useRouter();
+
   const handleClick = () => {
-    // Implement your message logic here, e.g., open a chat modal or redirect
-    alert(`Start messaging user: ${targetUserId}`);
+    // Redirect to the messages page with the target user
+    router.push(`/messages?userId=${targetUserId}`);
   };
 
   return (
