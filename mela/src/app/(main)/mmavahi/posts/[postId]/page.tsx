@@ -76,27 +76,8 @@ interface UserInfoSidebarProps {
   user: UserData;
 }
 
-// Mesaj Gönder butonu
-"use client";
-import { useRouter } from "next/navigation";
-
-function MessageButton({ targetUserId }: { targetUserId: string }) {
-  const router = useRouter();
-
-  function handleMessage() {
-    router.push(`/messages/${targetUserId}`);
-  }
-
-  return (
-    <button
-      className="w-full rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary/90"
-      onClick={handleMessage}
-      type="button"
-    >
-      Mesaj Gönder
-    </button>
-  );
-}
+import dynamic from "next/dynamic";
+const MessageButton = dynamic(() => import("../MessageButton"), { ssr: false });
 
 async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
   const { user: loggedInUser } = await validateRequest();
