@@ -23,7 +23,6 @@ import { login } from "./actions";
 
 export default function LoginForm() {
   const [error, setError] = useState<string>();
-
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<LoginValues>({
@@ -31,7 +30,6 @@ export default function LoginForm() {
     defaultValues: {
       username: "",
       password: "",
-      phone: "", // Telefon numarası için varsayılan değer
     },
   });
 
@@ -55,19 +53,6 @@ export default function LoginForm() {
               <FormLabel>Kullanıcı Adı</FormLabel>
               <FormControl>
                 <Input placeholder="Username" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Telefon Numarası</FormLabel>
-              <FormControl>
-                <Input placeholder="Telefon Numarası" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
