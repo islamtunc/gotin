@@ -1,7 +1,6 @@
 // Bismillahirrahmanirrahim
-
-
-
+// Elhamdulillahi Rabbul Alemin
+// Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
 import Post from "@/components/mmavahi/Post";
@@ -29,9 +28,6 @@ const getPost = cache(async (postId: string, loggedInUserId: string) => {
 
   if (!post) notFound();
 
-
-
-  
   return post;
 });
 
@@ -66,12 +62,6 @@ export default async function Page({ params: { postId } }: PageProps) {
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
         <Post post={post} />
-       
-
-
-
-
-       
       </div>
       <div className="sticky top-[5.25rem] hidden h-fit w-80 flex-none lg:block">
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
@@ -84,6 +74,28 @@ export default async function Page({ params: { postId } }: PageProps) {
 
 interface UserInfoSidebarProps {
   user: UserData;
+}
+
+// Mesaj Gönder butonu
+"use client";
+import { useRouter } from "next/navigation";
+
+function MessageButton({ targetUserId }: { targetUserId: string }) {
+  const router = useRouter();
+
+  function handleMessage() {
+    router.push(`/messages/${targetUserId}`);
+  }
+
+  return (
+    <button
+      className="w-full rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary/90"
+      onClick={handleMessage}
+      type="button"
+    >
+      Mesaj Gönder
+    </button>
+  );
 }
 
 async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
@@ -115,7 +127,7 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
           {user.bio}
         </div>
       </Linkify>
-     
+      <MessageButton targetUserId={user.id} />
     </div>
   );
 }
