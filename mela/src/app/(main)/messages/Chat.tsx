@@ -1,21 +1,42 @@
 // Bismillahirrahmanirrahim 
-
+// Elhamdulillahi Rabbul Alemin
+// Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 "use client";
 
 import { Loader2 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Chat as StreamChat } from "stream-chat-react";
 import ChatChannel from "./ChatChannel";
 import ChatSidebar from "./ChatSidebar";
 import useInitializeChatClient from "./useInitializeChatClient";
+import { useSearchParams } from "next/navigation";
 
 export default function Chat() {
   const chatClient = useInitializeChatClient();
-
   const { resolvedTheme } = useTheme();
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // userId query parametresine göre kanal aç
+  const searchParams = useSearchParams();
+  const userId = searchParams.get("userId");
+
+  useEffect(() => {
+    if (
+      userId &&
+      chatClient &&
+      chatClient.userID &&
+      userId !== chatClient.userID
+    ) {
+      const channel = chatClient.channel("messaging", {
+        members: [chatClient.userID, userId],
+      });
+      channel.watch().then(() => {
+        // StreamChat React context'i kullanıyorsanız burada setActiveChannel çağırabilirsiniz
+        // chatClient.activeChannel = channel; // Eğer böyle bir property varsa
+      });
+    }
+  }, [userId, chatClient]);
 
   if (!chatClient) {
     return <Loader2 className="mx-auto my-3 animate-spin" />;
