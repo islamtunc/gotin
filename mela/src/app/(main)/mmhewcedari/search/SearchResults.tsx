@@ -26,7 +26,7 @@ export default function SearchResults({ query }: SearchResultsProps) {
     queryKey: ["post-feed", "search", query],
     queryFn: ({ pageParam }) =>
       kyInstance
-        .get("/api/search", {
+        .get("/api/posts/mmavahi/search", {
           searchParams: {
             q: query,
             ...(pageParam ? { cursor: pageParam } : {}),
@@ -66,7 +66,7 @@ export default function SearchResults({ query }: SearchResultsProps) {
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
       {posts.map((post) => (
-        <Post key={post.id} post={post} />
+        <Post key={post.id} post={post} viewerId={""} />
       ))}
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
     </InfiniteScrollContainer>
