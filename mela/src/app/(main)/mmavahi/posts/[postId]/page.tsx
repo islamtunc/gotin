@@ -47,7 +47,12 @@ export async function generateMetadata({
 }
 
 import dynamic from "next/dynamic";
-import UserInfoSidebar from "./UserInfoSidebar";
+// Update the import path below to match the actual location and filename of UserInfoSidebar
+// For example, if the file is in the same folder as this file, use:
+
+import UserInfoSidebar from "../../UserInfoSidebar";
+// Or, if it's in a different folder, adjust the path accordingly:
+// import UserInfoSidebar from "../../UserInfoSidebar";
 
 export default async function Page({ params: { postId } }: PageProps) {
   const { user } = await validateRequest();
