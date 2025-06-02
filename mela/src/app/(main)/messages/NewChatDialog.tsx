@@ -1,4 +1,7 @@
 // Bismillahirahmanirahim 
+// Elhamdulillahi Rabbil Alamin
+// Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allah u Ekber ve Lillahi'l-hamd
 
 import LoadingButton from "@/components/LoadingButton";
 import {
@@ -208,12 +211,3 @@ function SelectedUserTag({ user, onRemove }: SelectedUserTagProps) {
   );
 }
 
-const [open, setOpen] = useState(false);
-
-<NewChatDialog
-  onOpenChange={setOpen}
-  onChatCreated={() => {
-    setOpen(false); // Diyaloğu kapat
-    // Gerekirse başka bir işlem yap
-  }}
-/>
