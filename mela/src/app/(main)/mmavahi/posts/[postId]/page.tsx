@@ -47,7 +47,7 @@ export async function generateMetadata({
 }
 
 import dynamic from "next/dynamic";
-import UserInfoSidebar from "../../../messages/UserInfoSidebar";
+import UserInfoSidebar from "./UserInfoSidebar";
 
 export default async function Page({ params: { postId } }: PageProps) {
   const { user } = await validateRequest();
