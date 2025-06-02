@@ -1,6 +1,7 @@
 // Bismillahirrahmanirrahim
 // Elhamdulillahi Rabbul Alemin
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allah u Ekber ve Lillahi'l-hamd
 import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
 import Post from "@/components/mmavahi/Post";
@@ -45,9 +46,11 @@ export async function generateMetadata({
   };
 }
 
+import dynamic from "next/dynamic";
+import UserInfoSidebar from "../UserInfoSidebar";
+
 export default async function Page({ params: { postId } }: PageProps) {
   const { user } = await validateRequest();
-
   if (!user) {
     return (
       <p className="text-destructive">
@@ -55,60 +58,18 @@ export default async function Page({ params: { postId } }: PageProps) {
       </p>
     );
   }
-
   const post = await getPost(postId, user.id);
 
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
-        <Post post={post} viewerId={user.id} /> {/* Burada user.id gönderilmeli */}
+        <Post post={post} viewerId={user.id} />
       </div>
       <div className="sticky top-[5.25rem] hidden h-fit w-80 flex-none lg:block">
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
-          <UserInfoSidebar user={post.user} />
+          <UserInfoSidebar user={post.user} loggedInUserId={user.id} />
         </Suspense>
       </div>
     </main>
-  );
-}
-
-interface UserInfoSidebarProps {
-  user: UserData;
-}
-
-import dynamic from "next/dynamic";
-const MessageButton = dynamic(() => import("../MessageButton"), { ssr: false });
-
-async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
-  const { user: loggedInUser } = await validateRequest();
-
-  if (!loggedInUser) return null;
-
-  return (
-    <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
-      <div className="text-xl font-bold">About this user</div>
-      <UserTooltip user={user}>
-        <Link
-          href={`/users/${user.username}`}
-          className="flex items-center gap-3"
-        >
-          <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
-          <div>
-            <p className="line-clamp-1 break-all font-semibold hover:underline">
-              {user.displayName}
-            </p>
-            <p className="line-clamp-1 break-all text-muted-foreground">
-              @{user.username}
-            </p>
-          </div>
-        </Link>
-      </UserTooltip>
-      <Linkify>
-        <div className="line-clamp-6 whitespace-pre-line break-words text-muted-foreground">
-          {user.bio}
-        </div>
-      </Linkify>
-      <MessageButton targetUserId={user.id} />
-    </div>
   );
 }

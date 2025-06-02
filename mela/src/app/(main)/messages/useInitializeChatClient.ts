@@ -2,7 +2,7 @@
 // Elhamdulillahi Rabbul Alemin
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 
-
+"use client";
 
 import kyInstance from "@/lib/ky";
 import { useEffect, useState } from "react";

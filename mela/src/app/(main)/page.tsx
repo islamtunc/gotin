@@ -2,7 +2,7 @@
 // Elhamdulillahirabbulalemin
 // Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
 // Allahu Ekber velilahi'lhamd
-"use client";
+"use client"
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Link from "next/link";
@@ -25,13 +25,15 @@ function Page() {
       <Row>
         {categories.map((category) => (
           <Col key={category.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-            <Link href={category.link} style={{ textDecoration: "none" }}>
-              <Card className="h-100 text-center shadow-sm category-card" style={{ cursor: "pointer" }}>
-                <Card.Body>
-                  <div className="fs-1">{category.icon}</div>
-                  <Card.Title className="mt-3">{category.name}</Card.Title>
-                </Card.Body>
-              </Card>
+            <Link href={category.link} passHref legacyBehavior>
+              <a style={{ textDecoration: "none" }}>
+                <Card className="h-100 text-center shadow-sm category-card" style={{ cursor: "pointer" }}>
+                  <Card.Body>
+                    <div className="fs-1">{category.icon}</div>
+                    <Card.Title className="mt-3">{category.name}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </a>
             </Link>
           </Col>
         ))}
