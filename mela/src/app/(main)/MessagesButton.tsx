@@ -1,5 +1,7 @@
 // Bismillahirahmanirahim 
-
+// ELHAMDULİLLAHİRABBULALEMİN
+// Es-selatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
 
 
 "use client";

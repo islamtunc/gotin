@@ -18,14 +18,12 @@ export default function MessageButton({ targetUserId }: MessageButtonProps) {
 
   const handleClick = async () => {
     if (!client.userID || client.userID === targetUserId) return;
-    // Kanalı oluştur veya varsa getir
     const channel = client.channel("messaging", {
       members: [client.userID, targetUserId],
     });
     await channel.watch();
-    // Otomatik "merhaba" mesajı gönder
     await channel.sendMessage({ text: "merhaba" });
-    setInfo("Mesaj gönderildi. Devam etmek için mesajlar kısmını kullanın.");
+    router.push("/messages");
   };
 
   return (
