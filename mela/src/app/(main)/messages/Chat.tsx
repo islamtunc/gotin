@@ -7,10 +7,8 @@
 import { Loader2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { Chat as StreamChat } from "stream-chat-react";
 import ChatChannel from "./ChatChannel";
 import ChatSidebar from "./ChatSidebar";
-import useInitializeChatClient from "./useInitializeChatClient";
 
 export default function Chat() {
   const { resolvedTheme } = useTheme();
@@ -30,29 +28,61 @@ export default function Chat() {
 
   const containerStyle: React.CSSProperties = {
     display: 'flex',
-    flexDirection: isMobile ? 'column' as const : 'row' as const,
+    flexDirection: isMobile ? 'column' : 'row',
     height: '100vh',
+    width: '100%',
   };
 
-  const sidebarStyle = {
+  const sidebarStyle: React.CSSProperties = {
     width: isMobile ? '100%' : '250px',
+    display: isMobile ? (sidebarOpen ? 'block' : 'none') : 'block',
+    zIndex: 20,
+    background: 'var(--card, #fff)',
+    position: isMobile ? 'absolute' : 'static',
+    top: 0,
+    left: 0,
+    height: isMobile ? '100vh' : 'auto',
   };
 
-  const chatContentStyle = {
+  const chatContentStyle: React.CSSProperties = {
     flex: isMobile ? 'none' : 1,
+    width: '100%',
+    position: 'relative',
   };
 
   return (
     <div style={containerStyle}>
+      {/* Mobilde sidebar açma butonu */}
+      {isMobile && !sidebarOpen && (
+        <button
+          className="m-2 rounded bg-primary px-4 py-2 text-white"
+          onClick={() => setSidebarOpen(true)}
+        >
+          Kanallar
+        </button>
+      )}
+
+      {/* Sidebar */}
       <div style={sidebarStyle}>
-        <ChatSidebar open={false} onClose={function (): void {
-          throw new Error("Function not implemented.");
-        }} />
+        <ChatSidebar
+          open={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
       </div>
+
+      {/* Chat içeriği */}
       <div style={chatContentStyle}>
-        <ChatChannel open={false} openSidebar={function (): void {
-          throw new Error("Function not implemented.");
-        }} />
+        <ChatChannel
+          open={!isMobile || !sidebarOpen}
+          openSidebar={() => setSidebarOpen(true)}
+        />
+        {/* Mobilde sidebar açıksa, içerik gizlensin */}
+        {isMobile && sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/30 z-10"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
       </div>
     </div>
   );
