@@ -17,13 +17,17 @@ export default function MessageButton({ targetUserId }: MessageButtonProps) {
   const [info, setInfo] = useState<string | null>(null);
 
   const handleClick = async () => {
-    if (!client.userID || client.userID === targetUserId) return;
-    const channel = client.channel("messaging", {
-      members: [client.userID, targetUserId],
-    });
-    await channel.watch();
-    await channel.sendMessage({ text: "merhaba" });
-    router.push("/messages");
+    try {
+      if (!client.userID || client.userID === targetUserId) return;
+      const channel = client.channel("messaging", {
+        members: [client.userID, targetUserId],
+      });
+      await channel.watch();
+      await channel.sendMessage({ text: "merhaba" });
+      router.push("/messages");
+    } catch (err) {
+      setInfo("Mesaj gönderilemedi. Lütfen tekrar deneyin.");
+    }
   };
 
   return (

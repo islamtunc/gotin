@@ -2,7 +2,8 @@
 // Elhamdulillahirabbulalemin
 // Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
 // Allahu Ekber velilahi'lhamd
-
+// Allah u Ekber Allah u Ekber
+// La ilahe illallah, Allahu Ekber Allahu Ekber, ve lillahi'lhamd
 import { Toaster } from "@/components/ui/toaster";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import type { Metadata } from "next";
@@ -37,6 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
+    
+    <head>
+
+
+    <script src="http://localhost:8097"></script>
+
+    </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} />
         <ReactQueryProvider>

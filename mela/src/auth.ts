@@ -1,4 +1,7 @@
 // Bismillahirrahmanirahim
+// Elhamdulillahirabbulalemin
+// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
+// Allahu Ekber velilahi'lhamd
 
 
 
@@ -54,9 +57,11 @@ export const validateRequest = cache(
   async (): Promise<
     { user: User; session: Session } | { user: null; session: null }
   > => {
+    console.log("validateRequest başladı");
     const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
 
     if (!sessionId) {
+      console.log("validateRequest: session yok");
       return {
         user: null,
         session: null,
@@ -84,6 +89,7 @@ export const validateRequest = cache(
       }
     } catch {}
 
+    console.log("validateRequest bitti");
     return result;
   },
 );
