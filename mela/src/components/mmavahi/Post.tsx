@@ -46,7 +46,7 @@ export default function Post({ post, viewerId }: PostProps) {
             className="block text-sm text-muted-foreground hover:underline"
             suppressHydrationWarning
           >
-            Continue
+            Devamını Oku
           </Link>
         
         </div>

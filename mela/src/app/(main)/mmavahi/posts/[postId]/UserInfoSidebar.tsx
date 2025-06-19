@@ -23,7 +23,7 @@ export default function UserInfoSidebar({ user, loggedInUserId }: UserInfoSideba
 
   return (
     <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
-      <div className="text-xl font-bold">About this user</div>
+      <div className="text-xl font-bold">Bu kullanıcı hakkında</div>
       <UserTooltip user={user}>
         <Link
           href={`/users/${user.username}`}

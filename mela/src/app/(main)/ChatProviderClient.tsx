@@ -10,7 +10,7 @@ import useInitializeChatClient from "./messages/useInitializeChatClient";
 export default function ChatProviderClient({ children }: { children: React.ReactNode }) {
   const chatClient = useInitializeChatClient();
 
-  if (!chatClient) return <div>Loading chat...</div>;
+  if (!chatClient) return null;
 
   return (
     <Chat client={chatClient} theme="str-chat__theme-light">
