@@ -2,7 +2,7 @@
 // Elhamdulillahi Rabbil Alamin
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 // Allah u Ekber ve Lillahi'l-hamd
-
+// HasbunAllahu ve ni'mel vekil
 "use client";
 
 import { Loader2 } from "lucide-react";
@@ -20,70 +20,54 @@ export default function Chat() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     window.addEventListener('resize', handleResize);
     handleResize();
-
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
-    height: '100vh',
-    width: '100%',
-  };
-
-  const sidebarStyle: React.CSSProperties = {
-    width: isMobile ? '100%' : '250px',
-    display: isMobile ? (sidebarOpen ? 'block' : 'none') : 'block',
-    zIndex: 20,
-    background: 'var(--card, #fff)',
-    position: isMobile ? 'absolute' : 'static',
-    top: 0,
-    left: 0,
-    height: isMobile ? '100vh' : 'auto',
-  };
-
-  const chatContentStyle: React.CSSProperties = {
-    flex: isMobile ? 'none' : 1,
-    width: '100%',
-    position: 'relative',
-  };
-
   return (
-    <div style={containerStyle}>
+    <div
+      className={
+        isMobile
+          ? "flex flex-col w-full h-screen relative bg-background"
+          : "flex flex-row w-full h-screen bg-background"
+      }
+    >
       {/* Mobilde sidebar açma butonu */}
       {isMobile && !sidebarOpen && (
         <button
-          className="m-2 rounded bg-primary px-4 py-2 text-white"
+          className="m-2 rounded bg-primary px-4 py-2 text-white fixed top-2 left-2 z-30 shadow-lg"
           onClick={() => setSidebarOpen(true)}
         >
           Kanallar
         </button>
       )}
-
       {/* Sidebar */}
-      <div style={sidebarStyle}>
-        <ChatSidebar
-          open={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-        />
+      <div
+        className={
+          isMobile
+            ? `fixed top-0 left-0 h-full w-4/5 max-w-xs z-20 transition-transform duration-300 bg-card shadow-lg ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`
+            : "w-80 min-w-[250px] h-full border-r bg-card"
+        }
+      >
+        <ChatSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </div>
-
-      {/* Chat içeriği */}
-      <div style={chatContentStyle}>
-        <ChatChannel
-          open={!isMobile || !sidebarOpen}
-          openSidebar={() => setSidebarOpen(true)}
+      {/* Mobilde sidebar açıksa, içerik karartılsın */}
+      {isMobile && sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 z-10"
+          onClick={() => setSidebarOpen(false)}
         />
-        {/* Mobilde sidebar açıksa, içerik gizlensin */}
-        {isMobile && sidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black/30 z-10"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
+      )}
+      {/* Chat içeriği */}
+      <div
+        className={
+          isMobile
+            ? `flex-1 w-full h-full ${sidebarOpen ? 'hidden' : 'block'}`
+            : "flex-1 w-full h-full"
+        }
+      >
+        <ChatChannel open={!isMobile || !sidebarOpen} openSidebar={() => setSidebarOpen(true)} />
       </div>
     </div>
   );
