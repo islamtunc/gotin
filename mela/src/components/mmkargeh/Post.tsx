@@ -1,7 +1,12 @@
 // Bismillahirrahmanirrahim 
-
+// Elhamdulillahirabbulalemin
+// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ec
+// Allah u Ekber velilahi'lhamd
+// SubhAnAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah
+// HasbunAllahu ve ni'mel vekil
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+  
 "use client";
-
 import { useSession } from "@/app/(main)/SessionProvider";
 import { PostData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
