@@ -4,12 +4,7 @@
 // Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe
 // SuphAnAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah
 // HasbunAllahu ve ni'mel vekil
-
-
-// Bismillahirrahmanirrahim 
-// Elhamdulillahi Rabbil Alamin
-// Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
-// Allah u Ekber ve Lillahi'l-hamd
+// La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
 "use client";
 
 import { PostData } from "@/lib/types";
@@ -50,7 +45,42 @@ export default function MmmPost({ post, viewerId }: PostProps) {
         <div className="text-center text-muted-foreground">Medya yok</div>
       )}
       <div className="flex flex-col gap-1 mt-3">
-        <div><span className="font-medium">İlan ID:</span> {post.id}</div>
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+        <div><span className="font-medium">İlan ID:</span> {post.content[1]}</div>
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[2]}</div>
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[3]}</div>
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+
+
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+
+        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
+
+
         <div><span className="font-medium">Oluşturulma:</span> {formatRelativeDate(post.createdAt)}</div>
         {/* Diğer özellikler buraya eklenebilir */}
       </div>

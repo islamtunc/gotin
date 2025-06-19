@@ -28,7 +28,7 @@ function Mmmnavbar() {
             <Nav.Link href="#link">About Us</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/login" className="btn btn-primary text-white ms-2">Giriş Yap</Nav.Link>
+            <Nav.Link href="/login" >Giriş Yap</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
