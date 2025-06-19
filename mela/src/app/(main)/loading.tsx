@@ -1,5 +1,12 @@
 import { Loader2 } from "lucide-react";
 
 export default function Loading() {
-  return <Loader2 className="mx-auto my-3 animate-spin" />;
+  return (
+    <div className="flex flex-col items-center justify-center h-60 gap-4">
+      <Loader2 className="animate-spin text-primary" size={48} />
+      <span className="text-lg font-semibold text-muted-foreground">
+        İlan sayfası yükleniyor...
+      </span>
+    </div>
+  );
 }

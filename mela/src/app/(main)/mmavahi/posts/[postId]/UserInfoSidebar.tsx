@@ -3,7 +3,7 @@
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 // Allah u  Ekber ve Lillahi'l Hamd
 // La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
-// SubhAnAllah, SubhanAllah, SubhanAllah, ve'l-hamd
+// SubhanAllah, SubhanAllah, SubhanAllah, ve'l-hamd
 "use client";
 import Link from "next/link";
 import Linkify from "@/components/Linkify";

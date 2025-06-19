@@ -35,6 +35,11 @@ export default function Page() {
                Hesabın yoksa  Kaydol
               </Link>
             </Button>
+            <Button variant="outline">
+              <Link href="/frgpas" className="block text-center hover:underline">
+                Şifremi Unuttum
+              </Link>
+            </Button>
           </div>
         </div>
         <Image

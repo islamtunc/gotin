@@ -118,9 +118,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
 
         {user.id === loggedInUserId ? (
           <EditProfileButton user={user} />
-        ) : (
-
-  <Button >Mesaj Yaz</Button>)}
+        ) : null}
       </div>
       {user.bio && (
         <>

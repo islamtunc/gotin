@@ -2,6 +2,8 @@
 // Elhamdulillahirabbulalemin
 // Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
 // Allahu Ekber velilahi'lhamd
+// SubhanAllah, SubhanAllah, SubhanAllah, ve'l-hamdulliah
+// La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
 "use client";
 
 import LoadingButton from "@/components/LoadingButton";
