@@ -8,7 +8,7 @@ import { StreamChat } from "stream-chat";
 
 // Sunucu tarafında sadece API_KEY ve SECRET kullanılmalı!
 const streamServerClient = StreamChat.getInstance(
-  process.env.NEXT_PUBLIC_STREAM_API_KEY!,   // DİKKAT: NEXT_PUBLIC değil!
+  process.env.STREAM_API_KEY!,   // Sunucu tarafında sadece public olmayan anahtar kullanılmalı!
   process.env.STREAM_API_SECRET! // DİKKAT: SECRET!
 );
 

@@ -3,6 +3,7 @@
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 // Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
 // Allah u Ekber, Allah u Ekber, ve lillahi'l-hamd
+
 import kyInstance from "@/lib/ky";
 import { useEffect, useState } from "react";
 import { StreamChat } from "stream-chat";
