@@ -45,6 +45,8 @@ model User {
   Mmhuner     Mmhuner[]
   whatsapp               String?
   contact                String?
+  twoFactorCode          String?
+  twoFactorCodeExpires   DateTime?
 
   @@map("users")
 }

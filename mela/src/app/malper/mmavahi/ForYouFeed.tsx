@@ -58,7 +58,7 @@ export default function ForYouFeed() {
 
   return (
     <InfiniteScrollContainer
-      className="space-y-5"
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5"
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
       {posts.map((post) => (

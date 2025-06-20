@@ -3,6 +3,9 @@
 // Essalatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
 // Allahu Ekber velilahi'lhamd
 // La ilahe illallah, Allahu Ekber Allahu Ekber, ve lillahi'lhamd
+
+
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ForYouFeed from "./ForYouFeed";
 import { Alert } from "react-bootstrap";

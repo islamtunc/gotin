@@ -17,7 +17,7 @@ export default function Loading() {
     <div className="flex flex-col items-center justify-center h-60 gap-4">
       <Loader2 className="animate-spin text-primary" size={48} />
       <span className="text-lg font-semibold text-muted-foreground">
-        İlan sayfası yükleniyor...
+        yükleniyor...
       </span>
     </div>
   );
