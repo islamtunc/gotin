@@ -1,4 +1,9 @@
 // Bismillahirrahmanirrahim
+// Elhamdulillahirabbulalemin
+// Essalatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allahu Ekber velilahi'lhamd
+// La ilahe illallah, Allahu Ekber Allahu Ekber, ve lillahi'lhamd
+
 // 2FA SMS code sender endpoint (POST)
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
