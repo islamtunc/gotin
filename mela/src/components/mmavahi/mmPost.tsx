@@ -33,10 +33,7 @@ export default function MmmPost({ post, viewerId }: PostProps) {
           <div className="text-xs text-muted-foreground">{formatRelativeDate(post.createdAt)}</div>
         </div>
       </div>
-      <div className="mb-2">
-        <span className="font-medium">Açıklama:</span>
-        <div className="whitespace-pre-line break-words">{post.content}</div>
-      </div>
+    
       {!!post.attachments.length && (
         <Link href={`/mmavahi/posts/${post.id}`}> {/* Medya tıklanınca yönlendirsin */}
           <MediaPreviews attachments={post.attachments} />
@@ -64,7 +61,21 @@ export default function MmmPost({ post, viewerId }: PostProps) {
               <div><span className="font-medium">İletişim:</span> {contact || '-'}</div>
               <div><span className="font-medium">Şehir:</span> {city || '-'}</div>
               <div><span className="font-medium">Koordinat:</span> {coords || '-'}</div>
-              <div><span className="font-medium">Açıklama:</span> {description || '-'}</div>
+             
+
+
+
+
+
+
+
+
+
+
+               <div className="mb-2">
+        <span className="font-medium">Açıklama:</span>
+        <div className="whitespace-pre-line break-words">{description || '-'}</div>
+      </div>
             </>
           );
         })()}

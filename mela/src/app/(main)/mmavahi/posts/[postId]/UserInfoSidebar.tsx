@@ -8,7 +8,6 @@
 import Link from "next/link";
 import Linkify from "@/components/Linkify";
 import UserAvatar from "@/components/UserAvatar";
-import UserTooltip from "@/components/UserTooltip";
 import dynamic from "next/dynamic";
 import { FaWhatsapp, FaPhone } from "react-icons/fa";
 import type { UserData } from "@/lib/types";
@@ -19,43 +18,42 @@ const MessageButton = dynamic(() => import("./MessageButton"), { ssr: false });
 interface UserInfoSidebarProps {
   user: UserData;
   loggedInUserId: string;
+  post: { whatsapp?: string | null; contact?: string | null };
 }
 
-export default function UserInfoSidebar({ user, loggedInUserId }: UserInfoSidebarProps) {
-  const whatsapp = user.whatsapp ?? "";
-  const contact = user.contact ?? "";
+export default function UserInfoSidebar({ user, loggedInUserId, post = {} }: UserInfoSidebarProps) {
+  const whatsapp = post.whatsapp ? post.whatsapp : "";
+  const contact = post.contact ? post.contact : "";
 
   if (!loggedInUserId) return null;
 
   return (
     <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
       <div className="text-xl font-bold">Bu kullanıcı hakkında</div>
-      <UserTooltip user={user}>
-        <Link
-          href={`/users/${user.username}`}
-          className="flex items-center gap-3"
-        >
-          <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
-          <div>
-            <p className="line-clamp-1 break-all font-semibold hover:underline">
-              {user.displayName}
-            </p>
-            <p className="line-clamp-1 break-all text-muted-foreground">
-              @{user.username}
-            </p>
-          </div>
-        </Link>
-      </UserTooltip>
+      <Link
+        href={`/users/${user.username}`}
+        className="flex items-center gap-3"
+      >
+        <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
+        <div>
+          <p className="line-clamp-1 break-all font-semibold hover:underline">
+            {user.displayName}
+          </p>
+          <p className="line-clamp-1 break-all text-muted-foreground">
+            @{user.username}
+          </p>
+        </div>
+      </Link>
       <Linkify>
         <div className="line-clamp-6 whitespace-pre-line break-words text-muted-foreground">
           {user.bio}
         </div>
       </Linkify>
       {/* WhatsApp ve Telefon ikonları */}
-      {(whatsapp || contact) && (
+      {(!!whatsapp || !!contact) && (
         <div className="flex flex-col gap-2 mt-2">
-          {whatsapp && typeof whatsapp === "string" && (
-            <div className="flex items-center gap-2 text-green-600">
+          {typeof whatsapp === "string" && whatsapp.trim() && (
+            <div className="flex items-center gap-2 text-green-800 font-semibold">
               <FaWhatsapp size={20} />
               <span className="font-medium">WhatsApp:</span>
               <a
@@ -68,8 +66,8 @@ export default function UserInfoSidebar({ user, loggedInUserId }: UserInfoSideba
               </a>
             </div>
           )}
-          {contact && typeof contact === "string" && (
-            <div className="flex items-center gap-2 text-blue-600">
+          {typeof contact === "string" && contact.trim() && (
+            <div className="flex items-center gap-2 text-blue-800 font-semibold">
               <FaPhone size={20} />
               <span className="font-medium">Telefon:</span>
               <a

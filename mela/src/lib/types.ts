@@ -15,7 +15,8 @@ export function getUserDataSelect(loggedInUserId: string) {
     avatarUrl: true,
     bio: true,
     createdAt: true,
-
+    whatsapp: true,
+    contact: true,
   } satisfies Prisma.UserSelect;
 }
 
