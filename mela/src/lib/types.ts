@@ -36,12 +36,11 @@ export function getPostDataInclude(loggedInUserId: string) {
       select: getUserDataSelect(loggedInUserId),
     },
     attachments: true,
-
-
-  } satisfies Prisma.PostInclude;
+    // Ek alanlar doğrudan modelde olduğu için eklemeye gerek yok
+  } satisfies Prisma.MmavahiInclude;
 }
 
-export type PostData = Prisma.PostGetPayload<{
+export type PostData = Prisma.MmavahiGetPayload<{
   include: ReturnType<typeof getPostDataInclude>;
 }>;
 

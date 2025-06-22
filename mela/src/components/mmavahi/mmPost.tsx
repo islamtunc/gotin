@@ -1,10 +1,11 @@
 // Bismillahirrahmanirahim
 // Elhamdulillahi Rabbul Alemin 
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
-// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illAllah
 // SuphAnAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah
 // HasbunAllahu ve ni'mel vekil
-// La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
+
+
 "use client";
 
 import { PostData } from "@/lib/types";
@@ -45,55 +46,32 @@ export default function MmmPost({ post, viewerId }: PostProps) {
         <div className="text-center text-muted-foreground">Medya yok</div>
       )}
       <div className="flex flex-col gap-1 mt-3">
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-        <div><span className="font-medium">İlan ID:</span> {post.content[1]}</div>
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[2]}</div>
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[3]}</div>
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-
-
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-
-        <div><span className="font-medium">İlan ID:</span> {post.content[0]}</div>
-
-
+        {(() => {
+          let arr: string[] = [];
+          try {
+            arr = JSON.parse(post.content);
+          } catch {
+            arr = [];
+          }
+          const [title, price, category, address, whatsapp, contact, city, coords, description] = arr;
+          return (
+            <>
+              <div><span className="font-medium">Başlık:</span> {post.content[1]}</div>
+              <div><span className="font-medium">Fiyat:</span> {price ? price + ' ₺' : '-'}</div>
+              <div><span className="font-medium">Kategori:</span> {category || '-'}</div>
+              <div><span className="font-medium">Adres:</span> {address || '-'}</div>
+              <div><span className="font-medium">WhatsApp:</span> {whatsapp || '-'}</div>
+              <div><span className="font-medium">İletişim:</span> {contact || '-'}</div>
+              <div><span className="font-medium">Şehir:</span> {city || '-'}</div>
+              <div><span className="font-medium">Koordinat:</span> {coords || '-'}</div>
+              <div><span className="font-medium">Açıklama:</span> {description || '-'}</div>
+            </>
+          );
+        })()}
         <div><span className="font-medium">Oluşturulma:</span> {formatRelativeDate(post.createdAt)}</div>
-        {/* Diğer özellikler buraya eklenebilir */}
       </div>
       <div className="flex justify-between gap-5 mt-3">
-        <div className="flex items-center gap-5">
-          <Link
-            href={`/mmavahi/posts/${post.id}`}
-            className="block text-sm text-muted-foreground hover:underline"
-            suppressHydrationWarning
-          >
-            Devamını Oku
-          </Link>
-        </div>
+      
       </div>
     </article>
   );

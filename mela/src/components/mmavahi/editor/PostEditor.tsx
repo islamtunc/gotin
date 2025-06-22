@@ -69,10 +69,32 @@ export default function PostEditor() {
     }) || "";
 
   function onSubmit() {
+    // Tüm inputları bir dizi olarak content'e ekle
+    const contentArr = [
+      title,
+      price,
+      category,
+      address,
+      whatsapp,
+      contact,
+      location?.city || city || "",
+      location ? `${location.lat},${location.lng}` : "",
+      description,
+    ];
     mutation.mutate(
       {
-        content: description,
+        content: JSON.stringify(contentArr),
         mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
+        title,
+        price,
+        category,
+        address,
+        whatsapp,
+        contact,
+        city: location?.city || city || "",
+        lat: location?.lat ?? 0,
+        lng: location?.lng ?? 0,
+        description,
       },
       {
         onSuccess: () => {
