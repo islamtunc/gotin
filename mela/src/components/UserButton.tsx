@@ -47,29 +47,29 @@ export default function UserButton({ className }: UserButtonProps) {
         <Link href={`/users/${user.username}`}>
           <DropdownMenuItem>
             <UserIcon className="mr-2 size-4" />
-            Profila We
+            Profiliniz
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Monitor className="mr-2 size-4" />
-            Pergal 
+            Tema 
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
               <DropdownMenuItem onClick={() => setTheme("system")}>
                 <Monitor className="mr-2 size-4" />
-                System
+                Sistem
                 {theme === "system" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("light")}>
                 <Sun className="mr-2 size-4" />
-                Ronahî 
+                Açık
                 {theme === "light" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("dark")}>
                 <Moon className="mr-2 size-4" />
-                Târî 
+                Koyu 
                 {theme === "dark" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
             </DropdownMenuSubContent>
@@ -83,7 +83,7 @@ export default function UserButton({ className }: UserButtonProps) {
           }}
         >
           <LogOutIcon className="mr-2 size-4" />
-          Derkevin 
+        Çıkış Yapın 
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
