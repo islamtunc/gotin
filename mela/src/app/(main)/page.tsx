@@ -2,6 +2,15 @@
 // Elhamdulillahirabbulalemin
 // Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
 // Allahu Ekber velilahi'lhamd
+// SUPHANALLAH VELHAMDULİLLAH VE ALLAH U EKBER
+// LA İLAHE İLLALLAH U VAHDEHU LA ŞERİKE LEH LEHUL MULKU LEHUL HEMDU VE
+// HUVE ALA KULLİ ŞEYİN KADİR
+
+
+
+
+
+
 "use client"
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
