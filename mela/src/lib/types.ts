@@ -2,6 +2,8 @@
 // Elhamdulillahi Rabbil Alamin
 // Es-salatu was-salamu 'ala Rasulillah
 // Allah u Ekber velillahilhamd
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+// SubhanAllahi ve bihamdi, SubhanAllahil Azim
 
 
 
