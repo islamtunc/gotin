@@ -2,6 +2,9 @@
 // Elhamdulillahi Rabbul Alemin
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 // Allah u Ekber ve Lillahi'l-hamd
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+// SuphanAllahi ve bihamdi, SubhanAllahil Azim
+// La havle ve la kuvvete illa billahil Aliyyil Azim
 // HasbunAllahu ve ni'mel vekil
 import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
@@ -22,7 +25,7 @@ interface PageProps {
 }
 
 const getPost = cache(async (postId: string, loggedInUserId: string) => {
-  const post = await prisma.mmavahi.findUnique({
+  const post = await prisma.mmkargeh.findUnique({
     where: {
       id: postId,
     },

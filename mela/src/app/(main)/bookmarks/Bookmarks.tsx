@@ -12,6 +12,7 @@ import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
+import React from "react";
 
 export default function Bookmarks() {
   const {
@@ -62,6 +63,7 @@ export default function Bookmarks() {
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
       {posts.map((post) => (
+        // key prop sadece JSX elementine verilmeli, PostProps'a değil!
         <Post key={post.id} post={post} />
       ))}
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
