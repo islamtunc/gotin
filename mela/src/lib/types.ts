@@ -52,37 +52,12 @@ export interface PostsPage {
   posts: PostData[];
   nextCursor: string | null;
 }
-export const notificationsInclude = {
-  issuer: {
-    select: {
-      username: true,
-      displayName: true,
-      avatarUrl: true,
-    },
-  },
-  post: {
-    select: {
-      content: true,
-    },
-  },
-} satisfies Prisma.NotificationInclude;
 
-export type NotificationData = Prisma.NotificationGetPayload<{
-  include: typeof notificationsInclude;
-}>;
-
-export interface NotificationsPage {
-  notifications: NotificationData[];
-  nextCursor: string | null;
-}
-
-export interface BookmarkInfo {
-  isBookmarkedByUser: boolean;
-}
-
-export interface NotificationCountInfo {
-  unreadCount: number;
-}
+// Bildirim ile ilgili tüm tipleri kaldırın:
+// export const notificationsInclude = { ... }
+// export type NotificationData = Prisma.NotificationGetPayload<{ ... }>;
+// export interface NotificationsPage { ... }
+// export interface NotificationCountInfo { ... }
 
 export interface MessageCountInfo {
   unreadCount: number;
