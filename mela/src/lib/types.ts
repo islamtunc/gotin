@@ -47,9 +47,6 @@ export type PostData = Prisma.MmavahiGetPayload<{
   include: ReturnType<typeof getPostDataInclude>;
 }>;
 
-export type MmhewcedariPostData = Prisma.MmhewcedariGetPayload<{
-  include: ReturnType<typeof getPostDataInclude>;
-}>;
 
 export interface PostsPage {
   posts: PostData[];

@@ -29,7 +29,6 @@ model User {
   issuedNotifications   Notification[] @relation("Issuer")
 
   createdAt   DateTime      @default(now())
-  Mmhewcedari Mmhewcedari[]
   Mmkinc      Mmkinc[]
   Mmkedkar    Mmkedkar[]
   Mmwesayit   Mmwesayit[]
@@ -99,18 +98,6 @@ model Mmhuner {
   @@map("mmhuner")
 }
 
-model Mmhewcedari {
-  id          String  @id @default(cuid())
-  content     String
-  userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-  linkedNotifications Notification[]
-  createdAt           DateTime       @default(now())
-
-  @@map("mmhewcedari")
-}
-
 model Mmkinc {
   id          String  @id @default(cuid())
   content     String
@@ -172,8 +159,6 @@ model Media {
   createdAt     DateTime     @default(now())
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
-  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
-  mmhewcedariId String?
   Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
   mmkincId      String?
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
@@ -207,8 +192,6 @@ model Notification {
   createdAt     DateTime     @default(now())
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
-  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
-  mmhewcedariId String?
   Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
   mmkincId      String?
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
