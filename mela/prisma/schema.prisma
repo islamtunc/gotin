@@ -25,10 +25,12 @@ model User {
   sessions              Session[]
   posts                 Post[]
   mmavahi               Mmavahi[]
+  bookmarks             Bookmark[]
   receivedNotifications Notification[] @relation("Recipient")
   issuedNotifications   Notification[] @relation("Issuer")
 
   createdAt   DateTime      @default(now())
+  Mmhewcedari Mmhewcedari[]
   Mmkinc      Mmkinc[]
   Mmkedkar    Mmkedkar[]
   Mmwesayit   Mmwesayit[]
@@ -57,6 +59,7 @@ model Post {
   userId              String
   user                User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments         Media[]
+  bookmarks           Bookmark[]
   linkedNotifications Notification[]
 
   createdAt DateTime @default(now())
@@ -70,6 +73,7 @@ model Mmavahi {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
   linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
   // Ek alanlar
@@ -92,10 +96,24 @@ model Mmhuner {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
   linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
   @@map("mmhuner")
+}
+
+model Mmhewcedari {
+  id          String  @id @default(cuid())
+  content     String
+  userId      String
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attachments Media[]
+  bookmarks   Bookmark[]
+  linkedNotifications Notification[]
+  createdAt           DateTime       @default(now())
+
+  @@map("mmhewcedari")
 }
 
 model Mmkinc {
@@ -104,6 +122,7 @@ model Mmkinc {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
   linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
@@ -116,6 +135,7 @@ model Mmkedkar {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
   linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
@@ -128,6 +148,7 @@ model Mmwesayit {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
   linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
   // Araba ilanı için ek alanlar
@@ -143,6 +164,7 @@ model Mmkargeh {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
   linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
@@ -159,6 +181,8 @@ model Media {
   createdAt     DateTime     @default(now())
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
+  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
+  mmhewcedariId String?
   Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
   mmkincId      String?
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
@@ -178,6 +202,33 @@ enum MediaType {
   VIDEO
 }
 
+model Bookmark {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  createdAt     DateTime     @default(now())
+  Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
+  mmavahiId     String?
+  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
+  mmhewcedariId String?
+  Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
+  mmkincId      String?
+  Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
+  mmkedkarId    String?
+  Mmwesayit     Mmwesayit?   @relation(fields: [mmwesayitId], references: [id])
+  mmwesayitId   String?
+  Mmkargeh      Mmkargeh?    @relation(fields: [mmkargehId], references: [id])
+  mmkargehId    String?
+  Mmhuner       Mmhuner?     @relation(fields: [mmhunerId], references: [id])
+  mmhunerId     String?
+
+  @@unique([userId, postId])
+  @@map("bookmarks")
+}
+
 model Notification {
   id          String           @id @default(cuid())
   recipientId String
@@ -192,6 +243,8 @@ model Notification {
   createdAt     DateTime     @default(now())
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
+  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
+  mmhewcedariId String?
   Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
   mmkincId      String?
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
