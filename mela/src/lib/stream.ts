@@ -12,4 +12,7 @@ const streamServerClient = StreamChat.getInstance(
   process.env.STREAM_API_SECRET!
 );
 
+// Timeout ayarını artırmak için:
+streamServerClient.axiosInstance.defaults.timeout = 10000; // 10 saniye
+
 export default streamServerClient;
