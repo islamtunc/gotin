@@ -8,7 +8,7 @@
 
 "use client";
 
-import { PostData } from "@/lib/types";
+import { MmhewcedariPostData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
 import { Media } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
@@ -18,7 +18,7 @@ import Linkify from "../Linkify";
 import UserAvatar from "../UserAvatar";
 
 interface PostProps {
-  post: PostData;
+  post: MmhewcedariPostData;
   viewerId: string;
 }
 
