@@ -26,9 +26,6 @@ model User {
   posts                 Post[]
   mmavahi               Mmavahi[]
   bookmarks             Bookmark[]
-  receivedNotifications Notification[] @relation("Recipient")
-  issuedNotifications   Notification[] @relation("Issuer")
-
   createdAt   DateTime      @default(now())
   Mmhewcedari Mmhewcedari[]
   Mmkinc      Mmkinc[]
@@ -60,8 +57,6 @@ model Post {
   user                User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments         Media[]
   bookmarks           Bookmark[]
-  linkedNotifications Notification[]
-
   createdAt DateTime @default(now())
 
   @@map("posts")
@@ -74,7 +69,6 @@ model Mmavahi {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
   // Ek alanlar
   title       String?
@@ -97,7 +91,6 @@ model Mmhuner {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
   @@map("mmhuner")
@@ -110,7 +103,6 @@ model Mmhewcedari {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
   @@map("mmhewcedari")
@@ -123,7 +115,6 @@ model Mmkinc {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
   @@map("mmkinc")
@@ -136,7 +127,6 @@ model Mmkedkar {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
   @@map("mmkedkar")
@@ -149,7 +139,6 @@ model Mmwesayit {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
   // Araba ilanı için ek alanlar
   brand       String?
@@ -165,7 +154,6 @@ model Mmkargeh {
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
   bookmarks   Bookmark[]
-  linkedNotifications Notification[]
   createdAt           DateTime       @default(now())
 
   @@map("mmkargeh")
@@ -227,42 +215,4 @@ model Bookmark {
 
   @@unique([userId, postId])
   @@map("bookmarks")
-}
-
-model Notification {
-  id          String           @id @default(cuid())
-  recipientId String
-  recipient   User             @relation("Recipient", fields: [recipientId], references: [id], onDelete: Cascade)
-  issuerId    String
-  issuer      User             @relation("Issuer", fields: [issuerId], references: [id], onDelete: Cascade)
-  postId      String?
-  post        Post?            @relation(fields: [postId], references: [id], onDelete: Cascade)
-  type        NotificationType
-  read        Boolean          @default(false)
-
-  createdAt     DateTime     @default(now())
-  Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
-  mmavahiId     String?
-  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
-  mmhewcedariId String?
-  Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
-  mmkincId      String?
-  Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
-  mmkedkarId    String?
-  Mmwesayit     Mmwesayit?   @relation(fields: [mmwesayitId], references: [id])
-  mmwesayitId   String?
-  Mmkargeh      Mmkargeh?    @relation(fields: [mmkargehId], references: [id])
-  mmkargehId    String?
-  Mmhuner       Mmhuner?     @relation(fields: [mmhunerId], references: [id])
-  mmhunerId     String?
-
-  @@map("notifications")
-}
-
-enum NotificationType {
-  LIKE
-  COMMENT
-  FOLLOW
-
-  // ihtiyaca göre ekleyebilirsiniz
 }
