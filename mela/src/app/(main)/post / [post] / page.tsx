@@ -3,6 +3,7 @@
 // Es-salatu was-salamu 'ala Rasulillah
 // Allah u Ekber velillahilhamd
 // HasbunAllahu ve ni'mel vekil
+// La ilahe illallah 
 import { validateRequest } from "@/auth";
 import Linkify from "@/components/Linkify";
 import MmmPost from "@/components/mmavahi/mmPost";
