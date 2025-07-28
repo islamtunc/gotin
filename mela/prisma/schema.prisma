@@ -24,7 +24,7 @@ model User {
   bio                   String?
   sessions              Session[]
   posts                 Post[]
-  mmavahi               Mmavahi[]
+  
   bookmarks             Bookmark[]
   createdAt             DateTime      @default(now())
   whatsapp               String?
