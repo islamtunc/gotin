@@ -2,6 +2,9 @@
 // Elhamdulillahi Rabbil Alamin
 // Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
 // Allah u Ekber ve Lillahi'l-hamd
+//SuphanAllah ul Azim ve bihamdihi 
+// Allah u Ekber 
+// La ilahe illallah 
 "use client";
 
 import { PostData } from "@/lib/types";
