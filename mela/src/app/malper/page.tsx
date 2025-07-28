@@ -10,7 +10,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ForYouFeed from "./ForYouFeed";
 import { Alert } from "react-bootstrap";
-import SearchField from "@/components/mmavahi/SearchField";
+import SearchField from "@/components/SearchField";
 
 export default function Home() {
   return (
