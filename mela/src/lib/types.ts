@@ -1,11 +1,10 @@
-// Bismillahirahmanirahim
+// Bismillahirrahmanirrahim
 // Elhamdulillahi Rabbil Alamin
 // Es-salatu was-salamu 'ala Rasulillah
-// Allah u Ekber velillahilhamd
+// Allahu Ekber velillahilhamd
 // SubhanAllahi ve bihamdi, SubhanAllahil Azim
-// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
-
-
+// Allahu Ekber, Allahu Ekber, Allahu Ekber,
+// La ilahe illallah
 
 import { Prisma } from "@prisma/client";
 
@@ -39,28 +38,21 @@ export function getPostDataInclude(loggedInUserId: string) {
       select: getUserDataSelect(loggedInUserId),
     },
     attachments: true,
-    // Ek alanlar doğrudan modelde olduğu için eklemeye gerek yok
-  } satisfies Prisma.MmavahiInclude;
+    // Diğer ilişkili alanlar gerekiyorsa burada belirtilebilir
+  } satisfies Prisma.PostInclude;
 }
 
-export type PostData = Prisma.MmavahiGetPayload<{
+export type PostData = Prisma.PostGetPayload<{
   include: ReturnType<typeof getPostDataInclude>;
 }>;
-
 
 export interface PostsPage {
   posts: PostData[];
   nextCursor: string | null;
 }
 
-// Bildirim ile ilgili tüm tipleri kaldırın:
-// export const notificationsInclude = { ... }
-// export type NotificationData = Prisma.NotificationGetPayload<{ ... }>;
-// export interface NotificationsPage { ... }
-// export interface NotificationCountInfo { ... }
+// Bildirimle ilgili tüm tipler kaldırıldı
 
 export interface MessageCountInfo {
   unreadCount: number;
 }
-
-
