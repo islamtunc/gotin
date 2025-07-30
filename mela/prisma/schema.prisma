@@ -53,17 +53,6 @@ model Post {
   bookmarks   Bookmark[]
   createdAt   DateTime   @default(now())
 
-  // Yeni eklenen alanlar:
-  title       String
-  price       String
-  category    String
-  address     String
-  whatsapp    String?
-  contact     String?
-  city        String
-  lat         Float
-  lng         Float
-  description String
 
   @@map("posts")
 }
