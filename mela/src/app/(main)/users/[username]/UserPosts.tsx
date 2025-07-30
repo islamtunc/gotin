@@ -70,7 +70,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
       {posts.map((post) => (
-        <Post key={post.id} post={post} />
+        <Post key={post.id} post={post} viewerId={""} />
       ))}
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
     </InfiniteScrollContainer>
