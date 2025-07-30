@@ -62,8 +62,8 @@ export default function ForYouFeed({ viewerId }: { viewerId: string }) {
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
       {posts.map((post) => (
-        <Post key={post.id} post={post} viewerId={viewerId} />
-      ))}
+        <Post key={post.id} post={post} viewerId={viewerId} />
+      ))}
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
     </InfiniteScrollContainer>
   );
