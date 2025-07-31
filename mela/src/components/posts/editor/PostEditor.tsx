@@ -27,14 +27,34 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 export default function JobPostTabs() {
   return (
-    <Tabs defaultValue="ilanlar" className="w-full max-w-2xl mx-auto">
+    <Tabs defaultValue="bilisim" className="w-full max-w-2xl mx-auto">
       <TabsList>
-        <TabsTrigger value="ilanlar">İlanlar</TabsTrigger>
+        <TabsTrigger value="bilisim">Bilişim</TabsTrigger>
+        <TabsTrigger value="egitim">Eğitim</TabsTrigger>
+        <TabsTrigger value="saglik">Sağlık</TabsTrigger>
+        <TabsTrigger value="insaat">İnşaat</TabsTrigger>
+        <TabsTrigger value="diger">Diğer</TabsTrigger>
         <TabsTrigger value="yeni">Yeni İlan Ver</TabsTrigger>
       </TabsList>
-      <TabsContent value="ilanlar">
-        {/* Buraya iş ilanları listesini ekleyin */}
-        <div>İş ilanları burada listelenecek.</div>
+      <TabsContent value="bilisim">
+        {/* Bilişim sektörü ilanları */}
+        <div>Bilişim sektörü ilanları burada listelenecek.</div>
+      </TabsContent>
+      <TabsContent value="egitim">
+        {/* Eğitim sektörü ilanları */}
+        <div>Eğitim sektörü ilanları burada listelenecek.</div>
+      </TabsContent>
+      <TabsContent value="saglik">
+        {/* Sağlık sektörü ilanları */}
+        <div>Sağlık sektörü ilanları burada listelenecek.</div>
+      </TabsContent>
+      <TabsContent value="insaat">
+        {/* İnşaat sektörü ilanları */}
+        <div>İnşaat sektörü ilanları burada listelenecek.</div>
+      </TabsContent>
+      <TabsContent value="diger">
+        {/* Diğer sektör ilanları */}
+        <div>Diğer sektör ilanları burada listelenecek.</div>
       </TabsContent>
       <TabsContent value="yeni">
         <JobPostForm />
