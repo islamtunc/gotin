@@ -31,14 +31,26 @@ export default function JobPostTabs() {
     { value: "egitim", label: "Eğitim" },
     { value: "saglik", label: "Sağlık" },
     { value: "insaat", label: "İnşaat" },
+    { value: "imalat", label: "İmalat" },
+    { value: "lojistik", label: "Lojistik" },
+    { value: "gida", label: "Gıda" },
+    { value: "enerji", label: "Enerji" },
+    { value: "finans", label: "Finans" },
+    { value: "hizmet", label: "Hizmet" },
+    { value: "medya", label: "Medya" },
+    { value: "turizm", label: "Turizm" },
+    { value: "tarim", label: "Tarım" },
+    { value: "tekstil", label: "Tekstil" },
+    { value: "otomotiv", label: "Otomotiv" },
+    { value: "hukuk", label: "Hukuk" },
     { value: "diger", label: "Diğer" },
   ];
 
   return (
-    <Tabs defaultValue="bilisim" className="w-full max-w-2xl mx-auto">
-      <TabsList>
+    <Tabs defaultValue={sectors[0].value} className="w-full max-w-2xl mx-auto">
+      <TabsList className="overflow-x-auto whitespace-nowrap flex scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300">
         {sectors.map((sector) => (
-          <TabsTrigger key={sector.value} value={sector.value}>
+          <TabsTrigger key={sector.value} value={sector.value} className="min-w-[100px]">
             {sector.label}
           </TabsTrigger>
         ))}
