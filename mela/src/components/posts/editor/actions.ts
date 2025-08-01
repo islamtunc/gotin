@@ -35,7 +35,7 @@ export async function submitPost(input: {
 
   const newPost = await prisma.post.create({
     data: {
-      content: JSON.stringify(content), // Dizi olarak string olarak kaydediliyor
+      content, // DİKKAT: String[] olarak gönderiliyor, JSON.stringify YOK!
       userId: user.id,
       ...(mediaIds.length > 0 && {
         attachments: { connect: mediaIds.map((id) => ({ id })) },
