@@ -1,23 +1,22 @@
 // Bismillahirrahmanirahim
-// Elhamdulillahi Rabbil Alamin
-// Es-salatu was-salamu 'ala Rasulillah
-// Allah u Ekber velillahilhamd
+// Elhamdulillahirrabbulalemin
+//Es selatu vesselamu ala rasulina  Muhaammedin ve ala alihi ve sahbihi ecmain
+// SuphanAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illAllah
 // HasbunAllahu ve ni'mel vekil
-// SubhanAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah 
-// ve la ilahe illAllah
-// La ilahe illAllah, Allah u Ekber, Allah u Ekber, Allah u
 
-
-
-const requiredString = z.string().trim().min(1, "Required");
 
 import { z } from "zod";
 
+const requiredString = z.string().trim().min(1, "Required");
+
 export const signUpSchema = z.object({
-  email: z.string().email(),
-  username: z.string().min(3),
-  password: z.string().min(6),
-  phone: z.string().min(10), // Add phone here
+  email: requiredString.email("Invalid email address"),
+  username: requiredString.regex(
+    /^[a-zA-Z0-9_-]+$/,
+    "Only letters, numbers, - and _ allowed",
+  ),
+  password: requiredString.min(8, "Must be at least 8 characters"),
 });
 
 export type SignUpValues = z.infer<typeof signUpSchema>;
@@ -30,9 +29,11 @@ export const loginSchema = z.object({
 export type LoginValues = z.infer<typeof loginSchema>;
 
 export const createPostSchema = z.object({
-  content: z.array(z.string().trim().min(1, "Required")), // content artık dizi!
+  content: z.array(requiredString), // content artık array (string[])
   mediaIds: z.array(z.string()).max(5, "Cannot have more than 5 attachments"),
 });
+
+export type CreatePostValues = z.infer<typeof createPostSchema>;
 
 export const updateUserProfileSchema = z.object({
   displayName: requiredString,
@@ -40,7 +41,3 @@ export const updateUserProfileSchema = z.object({
 });
 
 export type UpdateUserProfileValues = z.infer<typeof updateUserProfileSchema>;
-
-export const createCommentSchema = z.object({
-  content: requiredString,
-});
