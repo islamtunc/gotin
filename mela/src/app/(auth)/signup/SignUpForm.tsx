@@ -23,7 +23,6 @@ import { signUp } from "./actions";
 
 export default function SignUpForm() {
   const [error, setError] = useState<string>();
-
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<SignUpValues>({
@@ -32,7 +31,7 @@ export default function SignUpForm() {
       email: "",
       username: "",
       password: "",
-      phone: "", // Telefon numarası için varsayılan değer
+      // phone alanı kaldırıldı
     },
   });
 
@@ -74,19 +73,7 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Telefon Numarası</FormLabel>
-              <FormControl>
-                <Input placeholder="Telefon Numarası" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {/* phone alanı kaldırıldı */}
         <FormField
           control={form.control}
           name="password"
