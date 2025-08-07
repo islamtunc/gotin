@@ -6,23 +6,30 @@
 //La ilahe illAllah u vahdehu la şerike leh,lehul mulku ve lehul hamdu
 //Ve huwe ala kulli şey in kadir
 
-import ChatProviderClient from "../ChatProviderClient"
 
-export default  function Layout({
+
+
+
+
+
+import ChatProviderClient from "../ChatProviderClient";
+
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
-
   return (
-
-
-<ChatProviderClient/>
-
-{children}
-
-<ChatProviderClient/>
-
+    <>
+      <ChatProviderClient />
+      {children}
+      <ChatProviderClient />
+    </>
   );
 }
+
+
+
+
+
+
