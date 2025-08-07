@@ -12,13 +12,14 @@
 
 
 
+import { ReactNode } from "react";
 import ChatProviderClient from "../../ChatProviderClient";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type LayoutProps = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <ChatProviderClient />
@@ -27,7 +28,6 @@ export default function Layout({
     </>
   );
 }
-
 
 
 
