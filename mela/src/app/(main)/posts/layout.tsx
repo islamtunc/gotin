@@ -5,3 +5,26 @@
 //Allah U Ekber velillahilhamd
 //La ilahe illAllah u vahdehu la şerike leh,lehul mulku ve lehul hamdu
 //Ve huwe ala kulli şey in kadir
+
+import ChatClientProvider from "../ChatClientProvider"
+
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+
+
+  return (
+<div>
+
+<ChatClientProvider/>
+
+{children}
+
+<ChatClientProvider/>
+</div>
+  );
+}
+
+
