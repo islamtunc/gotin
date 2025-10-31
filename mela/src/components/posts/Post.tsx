@@ -1,69 +1,70 @@
 // Bismillahirrahmanirrahim 
-// Elhamdulillahi Rabbil Alamin
-// Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
-// Allah u Ekber ve Lillahi'l-hamd
+
 "use client";
 
+import { useSession } from "@/app/(main)/SessionProvider";
 import { PostData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
 import { Media } from "@prisma/client";
-import { MessageSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Linkify from "../Linkify";
 import UserAvatar from "../UserAvatar";
-import { useState } from "react";
+import UserTooltip from "../UserTooltip";
+import PostMoreButton from "./PostMoreButton";
 
 interface PostProps {
   post: PostData;
-  viewerId: string;
 }
 
-export default function Post({ post, viewerId }: PostProps) {
-  const [deleting, setDeleting] = useState(false);
-  const isOwner = post.user.id === viewerId;
+export default function Post({ post }: PostProps) {
+  const { user } = useSession();
 
-  async function handleDelete() {
-    if (!confirm("İlanı silmek istediğinize emin misiniz?")) return;
-    setDeleting(true);
-    const res = await fetch(`/api/posts/${post.id}`, { method: "DELETE" });
-    setDeleting(false);
-    if (res.ok) {
-      window.location.reload();
-    } else {
-      alert("İlan silinemedi.");
-    }
-  }
 
   return (
     <article className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm">
-      {!!post.attachments.length && (
-        <Link href={`/mmavahi/posts/${post.id}`}> {/* Medya tıklanınca yönlendirsin */}
-          <MediaPreviews attachments={post.attachments} />
-        </Link>
-      )}
-      {!post.attachments.length && (
-        <div className="text-center text-muted-foreground">Medya yok</div>
-      )}
-      <div className="flex justify-between gap-5 mt-3">
-        <div className="flex items-center gap-5">
-          <Link
-            href={`/mmavahi/posts/${post.id}`}
-            className="block text-sm text-muted-foreground hover:underline"
-            suppressHydrationWarning
-          >
-            Devamını Oku
-          </Link>
+      <div className="flex justify-between gap-3">
+        <div className="flex flex-wrap gap-3">
+          <UserTooltip user={post.user}>
+            <Link href={`/users/${post.user.username}`}>
+              <UserAvatar avatarUrl={post.user.avatarUrl} />
+            </Link>
+          </UserTooltip>
+          <div>
+            <UserTooltip user={post.user}>
+              <Link
+                href={`/users/${post.user.username}`}
+                className="block font-medium hover:underline"
+              >
+                {post.user.displayName}
+              </Link>
+            </UserTooltip>
+            <Link
+              href={`/mmhewcedari/posts/${post.id}`}
+              className="block text-sm text-muted-foreground hover:underline"
+              suppressHydrationWarning
+            >
+              {formatRelativeDate(post.createdAt)}
+            </Link>
+          </div>
         </div>
-        {isOwner && (
-          <button
-            onClick={handleDelete}
-            disabled={deleting}
-            className="text-red-600 hover:underline text-sm ml-auto"
-          >
-            {deleting ? "Siliniyor..." : "İlanı Sil"}
-          </button>
+        {post.user.id === user.id && (
+          <PostMoreButton
+            post={post}
+            className="opacity-0 transition-opacity group-hover/post:opacity-100"
+          />
         )}
+      </div>
+      <Linkify>
+        <div className="whitespace-pre-line break-words">{post.content}</div>
+      </Linkify>
+      {!!post.attachments.length && (
+        <MediaPreviews attachments={post.attachments} />
+      )}
+      <hr className="text-muted-foreground" />
+      <div className="flex justify-between gap-5">
+     
+      
       </div>
     </article>
   );
@@ -119,3 +120,5 @@ function MediaPreview({ media }: MediaPreviewProps) {
 
   return <p className="text-destructive">Ev medya nabe</p>;
 }
+
+

@@ -1,8 +1,11 @@
 // Bismillahirrahmanirahim
-// Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
-// Allahu Ekber velilahi'lhamd
-
+// Elhamdulillahirrabbulalemin
+// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
+// Subhanallah, Elhamdulillah, Allahu Ekber
+// La ilahe illallah 
+// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Xeyni Allah tu Xweda tune
 
 
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
@@ -57,26 +60,16 @@ export const validateRequest = cache(
   async (): Promise<
     { user: User; session: Session } | { user: null; session: null }
   > => {
-    console.log("validateRequest başladı");
     const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
-    console.log("validateRequest: sessionId:", sessionId);
 
     if (!sessionId) {
-      console.log("validateRequest: session yok");
       return {
         user: null,
         session: null,
       };
     }
 
-    let result;
-    try {
-      result = await lucia.validateSession(sessionId);
-      console.log("validateRequest: validateSession sonucu:", result);
-    } catch (err) {
-      console.error("validateRequest: validateSession hatası:", err);
-      return { user: null, session: null };
-    }
+    const result = await lucia.validateSession(sessionId);
 
     try {
       if (result.session && result.session.fresh) {
@@ -95,11 +88,8 @@ export const validateRequest = cache(
           sessionCookie.attributes,
         );
       }
-    } catch (err) {
-      console.error("validateRequest: cookie set hatası:", err);
-    }
+    } catch {}
 
-    console.log("validateRequest bitti");
     return result;
   },
 );

@@ -1,13 +1,8 @@
 // Bismillahirahmanirahim
-// Elhamdulillahi Rabbil Alamin
-// Es-salatu was-salamu 'ala Rasulillah
-// Allah u Ekber velillahilhamd
-
-
-
+// Elhamdulillahirabbulalemin
+// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain.
 import { type ClassValue, clsx } from "clsx";
 import { formatDate, formatDistanceToNowStrict } from "date-fns";
-import { tr } from "date-fns/locale";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -17,12 +12,12 @@ export function cn(...inputs: ClassValue[]) {
 export function formatRelativeDate(from: Date) {
   const currentDate = new Date();
   if (currentDate.getTime() - from.getTime() < 24 * 60 * 60 * 1000) {
-    return formatDistanceToNowStrict(from, { addSuffix: true, locale: tr });
+    return formatDistanceToNowStrict(from, { addSuffix: true });
   } else {
     if (currentDate.getFullYear() === from.getFullYear()) {
-      return formatDate(from, "d MMMM", { locale: tr });
+      return formatDate(from, "MMM d");
     } else {
-      return formatDate(from, "d MMMM yyyy", { locale: tr });
+      return formatDate(from, "MMM d, yyyy");
     }
   }
 }
@@ -39,4 +34,12 @@ export function slugify(input: string): string {
     .toLowerCase()
     .replace(/ /g, "-")
     .replace(/[^a-z0-9-]/g, "");
+}
+
+// New function to convert a string to an array
+export function stringToArray(input: string, delimiter: string = ","): string[] {
+  return input
+    .split(delimiter) // Split the string by the specified delimiter
+    .map((item) => item.trim()) // Trim whitespace from each item
+    .filter((item) => item.length > 0); // Remove empty items
 }

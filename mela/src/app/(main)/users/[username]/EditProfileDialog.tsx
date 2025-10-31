@@ -1,11 +1,5 @@
 // Bismillahirahmanirahim 
-// Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
-// Allahu Ekber velilahi'lhamd
-// La ilahe illallah
-// Muhammedun Resulullah
-// SubhanAllahi velhamdulillahi ve la ilahe illallahu wallahu ekber
-// La havle ve la kuvvete illa billahil aliyyil azim
+
 
 
 import avatarPlaceholder from "@/assets/avatar-placeholder.png";
@@ -88,7 +82,7 @@ export default function EditProfileDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Düzenle</DialogTitle>
+          <DialogTitle>Profilê Amade Bike</DialogTitle>
         </DialogHeader>
         <div className="space-y-1.5">
           <Label>Avatar</Label>
@@ -108,9 +102,9 @@ export default function EditProfileDialog({
               name="displayName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Ad Soyad</FormLabel>
+                  <FormLabel>Display name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Adınızı ve soyadınızı girin" {...field} />
+                    <Input placeholder="Your display name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -124,7 +118,7 @@ export default function EditProfileDialog({
                   <FormLabel>Bio</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Kendiniz hakkında biraz bilgi verin"
+                      placeholder="Tell us a little bit about yourself"
                       className="resize-none"
                       {...field}
                     />
@@ -135,7 +129,7 @@ export default function EditProfileDialog({
             />
             <DialogFooter>
               <LoadingButton type="submit" loading={mutation.isPending}>
-                Kaydet
+                Qeyd bike
               </LoadingButton>
             </DialogFooter>
           </form>

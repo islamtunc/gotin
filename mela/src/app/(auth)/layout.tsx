@@ -1,10 +1,12 @@
 // Bismillahirahmanirahim
-// Elhamdulillahi Rabbil Alamin
-// Es-salatu was-salamu 'ala Rasulillah ve ala alihi ve sahbihi ecmain
-// Allah u Ekber velillahilhamd
-// SuphanAllah, SubhanAllah, SubhanAllah
-// Allah u Ekber ve Lillahi'l Hamd
-// La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
+// Elhamdulillahirrabbulalemin
+// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
+// Subhanallah, Elhamdulillah, Allahu Ekber
+// La ilahe illallah 
+// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Xeyni Allah tu Xweda tune
+
 
 import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";
@@ -15,12 +17,8 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const { user } = await validateRequest();
-  console.log("validateRequest result:", user);
 
-  if (user) {
-    console.log("Kullanıcı bulundu, anasayfaya yönlendiriliyor...");
-    redirect("/");
-  }
+  if (user) redirect("/");
 
   return <>{children}</>;
 }

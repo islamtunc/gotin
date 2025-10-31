@@ -1,10 +1,12 @@
 // Bismillahirrahmanirrahim 
 // Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
-// Allahu Ekber velilahi'lhamd
-// Allah u Ekber Allah u Ekber
-// La ilahe illallah, Allahu Ekber Allahu Ekber, ve lillahi'lhamd
-// SuphanAllah, SubhanAllah, SubhanAllah
+// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecmain
+// Allahumme salli ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allah u Ekber, Allahu Ekber, Allahu Ekber
+// La ilahe illallah, Allahu Ekber, Allahu Ekber, ve lillahi'l-hamd
+
+
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import type { Metadata } from "next";
@@ -14,7 +16,9 @@ import { extractRouterConfig } from "uploadthing/server";
 import { fileRouter } from "./api/uploadthing/core";
 import "./globals.css";
 import ReactQueryProvider from "./ReactQueryProvider";
+import AssistantRoot from "./malper/assistant";
 
+import Alert from 'react-bootstrap';
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,10 +30,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | İş İlanları",
-    default: "İş İlanları",
+    template: "%s | Günlerin Dili",
+    default: " Günlerin Dili",
   },
-  description: "En güncel iş ilanlarını burada bulabilirsiniz.",
+  description: " Ware zimane kurdi.",
 };
 
 export default function RootLayout({
@@ -38,30 +42,41 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
-    
-    <head>
-
-
- {process.env.NODE_ENV === "development" && (
-          <script src="http://localhost:8097"></script>
-        )}
-    </head>
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} />
         <ReactQueryProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-           
-            <main>{children}</main>
+              {children}
+             
           </ThemeProvider>
         </ReactQueryProvider>
         <Toaster />
       </body>
     </html>
   );
+}
+
+
+
+
+
+
+
+
+
+
+
+export function Footer() {
+  return (
+    <footer className="flex items-center justify-center w-full h-16 bg-gray-800 text-white">
+      <p className="text-sm">© {new Date().getFullYear()} Yekazad Software Center</p>
+    </footer>
+  );
+  
 }

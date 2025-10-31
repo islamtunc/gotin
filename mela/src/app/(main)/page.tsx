@@ -1,57 +1,93 @@
 // Bismillahirrahmanirahim
 // Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulina Muhammed'in ve ala alihi ve sahbihi ecma'in
-// Allahu Ekber velilahi'lhamd
-// SUPHANALLAH VELHAMDULİLLAH VE ALLAH U EKBER
-// LA İLAHE İLLALLAH U VAHDEHU LA ŞERİKE LEH LEHUL MULKU LEHUL HEMDU VE
-// HUVE ALA KULLİ ŞEYİN KADİR
-
-
-
-
-"use client";
+// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
+// La havle ve la kuvvete illa billahil aliyyil azim
+// Allah u Ekber
+// La ilahe illallah Muhammedur Resulullah
+// Subhanallah, Elhamdulillah, Allahu Ekber, La ilahe illallah
+// Estağfirulllah El-Azim
+"use client"
 import React from "react";
+import { Alert, Container, Row, Col, Card, Button } from "react-bootstrap";
 
-import PostEditor from "@/components/posts/editor/PostEditor";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-import ForYouFeed from "./ForYouFeed";
-
-import SearchField from "@/components/SearchField";
-
-export default function Home() {
+function AdminPage() {
   return (
-    <main className="flex w-full min-w-0 gap-5">
-      <div className="w-full min-w-0 space-y-5">
+    <Container fluid style={{ background: "#f8f9fa", minHeight: "100vh", padding: "20px" }}>
+     
 
-        <h1 className="text-3xl font-semibold">İş İlanları </h1>
-        <Tabs defaultValue="mm">
-          <TabsList>
-            <TabsTrigger value="for-you">İlanlar</TabsTrigger>
-            <TabsTrigger value="following">Kategoride Ara</TabsTrigger>
-            <TabsTrigger value="mm">Yeni İlan ver</TabsTrigger>
+      <Row>
+        <Col md={4} className="mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>Products Page</Card.Title>
+              <Card.Text>Manage or view the sports nutrition page.</Card.Text>
+              <Button variant="primary" href="/mmavahi">
+                Go
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={4} className="mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>Courses Page</Card.Title>
+              <Card.Text>Manage or view the courses page.</Card.Text>
+              <Button variant="primary" href="/mmkinc">
+                Go
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={4} className="mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>Services</Card.Title>
+              <Card.Text>Manage or view the services page.</Card.Text>
+              <Button variant="primary" href="/mmkargeh">
+                Go
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
 
-          </TabsList>
-          <TabsContent value="for-you">
-            <ForYouFeed viewerId={""} />
-          </TabsContent>
-          <TabsContent value="following">
-
-      <SearchField/>
-          </TabsContent>
-
-
-
-
-
-
-        <TabsContent value="mm">
-
-  <PostEditor />
-
-    </TabsContent>
-    </Tabs>
-      </div>
-    </main>
+      <Row>
+        <Col md={4} className="mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>References</Card.Title>
+              <Card.Text>Manage or view the references page.</Card.Text>
+              <Button variant="primary" href="/mmwesayit">
+                Go
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={4} className="mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>For Developers</Card.Title>
+              <Card.Text>Manage or view the developer resources page.</Card.Text>
+              <Button variant="primary" href="/mmkedkar">
+                Go
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={4} className="mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>Site Management</Card.Title>
+              <Card.Text>Manage or view the site.</Card.Text>
+              <Button variant="primary" href="/malper">
+                Go
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
+
+export default AdminPage;

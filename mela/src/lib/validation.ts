@@ -1,9 +1,6 @@
 // Bismillahirrahmanirahim
 // Elhamdulillahirrabbulalemin
 //Es selatu vesselamu ala rasulina  Muhaammedin ve ala alihi ve sahbihi ecmain
-// SuphanAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah
-// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illAllah
-// HasbunAllahu ve ni'mel vekil
 
 
 import { z } from "zod";

@@ -1,9 +1,6 @@
 // Bismillahirahmanirahim 
-// Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
-// Allahu Ekber velilahi'lhamd
-// SubhanAllah, SubhanAllah, SubhanAllah, ve'l-hamdulliah
-// La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
+
+
 "use client";
 
 import LoadingButton from "@/components/LoadingButton";
@@ -25,6 +22,7 @@ import { login } from "./actions";
 
 export default function LoginForm() {
   const [error, setError] = useState<string>();
+
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<LoginValues>({

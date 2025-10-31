@@ -1,17 +1,10 @@
 // Bismillahirahmanirahim 
-// Elhamdülillahirabbulalemin 
-// Esselatu vesselamu ala rasulina Muhammed'in ve ala alihi ve sahbihi, ecmain 
-//SuphanAllah Elhamdülillah Allah u Ekber 
-//La ilahe illallah 
-
-
-
 
 "use client";
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
-import Post from "@/components/posts/Post";
-import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
+import PostsLoadingSkeleton from "@/components/mmavahi/PostsLoadingSkeleton";
+import Post from "@/components/mmavahi/Post";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -70,7 +63,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
       {posts.map((post) => (
-        <Post key={post.id} post={post} viewerId={""} />
+        <Post key={post.id} post={post} />
       ))}
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
     </InfiniteScrollContainer>

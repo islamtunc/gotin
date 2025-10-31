@@ -1,10 +1,9 @@
 // Bismillahirrahmanirrahim
 // Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecma'in
-// Allahu Ekber velilahi'lhamd
-// La ilahe illallah, Allahu Ekber, Allahu Ekber, Allahu Ekber
-// SubhAnAllah, SubhanAllah, SubhanAllah, ve'l-hamdulillah
-// HasbunAllahu ve ni'mel vekil
+// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
+// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Subhanallah, Elhamdulillah, Allahu Ekber
+// Estağfirullah El-Azim
 "use client"
 
 import Container from 'react-bootstrap/Container';
@@ -16,16 +15,108 @@ function Mmmnavbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/malper">Müşterisi Burada</Navbar.Brand>
+        <Navbar.Brand href="/malper">Günlerin Dili</Navbar.Brand>
+        <Navbar.Brand href="/malper">Anasayfa</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/malper">Anasayfa</Nav.Link>
-            <Nav.Link href="/malper/ilanlar">İlanlar</Nav.Link>
-            <Nav.Link href="#link">Politikalarımız</Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link href="/login" >Giriş Yap/Kaydol</Nav.Link>
+            <Nav.Link href="/malper">Masa Takvimleri</Nav.Link>
+            <NavDropdown title="SADE TAKVİM" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/malper/mmavahi/mmmweb"></NavDropdown.Item>
+              <NavDropdown.Item href="/malper/mmavahi/mmmobile">
+                
+             Mobile Apps
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/malper/mmavahi/mmmdesktop">Desktop Apps</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/malper/mmavahi/mmmai">
+                
+                Artificial Intelligence
+              </NavDropdown.Item>
+
+
+
+
+
+              <NavDropdown.Item href="/malper/mmavahi/mmmhealth">
+                Health/Repairing
+              </NavDropdown.Item>
+            </NavDropdown>
+
+
+
+
+            <NavDropdown title="HEDİYELİ TAKVİM" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/malper/mmperwerdehi">Web</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                
+                
+Mobile
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Machine Learning</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                
+                Cross Platform Apps
+              </NavDropdown.Item>
+            </NavDropdown>
+
+
+
+            <NavDropdown title="Cîhan" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/malper/mmkarubar">Nûçe</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+            <NavDropdown title="ÖZEL GÜNLER" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/malper/mm">Anneler Günü</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                
+                Babalar Günü
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Öğretmenler Günü</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Diğer
+              </NavDropdown.Item>
+            </NavDropdown>
+
+
+            <NavDropdown title="Tendûrûstî" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/mmmmm">Courses</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Documantations
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Contribute</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Join to Yekazad
+              </NavDropdown.Item>
+            </NavDropdown>
+
+            <Nav.Link href="#link">Derbare</Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

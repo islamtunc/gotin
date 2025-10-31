@@ -1,13 +1,7 @@
-// Bismillahirrahmanirrahim 
-// Elhamdulillahi Rabbil Alamin
-// Es-salatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
-// Allah u Ekber ve Lillahi'l-hamd
-// SuphanAllah ul Azim ve bihamdihi 
-// Allah u Ekber 
-// La ilahe illallah 
-
+// Bismillahirrahmanirrahim 
+// Elhamdulillahirabbulalemin
+// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
 "use client";
-
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 import Post from "@/components/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
@@ -16,55 +10,58 @@ import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
-export default function ForYouFeed({ viewerId }: { viewerId: string }) {
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery({
-    queryKey: ["post-feed", "for-you"],
-    queryFn: ({ pageParam }) =>
-      kyInstance
-        .get("/api/posts/", pageParam ? { searchParams: { cursor: pageParam } } : {})
-        .json<PostsPage>(),
-    initialPageParam: null as string | null,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-  });
+export default function ForYouFeed() {
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery({
+    queryKey: ["post-feed", "for-you"],
+    queryFn: ({ pageParam }) =>
+      kyInstance
+        .get(
+          "/api/posts/mmavahi",
+          pageParam ? { searchParams: { cursor: pageParam } } : {},
+        )
+        .json<PostsPage>(),
+    initialPageParam: null as string | null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor,
+  });
 
-  const posts = data?.pages.flatMap((page) => page.posts) || [];
+  const posts = data?.pages.flatMap((page) => page.posts) || [];
 
-  if (status === "pending") {
-    return <PostsLoadingSkeleton />;
-  }
+  if (status === "pending") {
+    return <PostsLoadingSkeleton />;
+  }
 
-  if (status === "success" && !posts.length && !hasNextPage) {
-    return (
-      <p className="text-center text-muted-foreground">
-        Hê kesî tiştek parvenekirî ye
-      </p>
-    );
-  }
+  if (status === "success" && !posts.length && !hasNextPage) {
+    return (
+      <p className="text-center text-muted-foreground">
+        Hê kesî tiştek parvenekirî ye
+      </p>
+    );
+  }
 
-  if (status === "error") {
-    return (
-      <p className="text-center text-destructive">
-        Pirsgirek derket 
-      </p>
-    );
-  }
+  if (status === "error") {
+    return (
+      <p className="text-center text-destructive">
+        Pirsgirek derket 
+      </p>
+    );
+  }
 
-  return (
-    <InfiniteScrollContainer
-      className="space-y-5"
-      onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
-    >
-      {posts.map((post) => (
-        <Post key={post.id} post={post} viewerId={viewerId} />
+  return (
+    <InfiniteScrollContainer
+      className="space-y-5"
+      onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
+    >
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
       ))}
-      {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
-    </InfiniteScrollContainer>
-  );
+      {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
+    </InfiniteScrollContainer>
+  );
 }
