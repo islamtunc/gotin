@@ -30,10 +30,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Günlerin Dili",
-    default: " Günlerin Dili",
+    template: "%s | Patika",
+    default: " Patika - Duvar Takvimi",
   },
-  description: " Ware zimane kurdi.",
+  description: " Duvar Takvimi.",
 };
 
 export default function RootLayout({

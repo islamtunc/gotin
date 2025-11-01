@@ -132,7 +132,7 @@ const ContactForm: React.FC = () => {
         >
        
 
-        Bişîne
+        Gönder
         </Button>
       </div>
       <p className="text-center mt-4" style={{ color: "#6c757d", fontSize: "1rem" }}>
