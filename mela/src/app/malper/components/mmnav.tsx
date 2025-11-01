@@ -53,11 +53,11 @@ function Mmmnavbar() {
                 
 Mobile
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3"></NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Kum Saati</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 
-                Cross Platform Apps
+              Defter + Kalem vs
               </NavDropdown.Item>
             </NavDropdown>
 
