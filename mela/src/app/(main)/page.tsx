@@ -19,7 +19,7 @@ function AdminPage() {
         <Col md={4} className="mb-3">
           <Card>
             <Card.Body>
-              <Card.Title>Products Page</Card.Title>
+              <Card.Title>Duvar Takvimleri </Card.Title>
               <Card.Text>Manage or view the sports nutrition page.</Card.Text>
               <Button variant="primary" href="/mmavahi">
                 Go
@@ -30,7 +30,7 @@ function AdminPage() {
         <Col md={4} className="mb-3">
           <Card>
             <Card.Body>
-              <Card.Title>Courses Page</Card.Title>
+              <Card.Title>Ozel Gunler</Card.Title>
               <Card.Text>Manage or view the courses page.</Card.Text>
               <Button variant="primary" href="/mmkinc">
                 Go
@@ -41,7 +41,7 @@ function AdminPage() {
         <Col md={4} className="mb-3">
           <Card>
             <Card.Body>
-              <Card.Title>Services</Card.Title>
+              <Card.Title>Hediye Kutusu</Card.Title>
               <Card.Text>Manage or view the services page.</Card.Text>
               <Button variant="primary" href="/mmkargeh">
                 Go
@@ -52,32 +52,11 @@ function AdminPage() {
       </Row>
 
       <Row>
+      
         <Col md={4} className="mb-3">
           <Card>
             <Card.Body>
-              <Card.Title>References</Card.Title>
-              <Card.Text>Manage or view the references page.</Card.Text>
-              <Button variant="primary" href="/mmwesayit">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>For Developers</Card.Title>
-              <Card.Text>Manage or view the developer resources page.</Card.Text>
-              <Button variant="primary" href="/mmkedkar">
-                Go
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4} className="mb-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>Site Management</Card.Title>
+              <Card.Title>Siteye git</Card.Title>
               <Card.Text>Manage or view the site.</Card.Text>
               <Button variant="primary" href="/malper">
                 Go
