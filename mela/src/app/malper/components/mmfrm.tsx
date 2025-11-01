@@ -65,7 +65,7 @@ const ContactForm: React.FC = () => {
       >Têkili
       </h2>
       <Form.Group className="mb-3" controlId="formName">
-        <Form.Label style={{ color: "#495057", fontWeight: 500 }}>Name</Form.Label>
+        <Form.Label style={{ color: "#495057", fontWeight: 500 }}>isim</Form.Label>
         <Form.Control
           type="text"
           name="name"
@@ -97,7 +97,7 @@ const ContactForm: React.FC = () => {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formMessage">
-        <Form.Label style={{ color: "#495057", fontWeight: 500 }}>Peyama We</Form.Label>
+        <Form.Label style={{ color: "#495057", fontWeight: 500 }}>Mesajiniz</Form.Label>
         <Form.Control
           as="textarea"
           rows={4}
