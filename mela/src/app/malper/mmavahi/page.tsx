@@ -6,93 +6,312 @@
 // Estağfirullah El-Azim
 
 "use client";
-import React from "react";
-import { Card, Row, Col, Alert } from "react-bootstrap";
-import Image from "react-bootstrap/Image";
-import ForYouFeed from "./ForYouFeed";
+import React, { useState, useEffect } from "react";
+import { Card, Row, Col, Button, Modal, Form, Badge } from "react-bootstrap";
 
-function page() {
+function formatKey(y: number, m: number, d: number) {
+  const mm = String(m + 1).padStart(2, "0");
+  const dd = String(d).padStart(2, "0");
+  return `${y}-${mm}-${dd}`;
+}
+
+function buildMonthMatrix(year: number, month: number) {
+  // month: 0-11
+  const first = new Date(year, month, 1);
+  const last = new Date(year, month + 1, 0);
+  const startDay = first.getDay(); // 0-6 (Sun-Sat)
+  const weeks: (Date | null)[][] = [];
+  let week: (Date | null)[] = new Array(7).fill(null);
+  // Fill first week
+  let day = 1;
+  for (let i = startDay; i < 7; i++) {
+    week[i] = new Date(year, month, day++);
+  }
+  weeks.push(week);
+  // Following weeks
+  while (day <= last.getDate()) {
+    week = new Array(7).fill(null);
+    for (let i = 0; i < 7 && day <= last.getDate(); i++) {
+      week[i] = new Date(year, month, day++);
+    }
+    weeks.push(week);
+  }
+  return weeks;
+}
+
+type EventItem = {
+  id: string;
+  title: string;
+  time?: string;
+  color?: string;
+};
+
+export default function page() {
+  const today = new Date();
+  const [viewYear, setViewYear] = useState<number>(today.getFullYear());
+  const [viewMonth, setViewMonth] = useState<number>(today.getMonth());
+  const [events, setEvents] = useState<Record<string, EventItem[]>>({});
+  const [showModal, setShowModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
+  const [color, setColor] = useState("#0d6efd");
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("wall-agent-events");
+      if (raw) setEvents(JSON.parse(raw));
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("wall-agent-events", JSON.stringify(events));
+    } catch {}
+  }, [events]);
+
+  function prevMonth() {
+    if (viewMonth === 0) {
+      setViewMonth(11);
+      setViewYear((y) => y - 1);
+    } else setViewMonth((m) => m - 1);
+  }
+  function nextMonth() {
+    if (viewMonth === 11) {
+      setViewMonth(0);
+      setViewYear((y) => y + 1);
+    } else setViewMonth((m) => m + 1);
+  }
+
+  function toggleFullscreen() {
+    const doc = document as any;
+    if (!doc.fullscreenElement) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  }
+
+  function printCalendar() {
+    window.print();
+  }
+
+  function clearAll() {
+    if (confirm("Tüm kayıtlı etkinlikleri temizlemek istiyor musunuz?")) {
+      setEvents({});
+    }
+  }
+
+  const matrix = buildMonthMatrix(viewYear, viewMonth);
+  const monthNames = [
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos",
+    "Eylül",
+    "Ekim",
+    "Kasım",
+    "Aralık",
+  ];
+  const dayNames = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
+
+  function openAddModal(dateKey: string) {
+    setSelectedDate(dateKey);
+    setTitle("");
+    setTime("");
+    setColor("#0d6efd");
+    setShowModal(true);
+  }
+
+  function addEvent() {
+    if (!selectedDate || !title.trim()) {
+      setShowModal(false);
+      return;
+    }
+    const ev: EventItem = {
+      id: String(Date.now()),
+      title: title.trim(),
+      time: time || undefined,
+      color,
+    };
+    setEvents((prev) => {
+      const list = prev[selectedDate] ? [...prev[selectedDate], ev] : [ev];
+      return { ...prev, [selectedDate]: list };
+    });
+    setShowModal(false);
+  }
+
+  function removeEvent(dateKey: string, id: string) {
+    setEvents((prev) => {
+      const list = (prev[dateKey] || []).filter((e) => e.id !== id);
+      const copy = { ...prev };
+      if (list.length) copy[dateKey] = list;
+      else delete copy[dateKey];
+      return copy;
+    });
+  }
+
   return (
     <div
       style={{
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "#f8fafb",
         minHeight: "100vh",
+        padding: 20,
         display: "flex",
-        flexDirection: "column", // mobilde dikey hizalama
-        alignItems: "center",
-        padding: "10px",
+        justifyContent: "center",
       }}
     >
-      <Card
-        style={{
-          opacity: 0.97,
-          color: "black",
-          textAlign: "center",
-          maxWidth: "700px",
-          width: "100%",
-          margin: "0 auto",
-        }}
-      >
+      <style>{`
+        /* Print-friendly and wall-calendar style */
+        .wall-card { width: 100%; max-width: 1100px; }
+        .calendar-table td, .calendar-table th { vertical-align: top; border: 1px solid #e9ecef; padding: 8px; }
+        .calendar-table td { height: 160px; cursor: pointer; background: #fff; }
+        .date-number { font-size: 20px; font-weight: 700; }
+        .event-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+        .no-print { display: inline-block; }
+        @media print {
+          body * { visibility: hidden; }
+          .print-area, .print-area * { visibility: visible; }
+          .no-print { display: none !important; }
+          .calendar-table td, .calendar-table th { border: 1px solid #000; }
+          .calendar-table td { height: 240px; }
+        }
+      `}</style>
+
+      <Card className="wall-card print-area">
         <Card.Body>
-          <Card.Title style={{ fontSize: "1.5rem" }}>Sporcu Beslenmesi</Card.Title>
-          <Row className="g-4">
-            {/* Sol Kolon */}
-            <Col xs={12} md={6} className="mb-3 mb-md-0">
-              <Card style={{ textAlign: "center", height: "100%" }}>
-                <Card.Body>
-                  <Card.Title style={{ fontSize: "1.1rem" }}>Sporcularda beslenmenin önemi</Card.Title>
-                  <Card.Text style={{ fontSize: "1rem" }}>
-                    <br />
-                    Sporcularda beslenme, performansın artırılması, toparlanma
-                    sürecinin hızlandırılması ve genel sağlığın korunması
-                    açısından kritik bir rol oynamaktadır. Son dönem
-                    araştırmalar, beslenmenin sadece enerji alımı değil, aynı
-                    zamanda antrenman adaptasyonu, bağışıklık sistemi desteği ve
-                    zihinsel dayanıklılık üzerinde de etkili olduğunu
-                    göstermektedir.
-                    <br />
-                    <br />
-                    <strong>Makro ve Mikro Besinlerin Önemi</strong>
-                    <br />
-                    Sporcuların enerji ve protein ihtiyaçları, sedanter
-                    bireylere göre daha fazladır. Bu nedenle karbonhidrat,
-                    protein ve yağ gibi makro besin ögelerinin dengeli alımı
-                    önemlidir. Ayrıca, vitamin ve mineral gibi mikro besin
-                    ögeleri de performans ve toparlanma süreçlerinde kritik rol
-                    oynar.
-                    <br />
-                    <br />
-                    <strong>Sonuç</strong>
-                    <br />
-                    Sporcularda beslenme, sadece fiziksel performansı değil,
-                    aynı zamanda genel sağlığı, zihinsel dayanıklılığı ve uzun
-                    vadeli başarıyı etkileyen temel bir faktördür.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+          <Row className="align-items-center mb-3">
+            <Col xs="auto">
+              <h3 style={{ margin: 0 }}>Duvar Takvimi</h3>
+              <small className="text-muted">Wall Agent — Duvar takvimine uygun görünüm</small>
             </Col>
-            {/* Sağ Kolon */}
-            <Col xs={12} md={6} className="d-flex align-items-center">
-              <Image
-                src="https://iasbh.tmgrup.com.tr/a9e335/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2021/12/11/tum-beslenmeniz-degisiyor-iste-saat-1600dan-sonra-asla-tuketmemeniz-gereken-o-besin-1639200626070.jpg&mw=752&mh=700"
-                style={{
-                  border: "5px solid white",
-                  borderRadius: "10px",
-                  width: "100%",
-                  height: "auto",
-                  marginBottom: "10px",
-                }}
-                alt="ROJDA MUSA"
-                fluid
-              />
+            <Col className="text-end">
+              <Button variant="outline-secondary" size="sm" onClick={prevMonth} className="me-2 no-print">
+                ◀
+              </Button>
+              <strong style={{ marginRight: 8 }}>
+                {monthNames[viewMonth]} {viewYear}
+              </strong>
+              <Button variant="outline-secondary" size="sm" onClick={nextMonth} className="me-2 no-print">
+                ▶
+              </Button>
+              <Button variant="secondary" size="sm" onClick={toggleFullscreen} className="me-2 no-print">
+                Tam Ekran
+              </Button>
+              <Button variant="primary" size="sm" onClick={printCalendar} className="me-2 no-print">
+                Yazdır
+              </Button>
+              <Button variant="danger" size="sm" onClick={clearAll} className="no-print">
+                Temizle
+              </Button>
             </Col>
           </Row>
+
+          <div style={{ overflowX: "auto" }}>
+            <table className="table table-sm calendar-table">
+              <thead>
+                <tr>
+                  {dayNames.map((d) => (
+                    <th key={d} className="text-center">
+                      {d}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {matrix.map((week, wi) => (
+                  <tr key={wi}>
+                    {week.map((dt, di) => {
+                      if (!dt) return <td key={di} style={{ height: 160 }} />;
+                      const key = formatKey(dt.getFullYear(), dt.getMonth(), dt.getDate());
+                      const list = events[key] || [];
+                      const isToday =
+                        dt.getFullYear() === today.getFullYear() &&
+                        dt.getMonth() === today.getMonth() &&
+                        dt.getDate() === today.getDate();
+                      return (
+                        <td
+                          key={di}
+                          style={{
+                            background: isToday ? "#fff8d6" : undefined,
+                          }}
+                          onClick={() => openAddModal(key)}
+                        >
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <span className="date-number">{dt.getDate()}</span>
+                            <small className="text-muted">
+                              {list.length ? <Badge bg="info">{list.length}</Badge> : null}
+                            </small>
+                          </div>
+
+                          <div style={{ marginTop: 8, maxHeight: 120, overflowY: "auto" }}>
+                            {list.map((ev) => (
+                              <div
+                                key={ev.id}
+                                className="d-flex justify-content-between align-items-center mb-1"
+                                title={ev.title + (ev.time ? " — " + ev.time : "")}
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                                  <span className="event-dot" style={{ background: ev.color || "#0d6efd" }} />
+                                  <small style={{ maxWidth: 220, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                    {ev.title} {ev.time ? <span className="text-muted">({ev.time})</span> : null}
+                                  </small>
+                                </div>
+                                <Button variant="link" size="sm" onClick={() => removeEvent(key, ev.id)} className="no-print">
+                                  ✕
+                                </Button>
+                              </div>
+                            ))}
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </Card.Body>
       </Card>
-      {/* Alert ve ForYouFeed Alt Kısma Taşındı */}
-     
+
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Yeni etkinlik</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-2">
+              <Form.Label>Tarih</Form.Label>
+              <Form.Control type="text" value={selectedDate || ""} readOnly />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Başlık</Form.Label>
+              <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Etkinlik başlığı" />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Saat (opsiyonel)</Form.Label>
+              <Form.Control type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Renk</Form.Label>
+              <Form.Control type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            İptal
+          </Button>
+          <Button variant="primary" onClick={addEvent}>
+            Kaydet
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
-
-export default page;
