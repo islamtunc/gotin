@@ -4,314 +4,193 @@
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 // Subhanallah, Elhamdulillah, Allahu Ekber
 // Estağfirullah El-Azim
+// La ilahe illallah, Muhammedur Resulullah
 
 "use client";
-import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Button, Modal, Form, Badge } from "react-bootstrap";
-
-function formatKey(y: number, m: number, d: number) {
-  const mm = String(m + 1).padStart(2, "0");
-  const dd = String(d).padStart(2, "0");
-  return `${y}-${mm}-${dd}`;
-}
-
-function buildMonthMatrix(year: number, month: number) {
-  // month: 0-11
-  const first = new Date(year, month, 1);
-  const last = new Date(year, month + 1, 0);
-  const startDay = first.getDay(); // 0-6 (Sun-Sat)
-  const weeks: (Date | null)[][] = [];
-  let week: (Date | null)[] = new Array(7).fill(null);
-  // Fill first week
-  let day = 1;
-  for (let i = startDay; i < 7; i++) {
-    week[i] = new Date(year, month, day++);
-  }
-  weeks.push(week);
-  // Following weeks
-  while (day <= last.getDate()) {
-    week = new Array(7).fill(null);
-    for (let i = 0; i < 7 && day <= last.getDate(); i++) {
-      week[i] = new Date(year, month, day++);
-    }
-    weeks.push(week);
-  }
-  return weeks;
-}
-
-type EventItem = {
-  id: string;
-  title: string;
-  time?: string;
-  color?: string;
-};
+import React, { useState } from "react";
+import { Card, Row, Col, Button, Badge } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import ForYouFeed from "./ForYouFeed";
 
 export default function page() {
-  const today = new Date();
-  const [viewYear, setViewYear] = useState<number>(today.getFullYear());
-  const [viewMonth, setViewMonth] = useState<number>(today.getMonth());
-  const [events, setEvents] = useState<Record<string, EventItem[]>>({});
-  const [showModal, setShowModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
-  const [color, setColor] = useState("#0d6efd");
+  const [cartCount, setCartCount] = useState(0);
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("wall-agent-events");
-      if (raw) setEvents(JSON.parse(raw));
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem("wall-agent-events", JSON.stringify(events));
-    } catch {}
-  }, [events]);
-
-  function prevMonth() {
-    if (viewMonth === 0) {
-      setViewMonth(11);
-      setViewYear((y) => y - 1);
-    } else setViewMonth((m) => m - 1);
-  }
-  function nextMonth() {
-    if (viewMonth === 11) {
-      setViewMonth(0);
-      setViewYear((y) => y + 1);
-    } else setViewMonth((m) => m + 1);
-  }
-
-  function toggleFullscreen() {
-    const doc = document as any;
-    if (!doc.fullscreenElement) {
-      document.documentElement.requestFullscreen?.();
-    } else {
-      document.exitFullscreen?.();
-    }
-  }
-
-  function printCalendar() {
-    window.print();
-  }
-
-  function clearAll() {
-    if (confirm("Tüm kayıtlı etkinlikleri temizlemek istiyor musunuz?")) {
-      setEvents({});
-    }
-  }
-
-  const matrix = buildMonthMatrix(viewYear, viewMonth);
-  const monthNames = [
-    "Ocak",
-    "Şubat",
-    "Mart",
-    "Nisan",
-    "Mayıs",
-    "Haziran",
-    "Temmuz",
-    "Ağustos",
-    "Eylül",
-    "Ekim",
-    "Kasım",
-    "Aralık",
+  const products = [
+    {
+      id: "nature",
+      title: "Doğa Temalı Duvar Takvimi",
+      subtitle: "Yüksek çözünürlük, parlak baskı",
+      price: 90,
+      sizes: ["A3", "A2"],
+      img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80&auto=format&fit=crop",
+      desc: "Her ay için farklı bir doğa fotoğrafı. Ofis ve ev için ideal, parlak kağıt.",
+    },
+    {
+      id: "family",
+      title: "Aile & Anı Takvimi",
+      subtitle: "Kişiselleştirilebilir fotoğraf alanı",
+      price: 120,
+      sizes: ["A3", "A2", "A1"],
+      img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&q=80&auto=format&fit=crop",
+      desc: "Aile fotoğraflarıyla özelleştirilebilir takvim. Hediye için mükemmel.",
+    },
+    {
+      id: "islamic",
+      title: "İslami Sanat Takvimi",
+      subtitle: "Estetik desenler ve önemli gün işaretleri",
+      price: 100,
+      sizes: ["A3", "A2"],
+      img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80&auto=format&fit=crop",
+      desc: "Mimarî ve hat sanatından ilham alan tasarımlar, önemli dini günleri vurgular.",
+    },
+    {
+      id: "kids",
+      title: "Çocuklar İçin Duvar Takvimi",
+      subtitle: "Renkli illüstrasyonlar ve sticker sayfası",
+      price: 75,
+      sizes: ["A3"],
+      img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&q=80&auto=format&fit=crop",
+      desc: "Eğlenceli aylık illüstrasyonlar, doğum günü ve etkinlik sticker'larıyla.",
+    },
+    {
+      id: "minimal",
+      title: "Minimal & Modern Takvim",
+      subtitle: "Sade çizgiler, mat baskı",
+      price: 85,
+      sizes: ["A3", "A2"],
+      img: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1200&q=80&auto=format&fit=crop",
+      desc: "Temiz tipografi ve geniş boşluklar. Ofis ve stüdyo için ideal.",
+    },
   ];
-  const dayNames = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
 
-  function openAddModal(dateKey: string) {
-    setSelectedDate(dateKey);
-    setTitle("");
-    setTime("");
-    setColor("#0d6efd");
-    setShowModal(true);
-  }
-
-  function addEvent() {
-    if (!selectedDate || !title.trim()) {
-      setShowModal(false);
-      return;
-    }
-    const ev: EventItem = {
-      id: String(Date.now()),
-      title: title.trim(),
-      time: time || undefined,
-      color,
-    };
-    setEvents((prev) => {
-      const list = prev[selectedDate] ? [...prev[selectedDate], ev] : [ev];
-      return { ...prev, [selectedDate]: list };
-    });
-    setShowModal(false);
-  }
-
-  function removeEvent(dateKey: string, id: string) {
-    setEvents((prev) => {
-      const list = (prev[dateKey] || []).filter((e) => e.id !== id);
-      const copy = { ...prev };
-      if (list.length) copy[dateKey] = list;
-      else delete copy[dateKey];
-      return copy;
-    });
+  function addToCart(pId: string) {
+    // Basit görsel sepete ekleme sayacı (gerçek ödeme / sepet entegrasyonu yok)
+    setCartCount((c) => c + 1);
+    // İsterseniz burada localStorage veya API çağrısı ekleyin
+    alert("Sepete eklendi: " + pId);
   }
 
   return (
     <div
       style={{
-        backgroundColor: "#f8fafb",
+        backgroundColor: "#fbfcfd",
         minHeight: "100vh",
-        padding: 20,
+        padding: 16,
         display: "flex",
         justifyContent: "center",
       }}
     >
       <style>{`
-        /* Print-friendly and wall-calendar style */
-        .wall-card { width: 100%; max-width: 1100px; }
-        .calendar-table td, .calendar-table th { vertical-align: top; border: 1px solid #e9ecef; padding: 8px; }
-        .calendar-table td { height: 160px; cursor: pointer; background: #fff; }
-        .date-number { font-size: 20px; font-weight: 700; }
-        .event-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
-        .no-print { display: inline-block; }
-        @media print {
-          body * { visibility: hidden; }
-          .print-area, .print-area * { visibility: visible; }
-          .no-print { display: none !important; }
-          .calendar-table td, .calendar-table th { border: 1px solid #000; }
-          .calendar-table td { height: 240px; }
+        .catalog-card { max-width: 1100px; width: 100%; }
+        .hero {
+          background: linear-gradient(90deg, #ffffff 0%, #f3f6ff 100%);
+          border-radius: 8px;
+          padding: 18px;
+          margin-bottom: 18px;
         }
+        .product-img { border-radius: 6px; border: 6px solid white; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+        .price-badge { font-weight: 700; }
       `}</style>
 
-      <Card className="wall-card print-area">
+      <Card className="catalog-card">
         <Card.Body>
-          <Row className="align-items-center mb-3">
-            <Col xs="auto">
-              <h3 style={{ margin: 0 }}>Duvar Takvimi</h3>
-              <small className="text-muted">Wall Agent — Duvar takvimine uygun görünüm</small>
+          <Row className="align-items-center hero g-3">
+            <Col xs={8}>
+              <h3 style={{ margin: 0 }}>Duvar Takvimleri — Satış</h3>
+              <p className="text-muted" style={{ marginBottom: 8 }}>
+                Çeşitler: Doğa, Aile, İslami, Çocuk, Minimal. Baskı kalitesi yüksek, farklı boy seçenekleri.
+              </p>
+              <div>
+                <Button variant="primary" size="sm" className="me-2" href="#products">
+                  Katalogu Gör
+                </Button>
+                <Button
+                  variant="outline-secondary"
+                  size="sm"
+                  onClick={() => (window.location.href = "mailto:satis@duvartakvimi.com?subject=Takvim%20Siparişi")}
+                >
+                  Sipariş / Teklif Al
+                </Button>
+              </div>
             </Col>
-            <Col className="text-end">
-              <Button variant="outline-secondary" size="sm" onClick={prevMonth} className="me-2 no-print">
-                ◀
-              </Button>
-              <strong style={{ marginRight: 8 }}>
-                {monthNames[viewMonth]} {viewYear}
-              </strong>
-              <Button variant="outline-secondary" size="sm" onClick={nextMonth} className="me-2 no-print">
-                ▶
-              </Button>
-              <Button variant="secondary" size="sm" onClick={toggleFullscreen} className="me-2 no-print">
-                Tam Ekran
-              </Button>
-              <Button variant="primary" size="sm" onClick={printCalendar} className="me-2 no-print">
-                Yazdır
-              </Button>
-              <Button variant="danger" size="sm" onClick={clearAll} className="no-print">
-                Temizle
-              </Button>
+            <Col xs={4} className="text-end">
+              <div style={{ display: "inline-block", textAlign: "right" }}>
+                <div style={{ fontSize: 14, color: "#6c757d" }}>Sepet</div>
+                <div>
+                  <Badge bg="danger" className="price-badge">{cartCount}</Badge>
+                </div>
+              </div>
             </Col>
           </Row>
 
-          <div style={{ overflowX: "auto" }}>
-            <table className="table table-sm calendar-table">
-              <thead>
-                <tr>
-                  {dayNames.map((d) => (
-                    <th key={d} className="text-center">
-                      {d}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {matrix.map((week, wi) => (
-                  <tr key={wi}>
-                    {week.map((dt, di) => {
-                      if (!dt) return <td key={di} style={{ height: 160 }} />;
-                      const key = formatKey(dt.getFullYear(), dt.getMonth(), dt.getDate());
-                      const list = events[key] || [];
-                      const isToday =
-                        dt.getFullYear() === today.getFullYear() &&
-                        dt.getMonth() === today.getMonth() &&
-                        dt.getDate() === today.getDate();
-                      return (
-                        <td
-                          key={di}
-                          style={{
-                            background: isToday ? "#fff8d6" : undefined,
-                          }}
-                          onClick={() => openAddModal(key)}
-                        >
-                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <span className="date-number">{dt.getDate()}</span>
-                            <small className="text-muted">
-                              {list.length ? <Badge bg="info">{list.length}</Badge> : null}
-                            </small>
-                          </div>
+          <hr />
 
-                          <div style={{ marginTop: 8, maxHeight: 120, overflowY: "auto" }}>
-                            {list.map((ev) => (
-                              <div
-                                key={ev.id}
-                                className="d-flex justify-content-between align-items-center mb-1"
-                                title={ev.title + (ev.time ? " — " + ev.time : "")}
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                                  <span className="event-dot" style={{ background: ev.color || "#0d6efd" }} />
-                                  <small style={{ maxWidth: 220, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                                    {ev.title} {ev.time ? <span className="text-muted">({ev.time})</span> : null}
-                                  </small>
-                                </div>
-                                <Button variant="link" size="sm" onClick={() => removeEvent(key, ev.id)} className="no-print">
-                                  ✕
-                                </Button>
-                              </div>
-                            ))}
-                          </div>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <h5 id="products">Ürünler</h5>
+          <Row className="g-3">
+            {products.map((p) => (
+              <Col xs={12} md={6} lg={4} key={p.id}>
+                <Card>
+                  <div style={{ padding: 10, background: "#fff" }}>
+                    <Image src={p.img} alt={p.title} fluid className="product-img" />
+                  </div>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: "1rem" }}>{p.title}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted" style={{ fontSize: "0.85rem" }}>
+                      {p.subtitle}
+                    </Card.Subtitle>
+                    <Card.Text style={{ fontSize: "0.9rem", minHeight: 48 }}>{p.desc}</Card.Text>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <div style={{ fontSize: "1.05rem", fontWeight: 700 }}>{p.price} TL</div>
+                        <div className="text-muted" style={{ fontSize: "0.8rem" }}>
+                          Boyutlar: {p.sizes.join(", ")}
+                        </div>
+                      </div>
+                      <div>
+                        <Button variant="outline-primary" size="sm" className="me-2" onClick={() => addToCart(p.id)}>
+                          Sepete Ekle
+                        </Button>
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          onClick={() =>
+                            (window.location.href =
+                              "mailto:satis@duvartakvimi.com?subject=Siparis%20" + encodeURIComponent(p.title))
+                          }
+                        >
+                          Sipariş Ver
+                        </Button>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+
+          <hr />
+
+          <Row>
+            <Col xs={12} md={8}>
+              <h6>Ödeme & Teslimat</h6>
+              <p className="text-muted" style={{ marginBottom: 6 }}>
+                Üretim süresi: 2-5 iş günü. Kargo ve toplu siparişlerde özel fiyat. Kurumsal siparişler için iletişime geçin.
+              </p>
+            </Col>
+            <Col xs={12} md={4} className="text-md-end">
+              <div style={{ marginTop: 6 }}>
+                <Button
+                  variant="outline-success"
+                  size="sm"
+                  onClick={() => (window.location.href = "tel:+905551112233")}
+                >
+                  Bizi Ara: +90 555 111 22 33
+                </Button>
+              </div>
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
-
-      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Yeni etkinlik</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-2">
-              <Form.Label>Tarih</Form.Label>
-              <Form.Control type="text" value={selectedDate || ""} readOnly />
-            </Form.Group>
-            <Form.Group className="mb-2">
-              <Form.Label>Başlık</Form.Label>
-              <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Etkinlik başlığı" />
-            </Form.Group>
-            <Form.Group className="mb-2">
-              <Form.Label>Saat (opsiyonel)</Form.Label>
-              <Form.Control type="time" value={time} onChange={(e) => setTime(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-2">
-              <Form.Label>Renk</Form.Label>
-              <Form.Control type="color" value={color} onChange={(e) => setColor(e.target.value)} />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            İptal
-          </Button>
-          <Button variant="primary" onClick={addEvent}>
-            Kaydet
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }
