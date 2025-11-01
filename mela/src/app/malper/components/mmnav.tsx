@@ -20,7 +20,7 @@ function Mmmnavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/malper">Masa Takvimleri</Nav.Link>
+            <Nav.Link href="/malper/mmavahi">Masa Takvimleri</Nav.Link>
             <NavDropdown title="SADE TAKVİM" id="basic-nav-dropdown">
               <NavDropdown.Item href="/malper/mmavahi/mmmweb"></NavDropdown.Item>
               <NavDropdown.Item href="/malper/mmavahi/mmmobile">
