@@ -29,6 +29,14 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [menuOpen]);
 
+  // Uyarı göster ve menüyü hiç açma
+  function showContactAlert() {
+    alert(
+      "Bu özellikleri kullanmak için lütfen bizimle iletişime geçin:\nE-posta: satis@duvartakvimi.com\nTel: +90 555 111 22 33"
+    );
+    setMenuOpen(false);
+  }
+
   return (
     <header className="sticky top-0 z-10 bg-card shadow-sm">
       <div
@@ -38,10 +46,12 @@ export default function Navbar() {
         {/* Logo */}
        
 
-        {/* Mobil Menü Butonu */}
+        {/* Mobil Menü Butonu - artık menüyü açmaz, sadece uyarı gösterir */}
         <button
           className="lg:hidden p-2 rounded text-green-500"
-          onClick={() => setMenuOpen((v) => !v)}
+          onClick={() => {
+            showContactAlert();
+          }}
           aria-label="Menüyü Aç/Kapat"
         >
           <FaBars size={22} />
@@ -59,14 +69,20 @@ export default function Navbar() {
           <Link
             href="/dashboard"
             className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-5 py-2 lg:p-0 text-center"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              showContactAlert();
+            }}
           >
             Dashboard
           </Link>
           <Link
             href="/users"
             className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-5 py-2 lg:p-0 text-center"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              showContactAlert();
+            }}
           >
             Kullanıcılar
           </Link>
@@ -74,42 +90,58 @@ export default function Navbar() {
           {/* Blog ve Ayarlar Dropdownlarını mobilde alt alta, masaüstünde yan yana göster */}
           <div className="w-full flex flex-col items-center lg:w-auto lg:flex-row lg:items-center lg:gap-3">
             <Dropdown>
-              <Dropdown.Toggle variant="link" className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-0 text-center">
+              <Dropdown.Toggle
+                variant="link"
+                className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-0 text-center"
+                onClick={(e: any) => {
+                  e?.preventDefault();
+                  showContactAlert();
+                }}
+              >
                 Blog
               </Dropdown.Toggle>
               <Dropdown.Menu
-                onClick={() => {
-                  if (window.innerWidth < 1024) setMenuOpen(false);
+                onClick={(e: any) => {
+                  e?.preventDefault();
+                  showContactAlert();
                 }}
               >
-                <Dropdown.Item as={Link} href="/posts">
+                <Dropdown.Item as={Link} href="/posts" onClick={(e: any) => { e.preventDefault(); showContactAlert(); }}>
                   Blog Yazıları
                 </Dropdown.Item>
-                <Dropdown.Item as={Link} href="/posts/new">
+                <Dropdown.Item as={Link} href="/posts/new" onClick={(e: any) => { e.preventDefault(); showContactAlert(); }}>
                   Yeni Blog Yazısı
                 </Dropdown.Item>
-                <Dropdown.Item as={Link} href="/categories">
+                <Dropdown.Item as={Link} href="/categories" onClick={(e: any) => { e.preventDefault(); showContactAlert(); }}>
                  Categories
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
 
             <Dropdown>
-              <Dropdown.Toggle variant="link" className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-0 text-center">
+              <Dropdown.Toggle
+                variant="link"
+                className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-0 text-center"
+                onClick={(e: any) => {
+                  e?.preventDefault();
+                  showContactAlert();
+                }}
+              >
                 Settings
               </Dropdown.Toggle>
               <Dropdown.Menu
-                onClick={() => {
-                  if (window.innerWidth < 1024) setMenuOpen(false);
+                onClick={(e: any) => {
+                  e?.preventDefault();
+                  showContactAlert();
                 }}
               >
-                <Dropdown.Item as={Link} href="/settings/profile">
+                <Dropdown.Item as={Link} href="/settings/profile" onClick={(e: any) => { e.preventDefault(); showContactAlert(); }}>
                   Profil Ayarları
                 </Dropdown.Item>
-                <Dropdown.Item as={Link} href="/settings/security">
+                <Dropdown.Item as={Link} href="/settings/security" onClick={(e: any) => { e.preventDefault(); showContactAlert(); }}>
                   Güvenlik Ayarları
                 </Dropdown.Item>
-                <Dropdown.Item as={Link} href="/settings/notifications">
+                <Dropdown.Item as={Link} href="/settings/notifications" onClick={(e: any) => { e.preventDefault(); showContactAlert(); }}>
                   Bildirim Ayarları
                 </Dropdown.Item>
               </Dropdown.Menu>
@@ -119,7 +151,10 @@ export default function Navbar() {
           <Link
             href="/reports"
             className="text-sm font-medium text-secondary hover:text-primary w-full lg:w-auto px-5 py-2 lg:p-0 text-center"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              showContactAlert();
+            }}
           >
             Raporlar
           </Link>
