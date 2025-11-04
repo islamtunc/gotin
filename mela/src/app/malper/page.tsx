@@ -127,7 +127,7 @@ function page() {
           <h3 className="text-xl font-semibold">  Hediye Kutusu</h3>
           <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
           <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/firotana-teqwima/siparis?urun=duvar" className="text-blue-600 mt-4 inline-block">
+          <a href="/malper/mmkedkar" className="text-blue-600 mt-4 inline-block">
             Daha Fazla
           </a>
         </article>
