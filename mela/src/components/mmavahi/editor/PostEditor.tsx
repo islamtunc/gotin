@@ -20,16 +20,19 @@ import { useDropzone } from "@uploadthing/react";
 import { ImageIcon, Loader2, X } from "lucide-react";
 import Image from "next/image";
 import { ClipboardEvent, useRef, useState } from "react";
-import { useSubmitPostMutation } from "./mutations";
 import "./styles.css";
 import useMediaUpload, { Attachment } from "./useMediaUpload";
 
 export default function PostEditor() {
   const { user } = useSession();
-  const [title, setTitle] = useState("");
-  const [address, setAddress] = useState("");
-
-  const mutation = useSubmitPostMutation();
+  const [productName, setProductName] = useState("");
+  const [sku, setSku] = useState("");
+  const [price, setPrice] = useState<string>("");
+  const [sizes, setSizes] = useState<string>("A3"); // comma separated
+  const [stock, setStock] = useState<string>("10");
+  const [leadTime, setLeadTime] = useState<string>("3-7 iş günü");
+  const [category, setCategory] = useState<string>("Duvar Takvimi");
+  const [shortDesc, setShortDesc] = useState<string>("");
 
   const {
     startUpload,
@@ -48,13 +51,13 @@ export default function PostEditor() {
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ bold: {}, italic: false }), // bold'u etkinleştir, italic'i devre dışı bırak
-      Placeholder.configure({ placeholder: "Yazınızı buraya yazın..." }),
+      StarterKit.configure({ bold: {}, italic: false }),
+      Placeholder.configure({ placeholder: "Ürün detaylarını (malzeme, baskı, kişiselleştirme vb.) buraya yazın..." }),
     ],
+    editorProps: { attributes: { spellCheck: "true" } },
   });
 
-  const description =
-    editor?.getText({ blockSeparator: "\n" }) || "";
+  const longDescription = editor?.getText({ blockSeparator: "\n" }) || "";
 
   function onPaste(e: ClipboardEvent<HTMLInputElement>) {
     const files = Array.from(e.clipboardData.items)
@@ -63,72 +66,157 @@ export default function PostEditor() {
     startUpload(files);
   }
 
+  function resetForm() {
+    setProductName("");
+    setSku("");
+    setPrice("");
+    setSizes("A3");
+    setStock("10");
+    setLeadTime("3-7 iş günü");
+    setCategory("Duvar Takvimi");
+    setShortDesc("");
+    editor?.commands.clearContent();
+    resetMediaUploads();
+  }
+
   function onSubmit() {
-    mutation.mutate(
-      {
-        content: [
-          title.trim(),
-          address.trim(),
-          ...description
-            .split("\n")
-            .map((line) => line.trim())
-            .filter((line) => line.length > 0),
-        ],
-        mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
-      },
-      {
-        onSuccess: () => {
-          setTitle("");
-          setAddress("");
-          editor?.commands.clearContent();
-          resetMediaUploads();
-        },
-      }
-    );
+    if (!productName.trim()) {
+      alert("Ürün adı gerekli.");
+      return;
+    }
+    const priceNum = parseFloat(price as string);
+    if (isNaN(priceNum) || priceNum <= 0) {
+      alert("Geçerli bir fiyat girin.");
+      return;
+    }
+
+    const product = {
+      id: "prod-" + Date.now(),
+      seller: user?.id || "unknown",
+      name: productName.trim(),
+      sku: sku.trim(),
+      price: priceNum,
+      sizes: sizes.split(",").map((s) => s.trim()).filter(Boolean),
+      stock: Number(stock) || 0,
+      leadTime: leadTime.trim(),
+      category: category.trim(),
+      shortDesc: shortDesc.trim(),
+      longDesc: longDescription.split("\n").map((l) => l.trim()).filter(Boolean),
+      media: attachments.map((a) => ({
+        name: a.file.name,
+        type: a.file.type,
+        size: a.file.size,
+      })),
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const raw = localStorage.getItem("seller-products");
+      const list = raw ? JSON.parse(raw) : [];
+      list.unshift(product);
+      localStorage.setItem("seller-products", JSON.stringify(list));
+      alert("Ürün kaydedildi (localStorage). Gerçek entegrasyon için API çağrısı ekleyin.");
+      resetForm();
+    } catch (err) {
+      console.error(err);
+      alert("Kaydetme sırasında hata oluştu.");
+    }
   }
 
   return (
     <div className="flex flex-col gap-5 rounded-2xl bg-card p-3 sm:p-5 shadow-sm text-black w-full max-w-2xl mx-auto">
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
-        <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
+        <UserAvatar avatarUrl={user?.avatarUrl} className="hidden sm:inline" />
         <div className="w-full space-y-3">
           <input
             type="text"
-            placeholder="Yazı Başlığı"
+            placeholder="Ürün Adı (ör. Doğa Temalı Duvar Takvimi)"
             className="w-full rounded-lg border px-4 py-2"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            maxLength={100}
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+            maxLength={120}
             required
+          />
+          <div className="grid grid-cols-2 gap-2">
+            <input
+              type="text"
+              placeholder="SKU / Kod (opsiyonel)"
+              className="rounded-lg border px-4 py-2"
+              value={sku}
+              onChange={(e) => setSku(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Fiyat (TL)"
+              className="rounded-lg border px-4 py-2"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              inputMode="decimal"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <input
+              type="text"
+              placeholder="Boyutlar (virgülle ayırın, örn: A3,A2)"
+              className="rounded-lg border px-4 py-2"
+              value={sizes}
+              onChange={(e) => setSizes(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Stok adedi"
+              className="rounded-lg border px-4 py-2"
+              value={stock}
+              onChange={(e) => setStock(e.target.value)}
+              min={0}
+            />
+          </div>
+          <input
+            type="text"
+            placeholder="Teslim süresi / Üretim (ör. 3-7 iş günü)"
+            className="w-full rounded-lg border px-4 py-2"
+            value={leadTime}
+            onChange={(e) => setLeadTime(e.target.value)}
           />
           <input
             type="text"
-            placeholder="Konu"
+            placeholder="Kategori (ör. İslami, Doğa, Çocuk...)"
             className="w-full rounded-lg border px-4 py-2"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Kısa açıklama (satışta görülecek)"
+            className="w-full rounded-lg border px-4 py-2"
+            value={shortDesc}
+            onChange={(e) => setShortDesc(e.target.value)}
             maxLength={200}
-            required
           />
         </div>
       </div>
+
       <div {...rootProps} className="w-full">
+        <label className="block text-sm text-gray-600 mb-2">Detaylı Ürün Açıklaması</label>
         <EditorContent
           editor={editor}
           className={cn(
-            "max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-3 py-3 text-black prose prose-green", // prose ekle
+            "max-h-[18rem] w-full overflow-y-auto rounded-2xl bg-background px-3 py-3 text-black",
             isDragActive && "outline-dashed",
           )}
           onPaste={onPaste}
         />
         <input {...getInputProps()} />
+        <div className="text-sm text-gray-500 mt-2">Görselleri sürükle veya ekleyin (max 10).</div>
       </div>
+
       {!!attachments.length && (
         <AttachmentPreviews
           attachments={attachments}
           removeAttachment={removeAttachment}
         />
       )}
+
       <div className="flex flex-col sm:flex-row items-center justify-end gap-3">
         {isUploading && (
           <>
@@ -136,19 +224,21 @@ export default function PostEditor() {
             <Loader2 className="size-5 animate-spin text-primary" />
           </>
         )}
+
         <AddAttachmentsButton
           onFilesSelected={startUpload}
           disabled={isUploading || attachments.length >= 10}
         />
+
         <LoadingButton
           onClick={onSubmit}
-          loading={mutation.isPending}
+          loading={false}
           disabled={
-            !title.trim() || !address.trim() || !description.trim() || isUploading
+            !productName.trim() || !price.trim() || isUploading
           }
           className="min-w-20"
         >
-           Yayınla
+          Ürünü Kaydet
         </LoadingButton>
       </div>
     </div>
