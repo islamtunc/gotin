@@ -10,8 +10,8 @@ import React from "react";
 import { FaWhatsapp, FaPhone } from "react-icons/fa";
 
 export default function ContactFloating() {
-  const whatsappNumber = "+905551112233";
-  const telNumber = "+905551112233";
+  const whatsappNumber = "+905436366942";
+  const telNumber = "+905436366942";
   const waLink = `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(
     "Merhaba, takvim hakkında bilgi almak istiyorum."
   )}`;
