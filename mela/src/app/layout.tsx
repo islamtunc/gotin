@@ -38,9 +38,16 @@ export const metadata: Metadata = {
   keywords: [
     "duvar takvimi",
     "hediyelik takvim",
-    "kişiye özel takvim",
+    "patikaiz",
     "takvim baskı",
     "duvar takvimi 2026",
+    "sanat takvimi",
+    "yapraklı günlük takvim",
+    "estetik  duvar takvimi",
+    "dekoratif duvar takvimi",
+    "koleksiyon takvimi",
+    "sevgiliye anlamlı hediye"
+    
   ],
   openGraph: {
     title: "Patika - Duvar Takvimi",
@@ -64,7 +71,7 @@ export const metadata: Metadata = {
     title: "Patika - Duvar Takvimi",
     description:
       " Hediyelik ve temalı duvar takvimleri. Hızlı üretim, farklı kağıt seçenekleri.",
-    images: ["https://your-domain.com/og-image.jpg"],
+    images: ["https://patikaiz.com/og-image.jpg"],
   },
   robots: {
     index: true,
