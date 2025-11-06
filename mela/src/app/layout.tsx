@@ -46,11 +46,11 @@ export const metadata: Metadata = {
     title: "Patika - Duvar Takvimi",
     description:
       "Kişiye özel ve temalı duvar takvimleri. Hızlı üretim, farklı kağıt seçenekleri, toplu sipariş indirimleri.",
-    url: "https://your-domain.com",
+    url: "https://patikaiz.com",
     siteName: "Patika",
     images: [
       {
-        url: "https://your-domain.com/og-image.jpg",
+        url: "https://patikaiz.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Patika Duvar Takvimi Örnek",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     nocache: false,
   },
   alternates: {
-    canonical: "https://your-domain.com",
+    canonical: "https://www.patikaiz.com",
   },
 };
 
@@ -85,19 +85,19 @@ export default function RootLayout({
   const ld = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://your-domain.com",
+    "url": "https://patikaiz.com",
     "name": "Patika - Duvar Takvimi",
     "publisher": {
       "@type": "Organization",
       "name": "Yekazad Software Center",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://your-domain.com/logo.png"
+        "url": "https://patikaiz.com/logo.png"
       }
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://your-domain.com/search?q={search_term_string}",
+      "target": "https://patikaiz.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
