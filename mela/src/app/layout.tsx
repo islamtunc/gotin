@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "dekoratif duvar takvimi",
     "koleksiyon takvimi",
     "sevgiliye anlamlı hediye"
-    
+  
   ],
   openGraph: {
     title: "Patika - Duvar Takvimi",
