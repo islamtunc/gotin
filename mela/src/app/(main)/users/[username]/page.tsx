@@ -72,12 +72,15 @@ export default async function Page({ params: { username } }: PageProps) {
       <div className="w-full min-w-0 space-y-5">
         <UserProfile user={user} loggedInUserId={loggedInUser.id} />
         <div className="rounded-2xl bg-card p-5 shadow-sm">
-        
-        {user.id==loggedInUser.id? <Home/> : <div> 
-          <h2 className="text-center text-2xl font-bold">
-            {user.displayName}&apos;ın İlanları
-          </h2></div>}
-
+          {user.id === loggedInUser.id ? (
+            <Home />
+          ) : (
+            <div>
+              <h2 className="text-center text-2xl font-bold">
+                {user.displayName}&apos;ın İlanları
+              </h2>
+            </div>
+          )}
         </div>
         <UserPosts userId={user.id} />
       </div>
@@ -90,9 +93,7 @@ interface UserProfileProps {
   loggedInUserId: string;
 }
 
-async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
-  
-
+function UserProfile({ user, loggedInUserId }: UserProfileProps) {
   return (
     <div className="h-fit w-full space-y-5 rounded-2xl bg-card p-5 shadow-sm">
       <UserAvatar
@@ -106,12 +107,11 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
             <h1 className="text-3xl font-bold">{user.displayName}</h1>
             <div className="text-muted-foreground">@{user.username}</div>
           </div>
-          <div> {formatDate(user.createdAt, "MMM d, yyyy")} 'den beri üye</div>
+          <div>{formatDate(user.createdAt, "MMM d, yyyy")}&apos;den beri üye</div>
           <div className="flex items-center gap-3">
             <span>
               İlan Sayısı:{" "}
-              <span className="font-semibold">
-              </span>
+              <span className="font-semibold"></span>
             </span>
           </div>
         </div>
@@ -119,16 +119,11 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
         {user.id === loggedInUserId ? (
           <EditProfileButton user={user} />
         ) : (
-
-  <Button >Mesaj Yaz</Button>)}
+          <Button>Mesaj Yaz</Button>
+        )}
       </div>
       {user.bio && (
         <>
-
-
-
-{user? <Home/> : <div> </div>}
-
           <hr />
           <Linkify>
             <div className="overflow-hidden whitespace-pre-line break-words">
