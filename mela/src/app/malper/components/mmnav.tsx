@@ -51,16 +51,7 @@ function Mmmnavbar() {
             <Nav.Link href="/malper?tab=hakkimizda">Hakkimizda</Nav.Link>
 
           </Nav>
-          <Nav>
-            <div className="nav-link position-relative d-flex align-items-center gap-2">
-              <Modal />
-              {itemCount > 0 && (
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {itemCount}
-                </span>
-              )}
-            </div>
-          </Nav>
+       
         </Navbar.Collapse>
       </Container>
     </Navbar>

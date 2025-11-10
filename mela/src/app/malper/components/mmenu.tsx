@@ -4,9 +4,12 @@
 // Suphanallah, Elhamdulillah, Allahu Ekber
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Bookmark, Home, User, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { Modal } from "./mmodel";
 
 interface MenuBarProps {
   className?: string;
@@ -14,53 +17,54 @@ interface MenuBarProps {
 
 const MenuBar = ({ className }: MenuBarProps) => {
   return (
-    <nav className={`${className} fixed bottom-0 left-0 right-0 bg-white shadow-lg md:relative md:bg-transparent md:shadow-none`}>
-      <div className="grid grid-cols-4 gap-2 p-4 md:flex md:flex-col">
+    <nav
+      className={`${className} z-50 bg-white shadow-lg fixed bottom-0 left-0 right-0 md:relative md:top-20 md:sticky md:h-[calc(100vh-5rem)] md:w-64 md:rounded-lg md:shadow-md`}
+      aria-label="Main menu"
+    >
+      <div className="grid grid-cols-4 gap-2 p-2 md:flex md:flex-col md:py-6">
         <Button
           variant="ghost"
-          className="flex flex-col items-center justify-center p-2 md:flex-row md:justify-start md:gap-3"
+          className="flex flex-col items-center justify-center p-2 md:flex-row md:items-center md:justify-start md:gap-3 w-full"
           title="Malper"
           asChild
         >
           <Link href="/malper" className="flex flex-col items-center md:flex-row md:gap-2">
-            <Home className="h-6 w-6 text-primary" />
+            <Home className="h-6 w-6 text-primary" aria-hidden />
+            <span className="sr-only md:not-sr-only md:inline ml-2">Malper</span>
           </Link>
         </Button>
       
         <Button
           variant="ghost"
-          className="flex flex-col items-center justify-center p-2 md:flex-row md:justify-start md:gap-3"
-          title="Yorumlar"
+          className="flex flex-col items-center justify-center p-2 md:flex-row md:items-center md:justify-start md:gap-3 w-full"
+          title="Ecibandin"
           asChild
         >
           <Link href="/malper/ecibandin" className="flex flex-col items-center md:flex-row md:gap-2">
-            <Bookmark className="h-6 w-6 text-primary" />
+            <Bookmark className="h-6 w-6 text-primary" aria-hidden />
+            <span className="sr-only md:not-sr-only md:inline ml-2">Ecibandin</span>
           </Link>
         </Button>
 
-
         <Button
           variant="ghost"
-          className="flex flex-col items-center justify-center p-2 md:flex-row md:justify-start md:gap-3"
+          className="flex flex-col items-center justify-center p-2 md:flex-row md:justify-start md:gap-3 w-full"
           title="Sepet"
           asChild
         >
-          <Link href="/malper/sepet" className="flex flex-col items-center md:flex-row md:gap-2">
-            <ShoppingCart className="h-6 w-6 text-primary" />
-          </Link>
+        
+        <Modal/>
         </Button>
-
-
-
 
         <Button
           variant="ghost"
-          className="flex flex-col items-center justify-center p-2 md:flex-row md:justify-start md:gap-3"
+          className="flex flex-col items-center justify-center p-2 md:flex-row md:items-center md:justify-start md:gap-3 w-full"
           title="Profil"
           asChild
         >
           <Link href="/malper/profil" className="flex flex-col items-center md:flex-row md:gap-2">
-            <User className="h-6 w-6 text-primary" />
+            <User className="h-6 w-6 text-primary" aria-hidden />
+            <span className="sr-only md:not-sr-only md:inline ml-2">Profil</span>
           </Link>
         </Button>
       </div>

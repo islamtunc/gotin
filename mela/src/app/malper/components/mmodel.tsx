@@ -19,9 +19,15 @@ export const Modal: FC = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="flex items-center gap-2">
+        <Button
+          variant="ghost"
+          className="flex items-center gap-2"
+          title="Sepetim"
+          aria-label="Sepetim"
+        >
           <ShoppingCart className="h-5 w-5" />
-          <span>Sepetim</span>
+          {/* ikon tenê di mobîlê de, nivîs di desktop/md+ de xuya dibe */}
+          <span className="hidden md:inline">Sepetim</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
