@@ -4,7 +4,7 @@
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 // Subhanallah, Elhamdulillah, Allahu Ekber
 // Estağfirullah El-Azim
-// La ilahe illallah
+// La ilahe illallah , Muhammedur Resulullah
 "use client"
 
 import Container from 'react-bootstrap/Container';
@@ -14,7 +14,9 @@ import { useCart } from '../hooks/useCart';
 import { Modal } from "./mmodel"
 import { NavDropdown } from 'react-bootstrap';
 import SearchField from '@/components/SearchField';
-
+import Vsrtn from './yasal/mmvsrtn';
+import Frtn  from './yasal/mmfrtn';
+import  Bkrhnr from './yasal/mmbikarhnr';
 function Mmmnavbar() {
   const { items } = useCart();
   const itemCount = items.reduce((total, item) => total + item.quantity, 0);
@@ -48,8 +50,27 @@ function Mmmnavbar() {
               </NavDropdown.Item>
             </NavDropdown>
 
+
+
+
+
+
+
+              <NavDropdown title="Yasal" id="basic-nav-dropdown-2">
+              <NavDropdown.Item ><Vsrtn/></NavDropdown.Item>
+              <NavDropdown.Item><Frtn/></NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item >
+              <Bkrhnr/>
+              </NavDropdown.Item>
+            </NavDropdown>
+
+
             <Nav.Link href="/malper?tab=hakkimizda">Hakkimizda</Nav.Link>
 
+
+
+            <Nav.Link href="/malper?tab=iletisim">Çerez Politikasi</Nav.Link>
           </Nav>
        
         </Navbar.Collapse>
