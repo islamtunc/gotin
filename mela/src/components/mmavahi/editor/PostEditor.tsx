@@ -22,6 +22,7 @@ import Image from "next/image";
 import { ClipboardEvent, useRef, useState } from "react";
 import "./styles.css";
 import useMediaUpload, { Attachment } from "./useMediaUpload";
+import { useSubmitPostMutation } from './mutations';
 
 export default function PostEditor() {
   const { user } = useSession();
@@ -79,47 +80,34 @@ export default function PostEditor() {
     resetMediaUploads();
   }
 
+  const submitMutation = useSubmitPostMutation();
+
   async function onSubmit() {
     if (!productName.trim()) {
-      alert("Ürün adı gerekli.");
       return;
     }
-    const priceNum = parseFloat(price as string);
-    if (isNaN(priceNum) || priceNum <= 0) {
-      alert("Geçerli bir fiyat girin.");
-      return;
-    }
-
-    const payload = {
-      seller: user?.id || "unknown",
-      name: productName.trim(),
-      sku: sku.trim(),
-      price: priceNum,
-      sizes: sizes.split(",").map((s) => s.trim()).filter(Boolean),
-      stock: Number(stock) || 0,
-      leadTime: leadTime.trim(),
-      category: category.trim(),
-      shortDesc: shortDesc.trim(),
-      longDesc: longDescription.split("\n").map((l) => l.trim()).filter(Boolean),
-      media: attachments.map((a) => ({ name: a.file.name, type: a.file.type, size: a.file.size })),
-    };
-
+    
     try {
-      const res = await fetch("/api/posts/mmavahi", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      await submitMutation.mutateAsync({
+        content: [
+          productName,
+          sku,
+          price,
+          sizes,
+          stock,
+          leadTime,
+          category,
+          shortDesc,
+          longDescription
+        ],
+        mediaIds: attachments.map(a => a.mediaId).filter(Boolean) as string[]
       });
-      if (!res.ok) {
-        const err = await res.text();
-        throw new Error(err || "API error");
-      }
-      const data = await res.json();
-      alert("Ürün gönderildi: " + (data?.id ?? "ok"));
+      
+      // Reset form after successful submission
       resetForm();
-    } catch (err) {
-      console.error(err);
-      alert("Kaydetme sırasında hata: " + (err as Error).message);
+      
+    } catch (error) {
+      console.error('Submission failed:', error);
     }
   }
 
