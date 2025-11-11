@@ -1,14 +1,21 @@
-// Bismillahirrahmanirrahim 
-// Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
-// Suphanallah, Elhamdulillah, Allahu Ekber
-// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Bismillahirahmanirahim 
+// ElHAMDULİLLAHİRABBULALEMİN
+// Es-selatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+// SubhanAllah, Elhamdulillah, Allahu Ekber
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+// Subhanallah , Elhamdulillah, Allahu Ekber
+// Hasbunallahu ve ni'mel vekil
+// La havle ve la kuvvete illa billahil aliyyil azim
+
+
 
 import { validateRequest } from "@/auth";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { Bookmark, Home, Mail } from "lucide-react";
+import { Bookmark, Home } from "lucide-react";
 import Link from "next/link";
+import NotificationsButton from "./NotificationsButton";
 
 interface MenuBarProps {
   className?: string;
@@ -17,7 +24,16 @@ interface MenuBarProps {
 export default async function MenuBar({ className }: MenuBarProps) {
   const { user } = await validateRequest();
 
-  if (!user) return null ;
+  if (!user) return null;
+
+  const [unreadNotificationsCount, unreadMessagesCount] = await Promise.all([
+    prisma.notification.count({
+      where: {
+        recipientId: user.id,
+        read: false,
+      },
+    }),
+  ]);
 
   return (
     <div className={className}>
@@ -29,31 +45,21 @@ export default async function MenuBar({ className }: MenuBarProps) {
       >
         <Link href="/">
           <Home />
-          <span className="hidden lg:inline">Home</span>
+          <span className="hidden lg:inline">Mâl</span>
         </Link>
       </Button>
-    
+      <NotificationsButton
+        initialState={{ unreadCount: unreadNotificationsCount }}
+      />
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
-        title="Bookmarks"
+        title="Bêrika We"
         asChild
       >
         <Link href="/bookmarks">
           <Bookmark />
-          <span className="hidden lg:inline">Bookmarks</span>
-        </Link>
-      </Button>
-
-      <Button
-        variant="ghost"
-        className="flex items-center justify-start gap-3"
-        title="messages"
-        asChild
-      >
-        <Link href="/messages">
-          <Mail />
-          <span className="hidden lg:inline">Messages</span>
+          <span className="hidden lg:inline">Bêrika We</span>
         </Link>
       </Button>
     </div>

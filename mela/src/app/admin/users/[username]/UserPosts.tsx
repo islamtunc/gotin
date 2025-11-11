@@ -1,16 +1,20 @@
-// Bismillahirrahmanirrahim 
+// Bismillahirahmanirahim 
 
 "use client";
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
-import Post from "@/components/posts/Post";
-import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
+import PostsLoadingSkeleton from "@/components/mmavahi/PostsLoadingSkeleton";
+import Post from "@/components/mmavahi/Post";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
-export default function ForYouFeed() {
+interface UserPostsProps {
+  userId: string;
+}
+
+export default function UserPosts({ userId }: UserPostsProps) {
   const {
     data,
     fetchNextPage,
@@ -19,11 +23,11 @@ export default function ForYouFeed() {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["post-feed", "for-you"],
+    queryKey: ["post-feed", "user-posts", userId],
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          `/api/users/${userId}/posts`,
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
@@ -40,7 +44,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Hê kesî tiştek parvenekirî ye
+        Evî zilamî hê tiştek parvenekirî 
       </p>
     );
   }
@@ -48,7 +52,7 @@ export default function ForYouFeed() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        Pirsgirek derket 
+        An error occurred while loading posts.
       </p>
     );
   }

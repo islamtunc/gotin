@@ -62,7 +62,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
           title="Profil"
           asChild
         >
-          <Link href="/malper/profil" className="flex flex-col items-center md:flex-row md:gap-2">
+          <Link href="/login" className="flex flex-col items-center md:flex-row md:gap-2">
             <User className="h-6 w-6 text-primary" aria-hidden />
             <span className="sr-only md:not-sr-only md:inline ml-2">Profil</span>
           </Link>

@@ -1,16 +1,21 @@
-// Bismillahirrahmanirrahim 
+//Bismillahirrahmanirrahim 
 
 "use client";
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
-import Post from "@/components/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 import kyInstance from "@/lib/ky";
-import { PostsPage } from "@/lib/types";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { NotificationsPage } from "@/lib/types";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
+import { useEffect } from "react";
+import Notification from "./Notification";
 
-export default function ForYouFeed() {
+export default function Notifications() {
   const {
     data,
     fetchNextPage,
@@ -19,28 +24,46 @@ export default function ForYouFeed() {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["post-feed", "for-you"],
+    queryKey: ["notifications"],
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          "/api/notifications",
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
-        .json<PostsPage>(),
+        .json<NotificationsPage>(),
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 
-  const posts = data?.pages.flatMap((page) => page.posts) || [];
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: () => kyInstance.patch("/api/notifications/mark-as-read"),
+    onSuccess: () => {
+      queryClient.setQueryData(["unread-notification-count"], {
+        unreadCount: 0,
+      });
+    },
+    onError(error) {
+      console.error("Failed to mark notifications as read", error);
+    },
+  });
+
+  useEffect(() => {
+    mutate();
+  }, [mutate]);
+
+  const notifications = data?.pages.flatMap((page) => page.notifications) || [];
 
   if (status === "pending") {
     return <PostsLoadingSkeleton />;
   }
 
-  if (status === "success" && !posts.length && !hasNextPage) {
+  if (status === "success" && !notifications.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Hê kesî tiştek parvenekirî ye
+        Hê tiştekî tune
       </p>
     );
   }
@@ -48,7 +71,7 @@ export default function ForYouFeed() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        Pirsgirek derket 
+        An error occurred while loading notifications.
       </p>
     );
   }
@@ -58,8 +81,8 @@ export default function ForYouFeed() {
       className="space-y-5"
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
     >
-      {posts.map((post) => (
-        <Post key={post.id} post={post} />
+      {notifications.map((notification) => (
+        <Notification key={notification.id} notification={notification} />
       ))}
       {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
     </InfiniteScrollContainer>

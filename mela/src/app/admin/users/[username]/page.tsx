@@ -1,15 +1,15 @@
 // Bismillahirrahmanirrahim 
-
+// Elhamdulillahirabbulalemin
+// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
+//Suphanallah, Elhamdulillah, Allahu Ekber
+// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 
 
 import { validateRequest } from "@/auth";
-import FollowButton from "@/components/FollowButton";
-import FollowerCount from "@/components/FollowerCount";
 import Linkify from "@/components/Linkify";
-import TrendsSidebar from "@/components/TrendsSidebar";
 import UserAvatar from "@/components/UserAvatar";
 import prisma from "@/lib/prisma";
-import { FollowerInfo, getUserDataSelect, UserData } from "@/lib/types";
+import {  getUserDataSelect, UserData } from "@/lib/types";
 import { formatNumber } from "@/lib/utils";
 import { formatDate } from "date-fns";
 import { Metadata } from "next";
@@ -17,6 +17,8 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 import EditProfileButton from "./EditProfileButton";
 import UserPosts from "./UserPosts";
+import { Button } from "@/components/ui/button";
+import Home from "./mmmmm";
 
 interface PageProps {
   params: { username: string };
@@ -70,13 +72,18 @@ export default async function Page({ params: { username } }: PageProps) {
       <div className="w-full min-w-0 space-y-5">
         <UserProfile user={user} loggedInUserId={loggedInUser.id} />
         <div className="rounded-2xl bg-card p-5 shadow-sm">
-          <h2 className="text-center text-2xl font-bold">
-            {user.displayName}&apos;s posts
-          </h2>
+          {user.id === loggedInUser.id ? (
+            <Home />
+          ) : (
+            <div>
+              <h2 className="text-center text-2xl font-bold">
+                {user.displayName}&apos;ın İlanları
+              </h2>
+            </div>
+          )}
         </div>
         <UserPosts userId={user.id} />
       </div>
-      <TrendsSidebar />
     </main>
   );
 }
@@ -86,14 +93,7 @@ interface UserProfileProps {
   loggedInUserId: string;
 }
 
-async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
-  const followerInfo: FollowerInfo = {
-    followers: user._count.followers,
-    isFollowedByUser: user.followers.some(
-      ({ followerId }) => followerId === loggedInUserId,
-    ),
-  };
-
+function UserProfile({ user, loggedInUserId }: UserProfileProps) {
   return (
     <div className="h-fit w-full space-y-5 rounded-2xl bg-card p-5 shadow-sm">
       <UserAvatar
@@ -107,21 +107,19 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
             <h1 className="text-3xl font-bold">{user.displayName}</h1>
             <div className="text-muted-foreground">@{user.username}</div>
           </div>
-          <div>Endame ji {formatDate(user.createdAt, "MMM d, yyyy")} vir de</div>
+          <div>{formatDate(user.createdAt, "MMM d, yyyy")}&apos;den beri üye</div>
           <div className="flex items-center gap-3">
             <span>
-              Parvekirin:{" "}
-              <span className="font-semibold">
-                {formatNumber(user._count.posts)}
-              </span>
+              İlan Sayısı:{" "}
+              <span className="font-semibold"></span>
             </span>
-            <FollowerCount userId={user.id} initialState={followerInfo} />
           </div>
         </div>
+
         {user.id === loggedInUserId ? (
           <EditProfileButton user={user} />
         ) : (
-          <FollowButton userId={user.id} initialState={followerInfo} />
+          <Button>Mesaj Yaz</Button>
         )}
       </div>
       {user.bio && (
