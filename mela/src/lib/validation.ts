@@ -1,6 +1,5 @@
 // Bismillahirrahmanirahim
-// Elhamdulillahirrabbulalemin
-//Es selatu vesselamu ala rasulina  Muhaammedin ve ala alihi ve sahbihi ecmain
+
 
 
 import { z } from "zod";
@@ -26,11 +25,9 @@ export const loginSchema = z.object({
 export type LoginValues = z.infer<typeof loginSchema>;
 
 export const createPostSchema = z.object({
-  content: z.array(z.string()),
+  content: requiredString,
   mediaIds: z.array(z.string()).max(5, "Cannot have more than 5 attachments"),
 });
-
-export type CreatePostValues = z.infer<typeof createPostSchema>;
 
 export const updateUserProfileSchema = z.object({
   displayName: requiredString,
@@ -38,3 +35,7 @@ export const updateUserProfileSchema = z.object({
 });
 
 export type UpdateUserProfileValues = z.infer<typeof updateUserProfileSchema>;
+
+export const createCommentSchema = z.object({
+  content: requiredString,
+});

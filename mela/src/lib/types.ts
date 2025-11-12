@@ -1,8 +1,3 @@
-// Bismillahirahmanirahim
-// Elhamdulillahirabbilalemin
-// Es-selatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
-// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
-// Süphanallah, Elhamdulillah, Allahu Ekber
 import { Prisma } from "@prisma/client";
 
 export function getUserDataSelect(loggedInUserId: string) {
@@ -13,6 +8,20 @@ export function getUserDataSelect(loggedInUserId: string) {
     avatarUrl: true,
     bio: true,
     createdAt: true,
+    followers: {
+      where: {
+        followerId: loggedInUserId,
+      },
+      select: {
+        followerId: true,
+      },
+    },
+    _count: {
+      select: {
+        posts: true,
+        followers: true,
+      },
+    },
   } satisfies Prisma.UserSelect;
 }
 
@@ -26,6 +35,28 @@ export function getPostDataInclude(loggedInUserId: string) {
       select: getUserDataSelect(loggedInUserId),
     },
     attachments: true,
+    likes: {
+      where: {
+        userId: loggedInUserId,
+      },
+      select: {
+        userId: true,
+      },
+    },
+    bookmarks: {
+      where: {
+        userId: loggedInUserId,
+      },
+      select: {
+        userId: true,
+      },
+    },
+    _count: {
+      select: {
+        likes: true,
+        comments: true,
+      },
+    },
   } satisfies Prisma.PostInclude;
 }
 
@@ -38,49 +69,65 @@ export interface PostsPage {
   nextCursor: string | null;
 }
 
-// Yorum (Comment) ile ilgili tüm tip ve fonksiyonları kaldırın
+export function getCommentDataInclude(loggedInUserId: string) {
+  return {
+    user: {
+      select: getUserDataSelect(loggedInUserId),
+    },
+  } satisfies Prisma.CommentInclude;
+}
 
-// export function getCommentDataInclude(loggedInUserId: string) {
-//   return {
-//     // user alanı kaldırıldı, yorumlar anonim olacak
-//   } satisfies Prisma.CommentInclude;
-// }
+export type CommentData = Prisma.CommentGetPayload<{
+  include: ReturnType<typeof getCommentDataInclude>;
+}>;
 
-// export type CommentData = Prisma.CommentGetPayload<{
-//   include: ReturnType<typeof getCommentDataInclude>;
-// }>;
+export interface CommentsPage {
+  comments: CommentData[];
+  previousCursor: string | null;
+}
 
-// export interface CommentsPage {
-//   comments: CommentData[];
-//   previousCursor: string | null;
-// }
+export const notificationsInclude = {
+  issuer: {
+    select: {
+      username: true,
+      displayName: true,
+      avatarUrl: true,
+    },
+  },
+  post: {
+    select: {
+      content: true,
+    },
+  },
+} satisfies Prisma.NotificationInclude;
 
-// Bildirim (Notification) ile ilgili tüm tip ve fonksiyonları kaldırın
+export type NotificationData = Prisma.NotificationGetPayload<{
+  include: typeof notificationsInclude;
+}>;
 
-// export const notificationsInclude = {
-//   issuer: {
-//     select: {
-//       username: true,
-//       displayName: true,
-//       avatarUrl: true,
-//     },
-//   },
-//   post: {
-//     select: {
-//       content: true, // content artık string[] olacak
-//     },
-//   },
-// } satisfies Prisma.NotificationInclude;
+export interface NotificationsPage {
+  notifications: NotificationData[];
+  nextCursor: string | null;
+}
 
-// export type NotificationData = Prisma.NotificationGetPayload<{
-//   include: typeof notificationsInclude;
-// }>;
+export interface FollowerInfo {
+  followers: number;
+  isFollowedByUser: boolean;
+}
 
-// export interface NotificationsPage {
-//   notifications: NotificationData[];
-//   nextCursor: string | null;
-// }
+export interface LikeInfo {
+  likes: number;
+  isLikedByUser: boolean;
+}
 
 export interface BookmarkInfo {
   isBookmarkedByUser: boolean;
+}
+
+export interface NotificationCountInfo {
+  unreadCount: number;
+}
+
+export interface MessageCountInfo {
+  unreadCount: number;
 }
