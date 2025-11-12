@@ -1,11 +1,15 @@
 // Bismillahirrahmanirrahim 
-
+// Elhamdulillahirabbulalemin
+// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
+// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Subhanallah, Elhamdulillah, Allahu Ekber
+// Estağfirullah El-Azim
 "use client";
 
-import { useTheme } from "next-themes";
 import React, { useState, useEffect, type CSSProperties } from "react";
+import { useTheme } from "next-themes";
 import { StreamChat } from "stream-chat";
-import { Chat as StreamChatUI, type ChannelProps } from "stream-chat-react";
+import { Chat as StreamChatUI } from "stream-chat-react";
 import ChatChannel from "./ChatChannel";
 import ChatSidebar from "./ChatSidebar";
 import useInitializeChatClient from "./useInitializeChatClient";
