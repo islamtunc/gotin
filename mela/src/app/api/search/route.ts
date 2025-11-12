@@ -3,12 +3,12 @@ import prisma from "@/lib/prisma";
 import { getPostDataInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params: { userId } }: { params: { userId: string } },
-) {
+export async function GET(req: NextRequest) {
   try {
+    const q = req.nextUrl.searchParams.get("q") || "";
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
+
+    const searchQuery = q.split(" ").join(" & ");
 
     const pageSize = 10;
 
@@ -19,7 +19,29 @@ export async function GET(
     }
 
     const posts = await prisma.post.findMany({
-      where: { userId },
+      where: {
+        OR: [
+          {
+            content: {
+              search: searchQuery,
+            },
+          },
+          {
+            user: {
+              displayName: {
+                search: searchQuery,
+              },
+            },
+          },
+          {
+            user: {
+              username: {
+                search: searchQuery,
+              },
+            },
+          },
+        ],
+      },
       include: getPostDataInclude(user.id),
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,

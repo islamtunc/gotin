@@ -1,12 +1,13 @@
+// Bismillahirahmanirahim 
+
+
+
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
 import { getPostDataInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params: { userId } }: { params: { userId: string } },
-) {
+export async function GET(req: NextRequest) {
   try {
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
 
@@ -19,7 +20,6 @@ export async function GET(
     }
 
     const posts = await prisma.post.findMany({
-      where: { userId },
       include: getPostDataInclude(user.id),
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,
