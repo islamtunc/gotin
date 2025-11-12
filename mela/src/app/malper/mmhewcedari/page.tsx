@@ -6,133 +6,202 @@
 // Estağfirullah El-Azim
 
 "use client";
-import React from "react";
-import { Card, Row, Col, Button } from "react-bootstrap";
-import SearchField from "@/components/SearchField";
-// Fix Radix Tabs imports (use named exports Root/List/Trigger/Content)
-import {
-  Root as Tabs,
-  List as TabsList,
-  Trigger as TabsTrigger,
-  Content as TabsContent,
-} from "@radix-ui/react-tabs";
-import Image from "react-bootstrap/Image";
 
-const products = [
-  {
-    id: "p1",
-    title: "Sevgili Temalı Duvar Takvimi",
-    category: "for-you",
-    price: 110,
-    img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80",
-    desc: "Romantik illüstrasyonlar, parlak baskı, A2/A3 seçenekleri.",
-  },
-  {
-    id: "p2",
-    title: "Anneler Günü Özel Takvim",
-    category: "dayik",
-    price: 120,
-    img: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=900&q=80",
-    desc: "Kişiselleştirilebilir fotoğraf alanı, hediye paketi seçeneği.",
-  },
-  {
-    id: "p3",
-    title: "Babalar Günü Takvimi",
-    category: "bav",
-    price: 95,
-    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
-    desc: "Şık ve sade tasarım, A3 baskı.",
-  },
-  {
-    id: "p4",
-    title: "Öğretmenler Günü Takvimi",
-    category: "mamoste",
-    price: 100,
-    img: "https://images.unsplash.com/photo-1505575967457-43174fbf4f12?auto=format&fit=crop&w=900&q=80",
-    desc: "Eğitim temalı illüstrasyonlar, toplu siparişlerde indirim.",
-  },
-  {
-    id: "p5",
-    title: "Doğum Günü Temalı Takvim",
-    category: "rojbun",
-    price: 85,
-    img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=900&q=80",
-    desc: "Renkli ve eğlenceli sayfalar, sticker ile birlikte.",
-  },
-];
+import { useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useCart } from "../hooks/useCart";
 
-function renderProductGrid(tabValue: string) {
-  const list = products.filter((p) => p.category === tabValue);
+export default function Page() {
+  const { items, addToCart } = useCart();
+  const [activeTab, setActiveTab] = useState("yeni");
+
+  const products = {
+    yeni: [
+      {
+        id: 1,
+        name: "Yeni Ürün 1",
+        price: 79.99,
+        image: "https://via.placeholder.com/300x300?text=New+Product+1",
+        description: "En yeni ürünler",
+      },
+      {
+        id: 2,
+        name: "Yeni Ürün 2",
+        price: 89.99,
+        image: "https://via.placeholder.com/300x300?text=New+Product+2",
+        description: "En yeni ürünler",
+      },
+      {
+        id: 3,
+        name: "Yeni Ürün 3",
+        price: 99.99,
+        image: "https://via.placeholder.com/300x300?text=New+Product+3",
+        description: "En yeni ürünler",
+      },
+      {
+        id: 4,
+        name: "Yeni Ürün 4",
+        price: 109.99,
+        image: "https://via.placeholder.com/300x300?text=New+Product+4",
+        description: "En yeni ürünler",
+      },
+    ],
+    populer: [
+      {
+        id: 5,
+        name: "Popüler Ürün 1",
+        price: 129.99,
+        image: "https://via.placeholder.com/300x300?text=Popular+Product+1",
+        description: "En popüler ürünler",
+      },
+      {
+        id: 6,
+        name: "Popüler Ürün 2",
+        price: 139.99,
+        image: "https://via.placeholder.com/300x300?text=Popular+Product+2",
+        description: "En popüler ürünler",
+      },
+      {
+        id: 7,
+        name: "Popüler Ürün 3",
+        price: 149.99,
+        image: "https://via.placeholder.com/300x300?text=Popular+Product+3",
+        description: "En popüler ürünler",
+      },
+      {
+        id: 8,
+        name: "Popüler Ürün 4",
+        price: 159.99,
+        image: "https://via.placeholder.com/300x300?text=Popular+Product+4",
+        description: "En popüler ürünler",
+      },
+    ],
+    indirim: [
+      {
+        id: 9,
+        name: "İndirimli Ürün 1",
+        price: 49.99,
+        originalPrice: 99.99,
+        image: "https://via.placeholder.com/300x300?text=Discount+Product+1",
+        description: "50% indirim",
+      },
+      {
+        id: 10,
+        name: "İndirimli Ürün 2",
+        price: 59.99,
+        originalPrice: 119.99,
+        image: "https://via.placeholder.com/300x300?text=Discount+Product+2",
+        description: "50% indirim",
+      },
+      {
+        id: 11,
+        name: "İndirimli Ürün 3",
+        price: 69.99,
+        originalPrice: 139.99,
+        image: "https://via.placeholder.com/300x300?text=Discount+Product+3",
+        description: "50% indirim",
+      },
+      {
+        id: 12,
+        name: "İndirimli Ürün 4",
+        price: 79.99,
+        originalPrice: 159.99,
+        image: "https://via.placeholder.com/300x300?text=Discount+Product+4",
+        description: "50% indirim",
+      },
+    ],
+  };
+
+  const currentProducts = products[activeTab as keyof typeof products];
+
   return (
-    <Row className="g-4">
-      {list.map((p) => (
-        <Col key={p.id} xs={12} md={6} lg={4}>
-          <Card className="h-100">
-            <div style={{ padding: 0 }}>
-              <Image src={p.img} alt={p.title} fluid className="w-100" style={{ height: 180, objectFit: "cover" }} />
-            </div>
-            <Card.Body className="d-flex flex-column">
-              <Card.Title className="mb-1" style={{ fontSize: 18 }}>{p.title}</Card.Title>
-              <Card.Text className="text-muted small mb-3" style={{ flex: 1 }}>{p.desc}</Card.Text>
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <div className="fw-bold">{p.price} TL</div>
-                  <div className="text-muted small">Boyutlar: A3, A2</div>
-                </div>
-                <div className="d-flex flex-column">
-                  <Button variant="outline-primary" size="sm" className="mb-2" onClick={() => alert("Ürün eklendi: " + p.title)}>Sepete Ekle</Button>
-                  <Button variant="primary" size="sm" onClick={() => (window.location.href = "mailto:satis@duvartakvimi.com?subject=" + encodeURIComponent(p.title))}>Sipariş</Button>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-      {list.length === 0 && (
-        <Col>
-          <div className="p-4 text-muted">Bu kategoride ürün bulunamadı.</div>
-        </Col>
-      )}
-    </Row>
-  );
-}
+    <main className="flex-grow container mx-auto py-8">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">Özel Teklif</h1>
+        <p className="text-gray-600">
+          Sepetinizde {items.length} ürün var
+        </p>
+      </header>
 
-function page() {
-  return (
-    <main className="flex w-full min-w-0 gap-5 p-0">
-      <div className="w-full min-w-0 space-y-5">
-        <style>{`
-          /* simple tab styles to avoid layout/CSS issues */
-          .tabs-list { display:flex; gap:12px; align-items:center; border-bottom:1px solid #e6e6e6; padding:6px 0; flex-wrap:wrap; }
-          .tabs-trigger { padding:8px 12px; border-radius:8px; cursor:pointer; background:transparent; color:#333; font-weight:600; border:1px solid transparent; }
-          .tabs-trigger[aria-selected="true"] { background:#0ea5a3; color:white; border-color:#0ea5a3; }
-          .tabs-content { padding:12px 0; }
-          @media (max-width: 640px) {
-            .tabs-list { gap:8px; }
-            .tabs-trigger { padding:6px 10px; font-size:14px; }
-          }
-        `}</style>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsTrigger value="yeni">Yeni Ürünler</TabsTrigger>
+          <TabsTrigger value="populer">Popüler</TabsTrigger>
+          <TabsTrigger value="indirim">İndirimli</TabsTrigger>
+        </TabsList>
 
-        <Tabs defaultValue="">
-          <TabsList className="tabs-list" aria-label="Takvim Sekmeleri">
-            <TabsTrigger className="tabs-trigger" value="for-you">Sevgililer Günü</TabsTrigger>
-            <TabsTrigger className="tabs-trigger" value="dayik">Anneler Günü</TabsTrigger>
-            <TabsTrigger className="tabs-trigger" value="bav">Babalar Günü</TabsTrigger>
-            <TabsTrigger className="tabs-trigger" value="mamoste">Öğretmenler Günü</TabsTrigger>
-            <TabsTrigger className="tabs-trigger" value="rojbun">Doğum Günü</TabsTrigger>
-          </TabsList>
+        <TabsContent value="yeni" className="w-full">
+          <ProductGrid products={products.yeni} addToCart={addToCart} />
+        </TabsContent>
 
-          <div className="tabs-content">
-            <TabsContent value="for-you">{renderProductGrid("for-you")}</TabsContent>
-            <TabsContent value="dayik">{renderProductGrid("dayik")}</TabsContent>
-            <TabsContent value="bav">{renderProductGrid("bav")}</TabsContent>
-            <TabsContent value="mamoste">{renderProductGrid("mamoste")}</TabsContent>
-            <TabsContent value="rojbun">{renderProductGrid("rojbun")}</TabsContent>
-          </div>
-        </Tabs>
-      </div>
+        <TabsContent value="populer" className="w-full">
+          <ProductGrid products={products.populer} addToCart={addToCart} />
+        </TabsContent>
+
+        <TabsContent value="indirim" className="w-full">
+          <ProductGrid products={products.indirim} addToCart={addToCart} />
+        </TabsContent>
+      </Tabs>
     </main>
   );
 }
 
-export default page;
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  description: string;
+}
+
+interface ProductGridProps {
+  products: Product[];
+  addToCart: (item: any) => void;
+}
+
+function ProductGrid({ products, addToCart }: ProductGridProps) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <div
+          key={product.id}
+          className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+        >
+          <div className="relative h-48 w-full">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover"
+            />
+            {product.originalPrice && (
+              <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm">
+                -50%
+              </div>
+            )}
+          </div>
+          <div className="p-4">
+            <h2 className="font-semibold text-lg mb-2">{product.name}</h2>
+            <p className="text-sm text-gray-600 mb-3">{product.description}</p>
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <span className="text-xl font-bold text-green-600">
+                  {product.price} TL
+                </span>
+                {product.originalPrice && (
+                  <span className="text-sm text-gray-500 line-through ml-2">
+                    {product.originalPrice} TL
+                  </span>
+                )}
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
