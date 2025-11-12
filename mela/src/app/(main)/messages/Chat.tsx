@@ -6,7 +6,7 @@
 // Estağfirullah El-Azim
 "use client";
 
-import React, { useState, useEffect, type CSSProperties } from "react";
+import React, { useState,  type CSSProperties } from "react";
 import { useTheme } from "next-themes";
 import { StreamChat } from "stream-chat";
 import { Chat as StreamChatUI } from "stream-chat-react";
