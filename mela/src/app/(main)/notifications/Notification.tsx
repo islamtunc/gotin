@@ -1,11 +1,17 @@
 //Bismillahirahmanirahim 
+// Elhamdulillahirabbulalemin
+// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
+// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Subhanallah, Elhamdulillah, Allahu Ekber
+// Estağfirullah El-Azim
+
 
 
 
 import UserAvatar from "@/components/UserAvatar";
+import type { Notification } from "@prisma/client";
 import { NotificationData } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { NotificationType } from "@prisma/client";
 import { Heart, MessageCircle, User2 } from "lucide-react";
 import Link from "next/link";
 
