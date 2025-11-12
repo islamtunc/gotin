@@ -90,6 +90,7 @@ enum MediaType {
   IMAGE
   VIDEO
 }
+
 //SELAMÎ DÛZGÛZ
 model Comment {
   id      String @id @default(cuid())
