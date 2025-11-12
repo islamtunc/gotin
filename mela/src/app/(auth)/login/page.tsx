@@ -40,7 +40,7 @@ export default function Page() {
             <LoginForm />
    <Link href="/signup" className="block text-center hover:underline">
               
-        KAYDOL
+        Hesabin Yok mu ? Kaydol
             </Link>
 
   
