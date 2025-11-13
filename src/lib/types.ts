@@ -1,10 +1,4 @@
-//Bismillahirrahmanirahim 
-// Elhamdulillahirabbulalemin
-// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
-// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
-// Subhanallah, Elhamdulillah, Allahu Ekber
-// Estağfirullah El-Azim
-//LA ILAHE ILLALLAH MUHAMMEDEN RESULULLAH
+import { Prisma } from "@prisma/client";
 
 export function getUserDataSelect(loggedInUserId: string) {
   return {
@@ -28,8 +22,12 @@ export function getUserDataSelect(loggedInUserId: string) {
         followers: true,
       },
     },
-  };
+  } satisfies Prisma.UserSelect;
 }
+
+export type UserData = Prisma.UserGetPayload<{
+  select: ReturnType<typeof getUserDataSelect>;
+}>;
 
 export function getPostDataInclude(loggedInUserId: string) {
   return {
@@ -59,7 +57,16 @@ export function getPostDataInclude(loggedInUserId: string) {
         comments: true,
       },
     },
-  };
+  } satisfies Prisma.PostInclude;
+}
+
+export type PostData = Prisma.PostGetPayload<{
+  include: ReturnType<typeof getPostDataInclude>;
+}>;
+
+export interface PostsPage {
+  posts: PostData[];
+  nextCursor: string | null;
 }
 
 export function getCommentDataInclude(loggedInUserId: string) {
@@ -67,71 +74,36 @@ export function getCommentDataInclude(loggedInUserId: string) {
     user: {
       select: getUserDataSelect(loggedInUserId),
     },
-  };
+  } satisfies Prisma.CommentInclude;
 }
 
-export type UserData = {
-  id: string;
-  username: string;
-  displayName?: string | null;
-  avatarUrl?: string | null;
-  bio?: string | null;
-  createdAt: string | Date;
-  followers?: { followerId: string }[];
-  _count?: {
-    posts?: number;
-    followers?: number;
-  };
-};
-
-export type PostData = {
-  id: string | number;
-  content?: string | null;
-  user?: Partial<UserData>;
-  attachments?: any[];
-  likes?: { userId: string }[];
-  bookmarks?: { userId: string }[];
-  _count?: {
-    likes?: number;
-    comments?: number;
-  };
-  [k: string]: any;
-};
-
-export type CommentData = {
-  id: string | number;
-  content?: string | null;
-  user?: Partial<UserData>;
-  createdAt?: string | Date;
-  [k: string]: any;
-};
-
-export type NotificationData = {
-  id: string | number;
-  type?: string | null;
-  issuer?: {
-    username?: string | null;
-    displayName?: string | null;
-    avatarUrl?: string | null;
-  } | null;
-  post?: {
-    id?: string | number;
-    content?: string | null;
-  } | null;
-  isRead?: boolean;
-  createdAt?: string | Date;
-  [k: string]: any;
-};
-
-export interface PostsPage {
-  posts: PostData[];
-  nextCursor: string | null;
-}
+export type CommentData = Prisma.CommentGetPayload<{
+  include: ReturnType<typeof getCommentDataInclude>;
+}>;
 
 export interface CommentsPage {
   comments: CommentData[];
   previousCursor: string | null;
 }
+
+export const notificationsInclude = {
+  issuer: {
+    select: {
+      username: true,
+      displayName: true,
+      avatarUrl: true,
+    },
+  },
+  post: {
+    select: {
+      content: true,
+    },
+  },
+} satisfies Prisma.NotificationInclude;
+
+export type NotificationData = Prisma.NotificationGetPayload<{
+  include: typeof notificationsInclude;
+}>;
 
 export interface NotificationsPage {
   notifications: NotificationData[];
@@ -152,10 +124,10 @@ export interface BookmarkInfo {
   isBookmarkedByUser: boolean;
 }
 
-export interface MessageCountInfo {
+export interface NotificationCountInfo {
   unreadCount: number;
 }
 
-export interface NotificationCountInfo {
+export interface MessageCountInfo {
   unreadCount: number;
 }

@@ -1,9 +1,4 @@
 // Bismillahirrahmanirrahim 
-// Elhamdulillahirabbulalemin
-// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
-// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
-// Subhanallah, Elhamdulillah, Allahu Ekber
-// Estağfirullah El-Azim
 
 
 
@@ -22,15 +17,14 @@ interface MenuBarProps {
 
 export default async function MenuBar({ className }: MenuBarProps) {
   const { user } = await validateRequest();
+
   if (!user) return null;
 
-  // If Prisma client types don't yet include the Notification model, cast to any temporarily.
-  // Recommended: regenerate Prisma Client (see commands below) and remove `as any`.
   const [unreadNotificationsCount, unreadMessagesCount] = await Promise.all([
-    (prisma as any).notification.count({
+    prisma.notification.count({
       where: {
         recipientId: user.id,
-        isRead: false, // use schema field name
+        read: false,
       },
     }),
     (await streamServerClient.getUnreadCount(user.id)).total_unread_count,

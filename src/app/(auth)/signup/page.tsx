@@ -1,11 +1,5 @@
 // Bismillahirahmanirahim
-// Elhamdulillahirrabbulalemin
-// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
-// Subhanallah, Elhamdulillah, Allahu Ekber
-// La ilahe illallah Muhameddur resulullah
-// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
-// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
-// Xeyni Allah tu Xweda tune û Hz. Muhammed (s.a.v) resûlê wî ye  
+
 
 
 import signupImage from "@/assets/signup-image.jpg";
@@ -15,7 +9,7 @@ import Link from "next/link";
 import SignUpForm from "./SignUpForm";
 
 export const metadata: Metadata = {
-  title: "Üye Ol",
+  title: "Bibe Endam",
 };
 
 export default function Page() {
@@ -24,13 +18,15 @@ export default function Page() {
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
         <div className="w-full space-y-10 overflow-y-auto p-10 md:w-1/2">
           <div className="space-y-1 text-center">
-            <h1 className="text-3xl font-bold">PatikaiZ e Uye Ol</h1>
-
+            <h1 className="text-3xl font-bold">Bernameya Lebê re bibe endam</h1>
+            <p className="text-muted-foreground">
+              "Sernameya namê namê <span className="italic">Allah</span>, Bê nameye namê kêmî wî Wallah". Dîyarîyek ji ruhê Xanî ,Feqî û Mela re...
+            </p>
           </div>
           <div className="space-y-5">
             <SignUpForm />
             <Link href="/login" className="block text-center hover:underline">
-              Already have an account? Login
+              Jixwe tu endamî? Têketin 
             </Link>
           </div>
         </div>
