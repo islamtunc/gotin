@@ -3,7 +3,7 @@
 // Esselâtu vesselâmü alâ seyyidinâ Muhammedin ve alâ âlihî ve sahbihî ecmaîn
 // SuphanAllah ve Bihamdihi 
 // Allah u Ekber velîllahîlhamd
-// La ilahe illAllah 
+// La ilahe illAllah Muhamedur Rasulullah
 import { Prisma } from "@prisma/client";
 
 export function getUserDataSelect(loggedInUserId: string) {
