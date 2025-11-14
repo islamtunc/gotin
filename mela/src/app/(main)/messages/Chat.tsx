@@ -56,13 +56,13 @@ export default function Chat() {
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={sidebarStyle}>
+    <div >
+      <div >
         <ChatSidebar open={false} onClose={function (): void {
           throw new Error("Function not implemented.");
         } } />
       </div>
-      <div style={chatContentStyle}>
+      <div >
         <StreamChat client={chatClient}>
           <ChatChannel open={false} openSidebar={function (): void {
             throw new Error("Function not implemented.");
