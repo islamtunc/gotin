@@ -1,3 +1,4 @@
+// Euzubillahimineşşeytanirecim
 // Bismillahirahmanirahim
 // Elhamdulillahirrabbulalemin
 // Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
