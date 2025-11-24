@@ -7,74 +7,94 @@
 // La ilahe illallah, Muhammedur Resulullah
 
 import React from 'react';
+
 export default async function Page() {
+  return (
+    <div>
+      {/* Banner */}
+      <img src="/mlg.jpeg" alt="Patikaiz Logo" className="w-full" />
 
-
-  return(
-<div>
-  <img src="/mlg.jpeg" alt="Patikaiz Logo" width={"%100"} />
-       <>
-   
       <main className="flex-grow container mx-auto py-8">
-        {/* Dashboard Grid */}
+        {/* Title */}
+        <h1 className="text-4xl font-bold text-center mb-10">
+          Hediyelik Duvar Takvimleri
+        </h1>
+
+        {/* Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1: Build Your Website */}
+
+          {/* Card 1: Kişiye Özel Duvar Takvimi */}
           <div className="bg-white shadow-lg rounded-lg p-6">
             <img
-              src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80"
-              alt="Build Your Website"
-              className="w-full h-32 object-cover rounded-t-lg mb-4"
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
+              alt="Kişiye Özel Takvim"
+              className="w-full h-40 object-cover rounded-t-lg mb-4"
             />
-            <h3 className="text-xl font-bold mb-2">Build Your Website</h3>
-            <p className="text-gray-600">Build your website with our easy-to-use templates.</p>
-            <a href="/malper/mmavahi/mmmweb" className="text-blue-500 hover:underline mt-4 block">
-              View Templates and Start Building
+            <h3 className="text-xl font-bold mb-2">Kişiye Özel Takvim</h3>
+            <p className="text-gray-600">
+              Fotoğraflarınızla tamamen size özel duvar takviminizi oluşturun.
+            </p>
+            <a
+              href="/malper/takvim/ozel"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Hemen Oluştur
             </a>
           </div>
 
-          {/* Card 2: Mobile Apps */}
+          {/* Card 2: Minimalist Takvim Tasarımları */}
           <div className="bg-white shadow-lg rounded-lg p-6">
             <img
-              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80"
-              alt="Mobile Apps"
-              className="w-full h-32 object-cover rounded-t-lg mb-4"
+              src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80"
+              alt="Minimal Takvim"
+              className="w-full h-40 object-cover rounded-t-lg mb-4"
             />
-            <h3 className="text-xl font-bold mb-2">Have Your Mobile App </h3>
-            <p className="text-gray-600">See how easy it is to build mobile apps with our platform.</p>
-            <a href="/malper/mmavahi/mmmobile" className="text-blue-500 hover:underline mt-4 block">
-              Take a Look at Our Mobile App Solutions
+            <h3 className="text-xl font-bold mb-2">Minimalist Takvim</h3>
+            <p className="text-gray-600">
+              Modern ve sade bir görünüm isteyenler için özel minimalist koleksiyon.
+            </p>
+            <a
+              href="/malper/takvim/minimal"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Koleksiyonu Gör
             </a>
           </div>
-      
-          {/* Card 3: AI Solutions */}
+
+          {/* Card 3: Kurdî Temalı Takvim */}
           <div className="bg-white shadow-lg rounded-lg p-6">
             <img
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-              alt="AI Solutions"
-              className="w-full h-32 object-cover rounded-t-lg mb-4"
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80"
+              alt="Kurdî Takvim"
+              className="w-full h-40 object-cover rounded-t-lg mb-4"
             />
-            <h3 className="text-xl font-bold mb-2">Get ai solutions</h3>
-            <p className="text-gray-600"> Get AI solutions tailored to your needs.</p>
-            <a href="/malper/mmavahi/mmai" className="text-blue-500 hover:underline mt-4 block">
-              Explore Our AI Solutions
+            <h3 className="text-xl font-bold mb-2">Kurdî Temalı Takvim</h3>
+            <p className="text-gray-600">
+              Kürt kültürünü sevenler için eşsiz desen ve fotoğraflarla hazırlanan özel takvimler.
+            </p>
+            <a
+              href="/malper/takvim/kurdi"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Takvimlere Bak
             </a>
           </div>
         </div>
-      
-        {/* Recent Updates Section */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4">Recent Updates</h2>
-          <ul className="list-disc pl-5 text-gray-700">
-            <li>E commerce app is being prepared to install play store.</li>
-            <li>New features added to the website builder.</li>
-            <li>Mobile app development course launched.</li>
-            <li>The special Kurdish  AI asisstan Feqi is <a href='https:feqi.vercel.app'>here</a>.</li>
+
+        {/* Recent Updates */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-bold mb-4">Son Güncellemeler</h2>
+          <ul className="list-disc pl-5 text-gray-700 space-y-1">
+            <li>2025 koleksiyonuna yeni "Premium Duvar Takvimleri" eklendi.</li>
+            <li>Fotoğraf yükleme editörü geliştirildi.</li>
+            <li>Tüm takvimlerde hızlı kargo kampanyası başladı.</li>
+            <li>
+              Kürtçe akıllı asistanımız <a className="text-blue-600" href="https://feqi.vercel.app">Feqî</a> takvim tasarımı önerileri yapıyor.
+            </li>
           </ul>
         </div>
       </main>
-    </>
-</div>
-
+    </div>
   );
 }
 
