@@ -16,8 +16,8 @@ import { extractRouterConfig } from "uploadthing/server";
 import { fileRouter } from "./api/uploadthing/core";
 import "./globals.css";
 import ReactQueryProvider from "./ReactQueryProvider";
-import AssistantRoot from "./malper/assistant";
 
+import Alert from 'react-bootstrap';
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -29,44 +29,56 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Mimarid",
-    default: "Mimarid İç Mimarlık",
+    template: "%s | Patika",
+    default: "Patika - Duvar Takvimi",
   },
-  description: "Mimarid: Yaşam alanlarınızı estetik ve fonksiyonel çözümlerle yeniden tasarlayan iç mimarlık ofisi.",
+  description:
+    "Patika - Kişiye özel ve temalı duvar takvimleri. Hızlı üretim, farklı kağıt seçenekleri, toplu sipariş indirimleri. A3 / A2 boyutları.",
   keywords: [
-    "iç mimarlık",
-    "mimari tasarım",
-    "dekorasyon",
-    "yaşam alanları",
-    "ofis tasarımı",
-    "ev dekorasyonu",
-    "modern tasarım",
-    "fonksiyonel çözümler",
-    "estetik mekanlar",
-    "Mimarid",
+    "duvar takvimi",
+    "hediyelik takvim",
+    "patikaiz",
+    "takvim baskı",
+    "duvar takvimi 2026",
+    "sanat takvimi",
+    "yapraklı günlük takvim",
+    "estetik  duvar takvimi",
+    "dekoratif duvar takvimi",
+    "koleksiyon takvimi",
+    "sevgiliye anlamlı hediye"
+  
   ],
-  authors: [{ name: "Mimarid İç Mimarlık", url: "https://mimarid.com" }],
   openGraph: {
-    title: "Mimarid İç Mimarlık",
+    title: "Patika - Duvar Takvimi",
     description:
-      "Mimarid: Yaşam alanlarınızı estetik ve fonksiyonel çözümlerle yeniden tasarlayan iç mimarlık ofisi.",
-    url: "https://mimarid.com",
-    siteName: "Mimarid",
+      "Kişiye özel ve temalı duvar takvimleri. Hızlı üretim, farklı kağıt seçenekleri, toplu sipariş indirimleri.",
+    url: "https://patikaiz.com",
+    siteName: "Patika",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://patikaiz.com/og-image.jpg",
         width: 1200,
-        height: 630,   },
+        height: 630,
+        alt: "Patika Duvar Takvimi Örnek",
+      },
     ],
-    locale: "tr_TR",
     type: "website",
+    locale: "tr_TR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mimarid İç Mimarlık",
+    title: "Patika - Duvar Takvimi",
     description:
-      "Mimarid: Yaşam alanlarınızı estetik ve fonksiyonel çözümlerle yeniden tasarlayan iç mimarlık ofisi.",
-    images: ["/og-image.jpg"],
+      " Hediyelik ve temalı duvar takvimleri. Hızlı üretim, farklı kağıt seçenekleri.",
+    images: ["https://patikaiz.com/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+  },
+  alternates: {
+    canonical: "https://www.patikaiz.com",
   },
 };
 
@@ -75,6 +87,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // basic structured data for site (replace domain / logos dynamically)
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://patikaiz.com",
+    "name": "Patika - Duvar Takvimi",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Yekazad Software Center",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://patikaiz.com/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://patikaiz.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <html lang="tr">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -89,8 +122,15 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </ReactQueryProvider>
+
+        {/* JSON-LD structured data */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
+        />
+
         <Toaster />
-        <Footer />
       </body>
     </html>
   );
@@ -99,9 +139,7 @@ export default function RootLayout({
 export function Footer() {
   return (
     <footer className="flex items-center justify-center w-full h-16 bg-gray-800 text-white">
-      <p className="text-sm">
-        © {new Date().getFullYear()} Mimarid İç Mimarlık
-      </p>
+      <p className="text-sm">© {new Date().getFullYear()} Yekazad Software Center</p>
     </footer>
   );
 }
