@@ -47,10 +47,7 @@ export default function MmmPost({ post }: PostProps) {
          Sepete Ekle         
         </Button>
         </Card>
-
-         <MessageSquare className="mr-2 h-4 w-4" />
-          {post.commentsCount} Yorum
-      </Linkify>
+</Linkify>
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
         <div className="flex items-center gap-5">
