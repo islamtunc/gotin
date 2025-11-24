@@ -1,55 +1,42 @@
 // Bismillahirrahmanirahim
-// Elhamdulillahirabbulalemin
-// Esselatu vesselamu ala rasulillah ve ala alihi ve sahbihi ecmain
-// Allahumme salli ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
-// Allah u Ekber, Allahu Ekber, Allahu Ekber
-// La ilahe illallah, Allahu Ekber, Allahu Ekber, ve lillahi'l-hamd
+
 
 
 /** @type {import('next').NextConfig} */
-const vebijêrkênNextê = {
-  // Taybetmendiyên nû
+const nextConfig = {
+  
+  
+  
+  reactStrictMode: true,
+	
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
   experimental: {
-    // Kiryarên serverê
-    serverActions: {
-      bodySizeLimit: '2mb'
-    }
+    staleTimes: {
+      dynamic: 30,
+    },
   },
-  
-  // Mîhengên wêneyan
+  serverExternalPackages: ["@node-rs/argon2"],
   images: {
-    domains: ['localhost'],
-    // Tenê formatên ku Next.js destûr dide
-    formats: ['image/avif', 'image/webp']
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "utfs.io",
+        pathname: `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/*`,
+      },
+    ],
   },
-  
-  // Mîhengên TypeScriptê
-  typescript: {
-    // Xeletiyên avakirinê nîşan bide
-    ignoreBuildErrors: false
-  },
-
-  // Mîhengên webpack
-  webpack: (config) => {
-    config.experiments = {
-      ...config.experiments,
-      topLevelAwait: true,
-    }
-    return config
-  },
-
-  // Rewrites
-  async rewrites() {
+  rewrites: () => {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://www.patikaiz.com/api/:path*'
-      }
-    ]
-  }
-}
+        source: "/hashtag/:tag",
+        destination: "/search?q=%23:tag",
+      },
+    ];
+  },
+};
 
-export default vebijêrkênNextê
-
-
-
+export default nextConfig;

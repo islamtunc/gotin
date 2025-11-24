@@ -1,17 +1,11 @@
 // Bismillahirahmanirahim
-// Elhamdulillahi Rabbil Alamin
-// Essalatu vesselamu ala Resulina Muhammedin
-// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Elhamdulillahirrabbulalemin
+// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
 // Subhanallah, Elhamdulillah, Allahu Ekber
-// La ilahe illallah, Muhammedur Resulullah
-// La havle vela kuvvete illa billah
-// Astagfirullah al azim
-// La ilahe illallah, wahdahu la sharika lahu, lahul mulku wa lahul hamdu yuhyi wa yumit wa huwa ala kulli shay'in qadir
-// Seyyidena ve nebiyyena Muhammedun abduhu ve rasuluhu
-// Subhanallahi wa bihamdihi, subhanallahil azim
-// ELHAMDULILLAHI RABBIL 'ALAMIN
-// Allah U Ekber ve lillahi'l-hamd
-
+// La ilahe illallah 
+// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Xeyni Allah tu Xweda tune
 "use server";
 
 import { lucia, validateRequest } from "@/auth";
@@ -35,5 +29,5 @@ export async function logout() {
     sessionCookie.attributes,
   );
 
-  return redirect("/malper");
+  return redirect("/login");
 }

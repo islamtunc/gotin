@@ -1,17 +1,11 @@
 // Bismillahirahmanirahim
-// Elhamdulillahi Rabbil Alamin
-// Essalatu vesselamu ala Resulina Muhammedin
-// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Elhamdulillahirrabbulalemin
+// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
 // Subhanallah, Elhamdulillah, Allahu Ekber
-// La ilahe illallah, Muhammedur Resulullah
-// La havle vela kuvvete illa billah
-// Astagfirullah al azim
-// La ilahe illallah, wahdahu la sharika lahu, lahul mulku wa lahul hamdu yuhyi wa yumit wa huwa ala kulli shay'in qadir
-// Seyyidena ve nebiyyena Muhammedun abduhu ve rasuluhu
-// Subhanallahi wa bihamdihi, subhanallahil azim
-// ELHAMDULILLAHI RABBIL 'ALAMIN
-// Allah U Ekber ve lillahi'l-hamd
-
+// La ilahe illallah 
+// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
+// Bila Allah Azze ve Celle me ji sunneta Resulullah Muhammed (s.a.v) neqetine, amin rabbal alemin 
+// Xeyni Allah tu Xweda tune
 "use client";
 
 import LoadingButton from "@/components/LoadingButton";
@@ -62,7 +56,7 @@ export default function SignUpForm() {
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Kullanici Adi</FormLabel>
+              <FormLabel>User Name</FormLabel>
               <FormControl>
                 <Input placeholder="Username" {...field} />
               </FormControl>
@@ -97,7 +91,7 @@ export default function SignUpForm() {
           )}
         />
         <LoadingButton loading={isPending} type="submit" className="w-full">
-          Bibe Endam 
+          Sign Up
         </LoadingButton>
       </form>
     </Form>
