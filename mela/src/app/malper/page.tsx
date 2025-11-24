@@ -1,149 +1,90 @@
-// Bismillahirahmanirahim
-// Elhamdulillahirrabbulalemin
-// Esselatu vesselamu ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
+// Bismillahirrahmanirahim
 // Elhamdulillahirabbulalemin
 // Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 // Subhanallah, Elhamdulillah, Allahu Ekber
 // Estağfirullah El-Azim
 // La ilahe illallah, Muhammedur Resulullah
-import React from 'react'
-import ContactForm from './components/mmfrm'
 
-function page() {
-  return (
-    <main className="flex-grow container mx-auto py-8">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold">Takvim Satışı </h1>
-        <p className="text-gray-600 mt-2">
-          Yıllık duvar ve masa takvimleri. Kaliteli baskı, farklı boyut ve tasarım seçenekleri.
-        </p>
-      </header>
+import { requireRole } from "@/lib/middlew";
 
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
-            alt="Duvar Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Duvar Takvimi 2026</h3>
-          <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/mmavahi" className="text-blue-600 mt-4 inline-block">
-            Daha Fazla
-          </a>
-        </article>
- <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
-            alt="Duvar Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Sevgililer Gunu Temali</h3>
-          <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/mmhewcedari" className="text-blue-600 mt-4 inline-block">
-            Sipariş ver
-          </a>
-        </article>
+export default async function Page() {
+  const user = await requireRole(["USER", "ADMIN"]);
 
-         <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
-            alt="Duvar Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Kadinlar Gunu Temali</h3>
-          <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/firotana-teqwima/siparis?urun=duvar" className="text-blue-600 mt-4 inline-block">
-            Sipariş ver
-          </a>
-        </article>
-        <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=400&q=80"
-            alt="Masa Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Anneler Gunu Temali</h3>
-          <p className="text-gray-600 mt-2">Kompakt, spiral ciltli, ofisler için ideal.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺45</p>
-          <a href="/malper/firotana-teqwima/siparis?urun=masa" className="text-blue-600 mt-4 inline-block">
-            Sipariş ver
-          </a>
-        </article>
+  if (user) return <h1>Redirecting...</h1>;
 
-        <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1505575967457-43174fbf4f12?auto=format&fit=crop&w=400&q=80"
-            alt="Kişiye Özel Takvim"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Babalar Gunu Temali</h3>
-          <p className="text-gray-600 mt-2">Fotoğraf ve not ekleyerek tamamen size özel takvim.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺180</p>
-          <a href="/malper/firotana-teqwima/siparis?urun=ozel" className="text-blue-600 mt-4 inline-block">
-            Daha Fazla
-          </a>
-        </article>
-      </section>
+  return(
+<div>
+  <img src="/mlg.jpeg" alt="Patikaiz Logo" width={"%100"} />
+       <>
+   
+      <main className="flex-grow container mx-auto py-8">
+        {/* Dashboard Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Card 1: Build Your Website */}
+          <div className="bg-white shadow-lg rounded-lg p-6">
+            <img
+              src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80"
+              alt="Build Your Website"
+              className="w-full h-32 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Build Your Website</h3>
+            <p className="text-gray-600">Build your website with our easy-to-use templates.</p>
+            <a href="/malper/mmavahi/mmmweb" className="text-blue-500 hover:underline mt-4 block">
+              View Templates and Start Building
+            </a>
+          </div>
 
-       <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
-            alt="Duvar Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Ogretmenler Gunu temali</h3>
-          <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/firotana-teqwima/siparis?urun=duvar" className="text-blue-600 mt-4 inline-block">
-            Sipariş ver
-          </a>
-        </article>
-
- <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
-            alt="Duvar Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">Dogum gunu temali</h3>
-          <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/firotana-teqwima/siparis?urun=duvar" className="text-blue-600 mt-4 inline-block">
-            Sipariş ver
-          </a>
-        </article>
-
-         <article className="bg-white shadow rounded-lg p-6">
-          <img
-            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
-            alt="Duvar Takvimi"
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold">  Hediye Kutusu</h3>
-          <p className="text-gray-600 mt-2">A2 boyut, kaliteli kağıt, özel tasarım seçenekleri.</p>
-          <p className="mt-2 font-bold">Fiyat: ₺120</p>
-          <a href="/malper/mmkedkar" className="text-blue-600 mt-4 inline-block">
-            Daha Fazla
-          </a>
-        </article>
-      <section className="mt-10 bg-white shadow rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-3">Bilgi & Teslimat</h2>
-        <ul className="list-disc pl-5 text-gray-700">
-          <li>Üretim süresi: 3-7 iş günü.</li>
-          <li>Kargo: Türkiye içi 2-4 iş günü.</li>
-          <li>Toplu siparişlerde indirim uygulanır — lütfen iletişime geçin.</li>
-        </ul>
-
-        <div id="contact" className="mt-6">
+          {/* Card 2: Mobile Apps */}
+          <div className="bg-white shadow-lg rounded-lg p-6">
+            <img
+              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80"
+              alt="Mobile Apps"
+              className="w-full h-32 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Have Your Mobile App </h3>
+            <p className="text-gray-600">See how easy it is to build mobile apps with our platform.</p>
+            <a href="/malper/mmavahi/mmmobile" className="text-blue-500 hover:underline mt-4 block">
+              Take a Look at Our Mobile App Solutions
+            </a>
+          </div>
+      
+          {/* Card 3: AI Solutions */}
+          <div className="bg-white shadow-lg rounded-lg p-6">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+              alt="AI Solutions"
+              className="w-full h-32 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Get ai solutions</h3>
+            <p className="text-gray-600"> Get AI solutions tailored to your needs.</p>
+            <a href="/malper/mmavahi/mmai" className="text-blue-500 hover:underline mt-4 block">
+              Explore Our AI Solutions
+            </a>
+          </div>
         </div>
-      </section>
-    </main>
-  )
+      
+        {/* Recent Updates Section */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Recent Updates</h2>
+          <ul className="list-disc pl-5 text-gray-700">
+            <li>E commerce app is being prepared to install play store.</li>
+            <li>New features added to the website builder.</li>
+            <li>Mobile app development course launched.</li>
+            <li>The special Kurdish  AI asisstan Feqi is <a href='https:feqi.vercel.app'>here</a>.</li>
+          </ul>
+        </div>
+      </main>
+    </>
+</div>
+
+  );
 }
 
-export default page
+
+// Subhanallah, Elhamdulillah, Allahu Ekber, 
+// La ilahe illallah, Muhammeden Abduhu ve Resuluhu
+// La havle vela kuvvete illa billahil aliyyil azim
+// Estağfirulllah El-Azim
+// Elhmadulillah Elhamdulillah Elhamdulillah
+// Elhamdulillahirabbulalemin

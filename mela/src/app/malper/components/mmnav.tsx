@@ -10,7 +10,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useCart } from '../hooks/useCart';
 import { Modal } from "./mmodel"
 import { NavDropdown } from 'react-bootstrap';
 import SearchField from '@/components/SearchField';
@@ -18,8 +17,6 @@ import Vsrtn from './yasal/mmvsrtn';
 import Frtn  from './yasal/mmfrtn';
 import  Bkrhnr from './yasal/mmbikarhnr';
 function Mmmnavbar() {
-  const { items } = useCart();
-  const itemCount = items.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -42,7 +39,7 @@ function Mmmnavbar() {
             </NavDropdown>
 
             <NavDropdown title="Hediye Kutusu" id="basic-nav-dropdown-2">
-              <NavDropdown.Item href="/malper?/tab=dunya-kuresi">Dunya Kuresi</NavDropdown.Item>
+              <NavDropdown.Item href="/malper?/tab=dunya-kuresi">Dnya Kuresi</NavDropdown.Item>
               <NavDropdown.Item href="/malper?tab=kum-saati">Kum Saati</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/malper?tab=defter-kalem">
@@ -73,3 +70,10 @@ function Mmmnavbar() {
 }
 
 export default Mmmnavbar;
+// Bismillahirrahmanirahim
+// Ve salatu ve selamu ala resulina Muhammedin ve alihi ve sahbihi ecmain
+// Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
+// Subhanallah, Elhamdulillah, Allahu Ekber
+// Estağfirullah El-Azim
+// La ilahe illallah, Muhammedur Resulullah
+// Elhamdulillahirabbulalemin
