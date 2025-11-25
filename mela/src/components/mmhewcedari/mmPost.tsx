@@ -14,8 +14,8 @@ import { MessageSquare } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Linkify from "../Linkify";
-import UserAvatar from "../UserAvatar";
-
+import { Card } from "react-bootstrap";
+import { Button } from "../ui/button";
 
 interface PostProps {
   post: PostData;
@@ -31,41 +31,36 @@ export default function MmmPost({ post }: PostProps) {
           </div>
         </div>
       </div>
-      <Linkify>
-        <div className="space-y-3">
-          {Array.isArray(post.content)
-            ? post.content.map((line: string, i: number) => {
-                if (i === 0)
-                  return (
-                    <h2 key={i} className="text-xl font-bold mb-1">
-                      {line}
-                    </h2>
-                  );
-                if (i === 1)
-                  return (
-                    <div key={i} className="text-green-700 font-semibold mb-2">
-                      {line}
-                    </div>
-                  );
-                return (
-                  <p key={i} className="text-base whitespace-pre-line">
-                    {line}
-                  </p>
-                );
-              })
-            : (
-              <p className="text-base whitespace-pre-line">{post.content}</p>
-            )}
-        </div>
-      </Linkify>
+     
       {!!post.attachments.length && (
         <MediaPreviews attachments={post.attachments} />
       )}
+
+       <Linkify>
+        <Card>
+          <Card.Title>{post.content[0]}</Card.Title>
+        <Card.Body>
+          <Card.Text>{post.content[1]}</Card.Text>
+        {post.content[2] && (
+          <Card.Text>{post.content[2]}</Card.Text>
+        )}
+        </Card.Body>
+        
+
+        <Button variant="outline" className="w-full">
+         Sepete Ekle         
+        </Button>
+        </Card>
+</Linkify>
+   {!!post.attachments.length && (
+        <MediaPreviews attachments={post.attachments} />
+      )}
+
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
         <div className="flex items-center gap-5">
           <Link
-            href={`/malper/mmavahi/posts/${post.id}`}
+            href={`/malper/mmhewcedari/posts/${post.id}`}
             className="block text-sm text-muted-foreground hover:underline"
             suppressHydrationWarning
           >
