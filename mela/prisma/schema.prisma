@@ -116,7 +116,7 @@ model Media {
   mmhewcedariId String?
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
   mmkedkarId    String?
-  Mmselik      Mmselik?    @relation(fields: [mmkargehId], references: [id])
+  Mmselik      Mmselik?    @relation(fields: [mmselikId], references: [id])
   mmselikId    String?
  
   @@map("post_media")
@@ -137,7 +137,7 @@ model Bookmark {
   mmavahiId     String?
   Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
   mmhewcedariId String?
-  Mmselik      Mmselik?    @relation(fields: [mmkargehId], references: [id])
+  Mmselik      Mmselik?    @relation(fields: [mmselikId], references: [id])
   mmselikId    String?
   
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
