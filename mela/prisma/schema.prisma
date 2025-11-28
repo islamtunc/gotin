@@ -32,7 +32,6 @@ model User {
 
   createdAt   DateTime      @default(now())
   Mmhewcedari Mmhewcedari[]
-  Mmkinc      Mmkinc[]
   Mmkedkar    Mmkedkar[]
   Mmselik     Mmselik[]
   @@map("users")
