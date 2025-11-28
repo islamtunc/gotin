@@ -144,7 +144,15 @@ model Bookmark {
   mmkedkarId    String?
  
 }
-
+model Product {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  price     Float
+  imageUrl  String?
+  mmselikId   String   @db.ObjectId
+  mmselik     Mmselik  @relation(fields: [selikId], references: [id])
+  createdAt DateTime @default(now())
+}
 model Mmmpeyam {
   id        String   @id @default(cuid())
   name      String
