@@ -27,7 +27,6 @@ model User {
   avatarUrl             String?
   bio                   String?
   sessions              Session[]
-  posts                 Post[]
   mmavahi               Mmavahi[]
   bookmarks             Bookmark[]
 
@@ -108,9 +107,7 @@ model Mmselik {
 
 model Media {
   id     String    @id @default(cuid())
-  postId String?
-  post   Post?     @relation(fields: [postId], references: [id], onDelete: SetNull)
-  type   MediaType
+ type   MediaType
   url    String
 
   createdAt     DateTime     @default(now())
@@ -135,9 +132,7 @@ model Bookmark {
   id     String @id @default(cuid())
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  postId String
-  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
-
+ 
   createdAt     DateTime     @default(now())
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
