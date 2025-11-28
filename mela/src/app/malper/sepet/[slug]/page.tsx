@@ -9,7 +9,7 @@
 // Elhamdulillahirabbulalemin
 // Ve salatu ve selamu ala resulina Muhammedin 
 // Elhamdulillahirabbulalemin
-export default async function Page({ params }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/mmselik/${params.slug}`);
   const selik = await res.json();
 
