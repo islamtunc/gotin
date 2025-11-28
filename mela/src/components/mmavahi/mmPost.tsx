@@ -29,7 +29,7 @@ export default function MmmPost({ post }: PostProps) {
       data: {
         title: post.content[0],
         description: post.content[1],
-        price: 100,
+        price: post.content[2] || "Fiyat Bilgisi Yok",
       },
     });
   };

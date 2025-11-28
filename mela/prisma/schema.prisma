@@ -35,9 +35,7 @@ model User {
   Mmhewcedari Mmhewcedari[]
   Mmkinc      Mmkinc[]
   Mmkedkar    Mmkedkar[]
-  Mmwesayit   Mmwesayit[]
-  Mmkargeh    Mmkargeh[]
-  Mmhuner     Mmhuner[]
+  Mmselik     Mmselik[]
   @@map("users")
 }
 
@@ -48,19 +46,6 @@ model Session {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
-}
-
-model Post {
-  id                  String         @id @default(cuid())
-  content             String[]
-  userId              String
-  user                User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments         Media[]
-  bookmarks           Bookmark[]
-
-  createdAt DateTime @default(now())
-
-  @@map("posts")
 }
 
 model Mmavahi {
@@ -77,19 +62,6 @@ model Mmavahi {
   @@map("mmavahi")
 }
 
-model Mmhuner {
-  id          String  @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
-
-  @@map("mmhuner")
-}
 
 model Mmhewcedari {
   id          String  @id @default(cuid())
@@ -105,19 +77,6 @@ model Mmhewcedari {
   @@map("mmhewcedari")
 }
 
-model Mmkinc {
-  id          String  @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
-
-  @@map("mmkinc")
-}
 
 model Mmkedkar {
   id          String  @id @default(cuid())
@@ -131,20 +90,6 @@ model Mmkedkar {
   createdAt           DateTime       @default(now())
 
   @@map("mmkedkar")
-}
-
-model Mmwesayit {
-  id          String  @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
-
-  @@map("mmwesayit")
 }
 
 model Mmselik {
@@ -180,7 +125,7 @@ model Media {
   Mmwesayit     Mmwesayit?   @relation(fields: [mmwesayitId], references: [id])
   mmwesayitId   String?
   Mmselik      Mmselik?    @relation(fields: [mmkargehId], references: [id])
-  mmkargehId    String?
+  mmselikId    String?
   Mmhuner       Mmhuner?     @relation(fields: [mmhunerId], references: [id])
   mmhunerId     String?
 
