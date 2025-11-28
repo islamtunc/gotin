@@ -1,6 +1,6 @@
 // Bismillahirahmanirahim
 // Elhamdulillahirabbilalemin
-// Es-selatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Es-selatu ve Es-selamu ala Resulina Muhammedin
 // Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
 // Süphanallah, Elhamdulillah, Allahu Ekber
 import { Prisma } from "@prisma/client";
