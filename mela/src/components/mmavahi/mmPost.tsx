@@ -16,12 +16,23 @@ import Link from "next/link";
 import Linkify from "../Linkify";
 import { Card } from "react-bootstrap";
 import { Button } from "../ui/button";
+import prisma from "@/lib/prisma";
 
 interface PostProps {
   post: PostData;
 }
 
 export default function MmmPost({ post }: PostProps) {
+  const zedeke = () => {
+    alert("Sepete Eklendi!");
+    prisma.mmselik.create({
+      data: {
+        title: post.content[0],
+        description: post.content[1],
+        price: 100,
+      },
+    });
+  };
 
   return (
     <article className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm text-black">
@@ -47,7 +58,7 @@ export default function MmmPost({ post }: PostProps) {
         </Card.Body>
         
 
-        <Button variant="outline" className="w-full">
+        <Button onClick={zedeke} variant="outline" className="w-full">
          Sepete Ekle         
         </Button>
         </Card>

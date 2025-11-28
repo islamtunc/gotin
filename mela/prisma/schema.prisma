@@ -147,7 +147,7 @@ model Mmwesayit {
   @@map("mmwesayit")
 }
 
-model Mmkargeh {
+model Mmselik {
   id          String  @id @default(cuid())
   content     String[]
   userId      String
@@ -158,7 +158,7 @@ model Mmkargeh {
 
   createdAt           DateTime       @default(now())
 
-  @@map("mmkargeh")
+  @@map("mmselik")
 }
 
 model Media {
@@ -179,7 +179,7 @@ model Media {
   mmkedkarId    String?
   Mmwesayit     Mmwesayit?   @relation(fields: [mmwesayitId], references: [id])
   mmwesayitId   String?
-  Mmkargeh      Mmkargeh?    @relation(fields: [mmkargehId], references: [id])
+  Mmselik      Mmselik?    @relation(fields: [mmkargehId], references: [id])
   mmkargehId    String?
   Mmhuner       Mmhuner?     @relation(fields: [mmhunerId], references: [id])
   mmhunerId     String?
