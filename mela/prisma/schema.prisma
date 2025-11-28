@@ -143,16 +143,12 @@ model Bookmark {
   mmavahiId     String?
   Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
   mmhewcedariId String?
-  Mmkinc        Mmkinc?      @relation(fields: [mmkincId], references: [id])
-  mmkincId      String?
+  Mmselik      Mmselik?    @relation(fields: [mmkargehId], references: [id])
+  mmselikId    String?
+  
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
   mmkedkarId    String?
-  Mmwesayit     Mmwesayit?   @relation(fields: [mmwesayitId], references: [id])
-  mmwesayitId   String?
-  Mmkargeh      Mmkargeh?    @relation(fields: [mmkargehId], references: [id])
-  mmkargehId    String?
-  Mmhuner       Mmhuner?     @relation(fields: [mmhunerId], references: [id])
-  mmhunerId     String?
+ 
 }
 
 model Mmmpeyam {
