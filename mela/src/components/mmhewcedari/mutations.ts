@@ -1,8 +1,12 @@
 // Bismillahirrahmanirrahim
+// Elhamdulillahirabbulalemin
+// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+// SuphanAllah, Elhamdulillah, Allahu Ekber
 
 
 
-import { PostsPage } from "@/lib/types";
+import {  MmhewcedariPage } from "@/lib/types";
 import {
   InfiniteData,
   QueryFilters,
@@ -28,7 +32,7 @@ export function useDeletePostMutation() {
 
       await queryClient.cancelQueries(queryFilter);
 
-      queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
+      queryClient.setQueriesData<InfiniteData<MmhewcedariPage, string | null>>(
         queryFilter,
         (oldData) => {
           if (!oldData) return;
