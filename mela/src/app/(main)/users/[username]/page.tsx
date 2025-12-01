@@ -105,7 +105,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
             <h1 className="text-3xl font-bold">{user.displayName}</h1>
             <div className="text-muted-foreground">@{user.username}</div>
           </div>
-          <div> {formatDate(user.createdAt, "MMM d, yyyy")} 'den beri üye</div>
+          <div> {formatDate(user.createdAt, "MMM d, yyyy")} den beri üye</div>
           <div className="flex items-center gap-3">
             <span>
               İlan Sayısı:{" "}

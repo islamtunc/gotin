@@ -1,4 +1,13 @@
-import { PostData } from "@/lib/types";
+// Bismillahirrahmanirahim
+// Elhamdu lillahi rabbil alamin
+// Esselatu vesselamu ala rasulina Muhammedin
+// La ilahe illallah
+// Subhanallah, Elhamdulillah, Allahu Ekber
+
+
+
+
+import { MmavahiData } from "@/lib/types";
 import LoadingButton from "../LoadingButton";
 import { Button } from "../ui/button";
 import {
@@ -12,7 +21,7 @@ import {
 import { useDeletePostMutation } from "./mutations";
 
 interface DeletePostDialogProps {
-  post: PostData;
+  post: MmavahiData;
   open: boolean;
   onClose: () => void;
 }
