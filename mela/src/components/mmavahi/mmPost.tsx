@@ -7,7 +7,7 @@
 
 "use client";
 
-import { PostData } from "@/lib/types";
+import { MmavahiData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
 import { Media } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
@@ -19,7 +19,7 @@ import { Button } from "../ui/button";
 import prisma from "@/lib/prisma";
 
 interface PostProps {
-  post: PostData;
+  post: MmavahiData;
 }
 
 export default function MmmPost({ post }: PostProps) {

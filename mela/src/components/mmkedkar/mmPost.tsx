@@ -7,7 +7,7 @@
 
 "use client";
 
-import { PostData } from "@/lib/types";
+import { MmkedkarData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
 import { Media } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
@@ -18,7 +18,7 @@ import { Card } from "react-bootstrap";
 import { Button } from "../ui/button";
 
 interface PostProps {
-  post: PostData;
+  post: MmkedkarData;
 }
 
 export default function MmmPost({ post }: PostProps) {

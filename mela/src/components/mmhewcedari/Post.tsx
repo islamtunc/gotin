@@ -8,7 +8,7 @@
 
 "use client";
 
-import { PostData } from "@/lib/types";
+import { MmhewcedariData } from "@/lib/types";
 import { cn, formatRelativeDate } from "@/lib/utils";
 import { Media } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
@@ -20,7 +20,7 @@ import { Card } from "react-bootstrap";
 
 
 interface PostProps {
-  post: PostData;
+  post: MmhewcedariData;
 }
 
 export default function Post({ post }: PostProps) {
