@@ -1,10 +1,13 @@
 // Bismillahirahmanirahim
-
+// Elhamdullillahirabbulalemin
+//Es-selatu vesselamu ala rasulina Muhammedin 
+// La ilahe illallah, Muhammeden Abduhu ve Resuluhu
+// Suphanallah velhamdulillah, Allahu Ekber
 
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { getPostDataInclude, PostsPage } from "@/lib/types";
+import { getMmkedkarDataInclude,MmavahiPage,MmkedkarData} from "@/lib/types";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -20,7 +23,7 @@ export async function GET(req: NextRequest) {
     }
 
     const posts = await prisma.mmkedkar.findMany({
-      include: getPostDataInclude(user.id),
+      include: getMmkedkarDataInclude(user.id),
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,
       cursor: cursor ? { id: cursor } : undefined,
@@ -28,7 +31,7 @@ export async function GET(req: NextRequest) {
 
     const nextCursor = posts.length > pageSize ? posts[pageSize].id : null;
 
-    const data: PostsPage = {
+    const data: MmavahiPage = {
       posts: posts.slice(0, pageSize).map(post => ({
         ...post,
         content: Array.isArray(post.content) ? post.content : [post.content],

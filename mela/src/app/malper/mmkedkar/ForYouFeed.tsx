@@ -4,7 +4,9 @@
 // La ilahe illallah, 
 // Muhammedur Resulullah
 // SuphanAllah velhamdulillah, Allahu Ekber
-
+// LA İLAHE İLLALAHU VAHDEHU LA ŞERİKE LEH, LEHUL MULKU LEHUL HAMDU YUHHİYİ VE YUMİTU VE HÜVE ALA KULLİ ŞEYİN KADİR
+// SEYYİDİNA MUHAMMEDEN ABDUHU VE RESULUH
+// LA İLAHE İLLALLAH
 "use client";
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
