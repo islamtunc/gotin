@@ -7,11 +7,10 @@
 // Subhanallah , Elhamdulillah, Allahu Ekber
 // Hasbunallahu ve ni'mel vekil
 // La havle ve la kuvvete illa billahil aliyyil azim
-
-import { redirect } from "next/navigation";
+import "./reng.css"
 import MenuBar from "./components/mmenu";
 import Navbar from "./components/mmnav";
-import { Row, Col, Alert } from "react-bootstrap";
+import { Row, Col, Alert, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from "./components/mmbingeh";
 import ContactForm from "./components/mmfrm";
@@ -22,7 +21,7 @@ export default function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
+  return (<Container style={{background:"white"}}>
     <>
       <Navbar />
       <div className="container-fluid">
@@ -44,7 +43,7 @@ export default function Layout({
       <div className="d-md-none">
         <MenuBar />
       </div>
-    </>
+    </></Container>
   );
 }
 

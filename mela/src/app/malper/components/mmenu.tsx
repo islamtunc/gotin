@@ -37,12 +37,12 @@ const MenuBar = ({ className }: MenuBarProps) => {
         <Button
           variant="ghost"
           className="flex flex-col items-center justify-center p-2 md:flex-row md:items-center md:justify-start md:gap-3 w-full"
-          title="Ecibandin"
+          title="Kaydedilenler"
           asChild
         >
           <Link href="/malper/ecibandin" className="flex flex-col items-center md:flex-row md:gap-2">
             <Bookmark className="h-6 w-6 text-primary" aria-hidden />
-            <span className="sr-only md:not-sr-only md:inline ml-2">Ecibandin</span>
+            <span className="sr-only md:not-sr-only md:inline ml-2">Kaydedilenler</span>
           </Link>
         </Button>
 
@@ -58,12 +58,12 @@ const MenuBar = ({ className }: MenuBarProps) => {
         <Button
           variant="ghost"
           className="flex flex-col items-center justify-center p-2 md:flex-row md:items-center md:justify-start md:gap-3 w-full"
-          title="Profil"
+          title="Sepet"
           asChild
         >
           <Link href="/malper" className="flex flex-col items-center md:flex-row md:gap-2">
            <NotebookIcon className="h-6 w-6 text-primary" aria-hidden />
-            <span className="sr-only md:not-sr-only md:inline ml-2">Profil</span>
+            <span className="sr-only md:not-sr-only md:inline ml-2">Notlar</span>
           </Link>
         </Button>
 
@@ -77,7 +77,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
 
 
    <ShoppingBasketIcon className="h-6 w-6 text-primary" aria-hidden />  
-            <span className="sr-only md:not-sr-only md:inline ml-2">Profil</span>
+            <span className="sr-only md:not-sr-only md:inline ml-2">Sepet</span>
           </Link>
         </Button>
       </div>

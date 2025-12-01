@@ -7,6 +7,7 @@
 // Subhanallah , Elhamdulillah, Allahu Ekber
 // Hasbunallahu ve ni'mel vekil
 // La havle ve la kuvvete illa billahil aliyyil azim
+import "../globals.css";
 
 import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";

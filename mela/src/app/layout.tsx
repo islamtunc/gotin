@@ -14,7 +14,6 @@ import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
 import { extractRouterConfig } from "uploadthing/server";
 import { fileRouter } from "./api/uploadthing/core";
-import "./globals.css";
 import ReactQueryProvider from "./ReactQueryProvider";
 
 import Alert from 'react-bootstrap';
@@ -115,7 +114,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >

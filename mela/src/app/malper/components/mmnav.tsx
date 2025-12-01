@@ -21,14 +21,14 @@ function Mmmnavbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/malper">Patika</Navbar.Brand>
-        <Navbar.Brand href="/malper"><SearchField/></Navbar.Brand>
+        <Navbar.Brand href="/malper">Patikaiz</Navbar.Brand>
+        <Navbar.Brand href="/malper"></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/malper/mmavahi">Duvar Takvimleri</Nav.Link>
 
-            <NavDropdown title="ÖZEL GÜNLER" id="basic-nav-dropdown">
+            <NavDropdown title="Özel Günler" id="basic-nav-dropdown">
               <NavDropdown.Item href="/malper/mmhewcedari?tab=for-you">Anneler Günü</NavDropdown.Item>
               <NavDropdown.Item href="/malper/mmhewcedari?tab=dayik">Babalar Günü</NavDropdown.Item>
               <NavDropdown.Item href="/malper/mmhewcedari?tab=bav">Öğretmenler Günü</NavDropdown.Item>
@@ -39,7 +39,7 @@ function Mmmnavbar() {
             </NavDropdown>
 
             <NavDropdown title="Hediye Kutusu" id="basic-nav-dropdown-2">
-              <NavDropdown.Item href="/malper?/tab=dunya-kuresi">Dnya Kuresi</NavDropdown.Item>
+              <NavDropdown.Item href="/malper?/tab=dunya-kuresi">Dünya Küresi</NavDropdown.Item>
               <NavDropdown.Item href="/malper?tab=kum-saati">Kum Saati</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/malper?tab=defter-kalem">
@@ -56,11 +56,11 @@ function Mmmnavbar() {
             
 
 
-            <Nav.Link href="/malper?tab=hakkimizda">Hakkimizda</Nav.Link>
+            <Nav.Link href="/malper?tab=hakkimizda">Hakkımızda</Nav.Link>
 
 
 
-            <Nav.Link href="/malper?tab=iletisim">Çerez Politikasi</Nav.Link>
+            <Nav.Link href="/malper?tab=iletisim"></Nav.Link>
           </Nav>
        
         </Navbar.Collapse>
