@@ -27,8 +27,7 @@ export default function MmmPost({ post }: PostProps) {
     alert("Sepete Eklendi!");
     prisma.mmselik.create({
       data: {
-        description: post.content[1],
-        price: post.content[2] || "Fiyat Bilgisi Yok",
+       content: post.content[0],
       },
     });
   };
