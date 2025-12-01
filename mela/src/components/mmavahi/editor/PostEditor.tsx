@@ -1,6 +1,6 @@
 // Bismillahirahmanirahim 
 // ElHAMDULİLLAHİRABBULALEMİN
-// Es-selatu ve Es-selamu ala Resulina Muhammedin ve ala alihi ve sahbihi ecmain
+// Es-selatu ve Es-selamu ala Resulina Muhammedin 
 // Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
 // SuphanAllah, Elhamdulillah, Allahu Ekber
 
@@ -114,7 +114,6 @@ export default function NewProductPage() {
       <div className="flex flex-col gap-5 rounded-2xl bg-card p-5 shadow-md text-black w-full max-w-3xl mx-auto">
 
         <div className="flex gap-3">
-          <UserAvatar avatarUrl={user.avatarUrl} />
           <div className="w-full space-y-3">
 
             <input
@@ -316,3 +315,9 @@ function AttachmentPreview({
     </div>
   );
 }
+// Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
+// Estağfirulllah El-Azim
+// SuphanAllah, Elhamdulillah, Allahu Ekber
+// Allahumme salli ala seyyidina Muhammedin ve ala alihi ve sahbihi ecmain
+// Elhamdulillahirabbulalemin
+

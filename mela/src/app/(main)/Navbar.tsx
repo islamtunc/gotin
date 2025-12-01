@@ -117,23 +117,9 @@ export default function Navbar() {
             <div className="border-t my-2" />
 
             <div className="flex flex-col gap-1">
-              <details className="group">
-                <summary className="px-3 py-2 rounded cursor-pointer hover:bg-muted">Blog</summary>
-                <div className="pl-4">
-                  <Link href="/posts" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>Blog Yazıları</Link>
-                  <Link href="/posts/new" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>Yeni Blog Yazısı</Link>
-                  <Link href="/categories" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>Categories</Link>
-                </div>
-              </details>
+         
 
-              <details className="group">
-                <summary className="px-3 py-2 rounded cursor-pointer hover:bg-muted">Settings</summary>
-                <div className="pl-4">
-                  <Link href="/settings/profile" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>Profil Ayarları</Link>
-                  <Link href="/settings/security" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>Güvenlik Ayarları</Link>
-                  <Link href="/settings/notifications" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>Bildirim Ayarları</Link>
-                </div>
-              </details>
+            
             </div>
 
             <Link href="/reports" className="block px-3 py-2 rounded hover:bg-muted" onClick={handleLinkClick}>
