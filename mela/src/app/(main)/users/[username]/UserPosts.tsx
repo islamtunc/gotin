@@ -1,12 +1,15 @@
 // Bismillahirahmanirahim 
-
+// Elhamdulillahi Rabbil Alamin
+// Essalatu vesselamu ala Resulina Muhammedin 
+// La ilahe illallah, Muhammedur Resulullah
+// SuphanAllah velhamdulillah, Allahu Ekber
 "use client";
 
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 import PostsLoadingSkeleton from "@/components/mmavahi/PostsLoadingSkeleton";
 import Post from "@/components/mmavahi/Post";
 import kyInstance from "@/lib/ky";
-import { PostsPage } from "@/lib/types";
+import { MmavahiPage } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
@@ -30,7 +33,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
           `/api/users/${userId}/posts`,
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
-        .json<PostsPage>(),
+        .json<MmavahiPage>(),
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
