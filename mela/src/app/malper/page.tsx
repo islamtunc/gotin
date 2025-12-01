@@ -4,9 +4,10 @@
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 // Subhanallah, Elhamdulillah, Allahu Ekber
 // Estağfirullah El-Azim
-// La ilahe illallah, Muhammedur Resulullah
+// La ilahe illallah., Muhammedur Resulullah
 
 import React from 'react';
+import UncontrolledExample from './components/slide';
 
 export default async function Page() {
   return (
@@ -16,9 +17,7 @@ export default async function Page() {
 
       <main className="flex-grow container mx-auto py-8">
         {/* Title */}
-        <h1 className="text-4xl font-bold text-center mb-10">
-          Hediyelik Duvar Takvimleri
-        </h1>
+       <UncontrolledExample/>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -84,14 +83,7 @@ export default async function Page() {
         {/* Recent Updates */}
         <div className="mt-10">
           <h2 className="text-2xl font-bold mb-4">Son Güncellemeler</h2>
-          <ul className="list-disc pl-5 text-gray-700 space-y-1">
-            <li>2025 koleksiyonuna yeni "Premium Duvar Takvimleri" eklendi.</li>
-            <li>Fotoğraf yükleme editörü geliştirildi.</li>
-            <li>Tüm takvimlerde hızlı kargo kampanyası başladı.</li>
-            <li>
-              Kürtçe akıllı asistanımız <a className="text-blue-600" href="https://feqi.vercel.app">Feqî</a> takvim tasarımı önerileri yapıyor.
-            </li>
-          </ul>
+        
         </div>
       </main>
     </div>

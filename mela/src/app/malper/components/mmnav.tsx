@@ -4,7 +4,7 @@
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
 // Subhanallah, Elhamdulillah, Allahu Ekber
 // Estağfirullah El-Azim
-// La ilahe illallah , Muhammedur Resulullah
+// La ilahe illallah. , Muhammedur Resulullah
 "use client"
 
 import Container from 'react-bootstrap/Container';
@@ -21,7 +21,8 @@ function Mmmnavbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/malper">Patikaiz</Navbar.Brand>
+        <Navbar.Brand href="/malper">     <img src="/mlg.jpeg" alt="Patikaiz Logo" className="w-full" style={{height:"55px",width:"95px"}} />
+</Navbar.Brand>
         <Navbar.Brand href="/malper"></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -59,7 +60,7 @@ function Mmmnavbar() {
             
 
 
-            <Nav.Link href="/malper?tab=hakkimizda">Hakkımızda</Nav.Link>
+            <Nav.Link href="/malper/derheq">Hakkımızda</Nav.Link>
 
 
 

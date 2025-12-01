@@ -13,23 +13,17 @@ import Bkrhnr from "./yasal/mmbikarhnr";
 import Frtn from "./yasal/mmfrtn";
 import Vsrtn from "./yasal/mmvsrtn";
 import { AlertTriangle } from "lucide-react";
+import AllCollapseExample from "./derbare";
 
 const Footer = () => (
-  <footer className="bg-dark text-white pt-4">
-    <div className="container text-center text-md-left">
-      <Card>
+  <Card style={{textAlign:"center"}}>
         {/* Hakkımızda */}
-        <Alert  variant="info">
-          <h5 className="text-uppercase font-weight-bold">Hakkımızda</h5>
-          <p>
-            Kullanıcılarımıza en iyi hizmetleri ve kaynakları sunmayı hedefliyoruz. Güncellemeler ve haberler için bizimle iletişimde kalın.
-          </p>
-        </Alert>
+    
+          
+          <AllCollapseExample/>
+      
 
-        {/* Hızlı Linkler */}
-        <div className="col-md-4 mb-md-0 mb-3">
-          <h5 className="text-uppercase font-weight-bold">Hızlı Linkler</h5>
-          <ul className="list-unstyled">
+
             <Alert variant="warning" className="p-2 mb-2">
             
                 
@@ -43,7 +37,7 @@ const Footer = () => (
               </NavDropdown.Item>
             </NavDropdown>
             
-            </Alert>
+           </Alert>
             <Alert variant="warning" className="p-2 mb-2"
             >
                 <NavDropdown.Item >
@@ -57,45 +51,20 @@ const Footer = () => (
             Yonetim
               </NavDropdown.Item>
             </Alert>
-          </ul>
-        </div>
+      
 
-        {/* Sosyal Medya */}
-        <div className="col-md-4 mb-md-0 mb-3">
-          <h5 className="text-uppercase font-weight-bold">Bizi Takip Edin</h5>
-          <ul className="list-unstyled d-flex justify-content-center">
-            <li className="mx-2">
-              <a href="https://facebook.com" className="text-white" aria-label="Facebook">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li className="mx-2">
-              <a href="https://twitter.com" className="text-white" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li className="mx-2">
-              <a href="https://instagram.com" className="text-white" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-            <li className="mx-2">
-              <a href="https://linkedin.com" className="text-white" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </Card>
-    </div>
 
-    <div className="text-center py-3">
+         <div className="text-center py-3">
       © {new Date().getFullYear()} Tüm hakları saklıdır:{" "}
       <a href="https://yekazad.com" className="text-white">
         Yekazad
       </a>
     </div>
-  </footer>
+      </Card>
+  
+
+ 
+ 
 );
 
 export default Footer;

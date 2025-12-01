@@ -10,10 +10,12 @@
 import "./reng.css"
 import MenuBar from "./components/mmenu";
 import Navbar from "./components/mmnav";
-import { Row, Col, Alert, Container } from "react-bootstrap";
+import { Row, Col, Alert, Container, Card } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from "./components/mmbingeh";
 import ContactForm from "./components/mmfrm";
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 
 export default function Layout({
