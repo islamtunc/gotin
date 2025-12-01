@@ -36,9 +36,9 @@ function Mmmnavbar() {
             <Nav.Link href="/malper/mmhewcedari/stenbl">İstanbul Temalı</Nav.Link>
             <Nav.Link href="/malper/mmhewcedari/reng">Manzara Temalı</Nav.Link>
             <Nav.Link href="/malper/mmhewcedari/bav">Baba Temalı</Nav.Link>
-            <Nav.Link href="/malper/mmavahi/mmhewcedari/tn">Yalnızlık Temalı</Nav.Link>
+            <Nav.Link href="/malper/mmhewcedari/tn">Yalnızlık Temalı</Nav.Link>
 
-            <Nav.Link href="/malper/mmavahi/mmhewcedari/dayik">Manzara Temalı</Nav.Link>
+            <Nav.Link href="/malper/mmhewcedari/dayik">Manzara Temalı</Nav.Link>
 
 
             <NavDropdown title="Hediye Kutusu" id="basic-nav-dropdown-2">
