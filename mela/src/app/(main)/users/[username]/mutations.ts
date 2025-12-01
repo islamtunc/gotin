@@ -1,5 +1,10 @@
+//Bismillahirrahmanirrahim
+//Elhamdulillahi Rabbil Alamin
+//Essalatu vesselamu ala Resulina Muhammedin
+//La ilahe illallah, Muhammedur Resulullah
+//SuphanAllah velhamdulillah, Allahu Ekber
 import { useToast } from "@/components/ui/use-toast";
-import { PostsPage } from "@/lib/types";
+import { MmavahiPage} from "@/lib/types";
 import { useUploadThing } from "@/lib/uploadthing";
 import { UpdateUserProfileValues } from "@/lib/validation";
 import {
@@ -42,7 +47,7 @@ export function useUpdateProfileMutation() {
 
       await queryClient.cancelQueries(queryFilter);
 
-      queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
+      queryClient.setQueriesData<InfiniteData<MmavahiPage, string | null>>(
         queryFilter,
         (oldData) => {
           if (!oldData) return;
@@ -85,3 +90,5 @@ export function useUpdateProfileMutation() {
 
   return mutation;
 }
+// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
+// ALLAHU EKBER, ALLAHU EKBER, ALLAHU EKBER, LA ILAHE ILLALLAH
