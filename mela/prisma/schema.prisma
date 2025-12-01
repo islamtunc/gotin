@@ -1,10 +1,11 @@
 // Bismillahirrahmanirahim
 // Elhamdullillahirabbulalemin
-// Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi, ecmain
+// Es-selatu vesselamu ala rasulina Muhammedin 
 // Allah u Ekber, Allah u Ekber, Allah u Ekber, La ilahe illallah
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Bismillahirrahmanirahim
+// Elhamdullillahirabbulalemin
+// Es-selatu vesselamu ala rasulina Muhammedin 
+// Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
 
 generator client {
   provider        = "prisma-client-js"
@@ -13,32 +14,34 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-  id                    String         @id
-  username              String         @unique
-  displayName           String
-  email                 String?        @unique
-  passwordHash          String?
-  googleId              String?        @unique
-  avatarUrl             String?
-  bio                   String?
-  sessions              Session[]
-  mmavahi               Mmavahi[]
-  bookmarks             Bookmark[]
+  id           String    @id @default(cuid())
+  username     String    @unique
+  displayName  String
+  email        String?   @unique
+  passwordHash String?
+  googleId     String?   @unique
+  avatarUrl    String?
+  bio          String?
 
-  createdAt   DateTime      @default(now())
+  sessions   Session[]
+  mmavahi    Mmavahi[]
+  bookmarks  Bookmark[]
   Mmhewcedari Mmhewcedari[]
   Mmkedkar    Mmkedkar[]
   Mmselik     Mmselik[]
+
+  createdAt DateTime @default(now())
+
   @@map("users")
 }
 
 model Session {
-  id        String   @id
+  id        String   @id @default(cuid())
   userId    String
   expiresAt DateTime
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -47,78 +50,73 @@ model Session {
 }
 
 model Mmavahi {
-  id          String  @id @default(cuid())
+  id          String    @id @default(cuid())
   content     String[]
   userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
-
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
+  bookmarks   Bookmark[]
+  createdAt   DateTime  @default(now())
 
   @@map("mmavahi")
 }
 
-
 model Mmhewcedari {
-  id          String  @id @default(cuid())
+  id          String    @id @default(cuid())
   content     String[]
   userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
-
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
+  bookmarks   Bookmark[]
+  createdAt   DateTime  @default(now())
 
   @@map("mmhewcedari")
 }
 
-
 model Mmkedkar {
-  id          String  @id @default(cuid())
+  id          String    @id @default(cuid())
   content     String[]
   userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
-
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
+  bookmarks   Bookmark[]
+  createdAt   DateTime  @default(now())
 
   @@map("mmkedkar")
 }
 
 model Mmselik {
-  id          String  @id @default(cuid())
+  id          String    @id @default(cuid())
   content     String[]
   userId      String
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
+  bookmarks   Bookmark[]
+  products    Product[]
 
-  bookmarks Bookmark[]
-
-  createdAt           DateTime       @default(now())
+  createdAt   DateTime  @default(now())
 
   @@map("mmselik")
 }
 
 model Media {
-  id     String    @id @default(cuid())
- type   MediaType
-  url    String
+  id             String      @id @default(cuid())
+  type           MediaType
+  url            String
+  createdAt      DateTime    @default(now())
 
-  createdAt     DateTime     @default(now())
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
+
   Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
   mmhewcedariId String?
+
   Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
   mmkedkarId    String?
-  Mmselik      Mmselik?    @relation(fields: [mmselikId], references: [id])
+
+  Mmselik      Mmselik?      @relation(fields: [mmselikId], references: [id])
   mmselikId    String?
- 
+
   @@map("post_media")
 }
 
@@ -128,31 +126,37 @@ enum MediaType {
 }
 
 model Bookmark {
-  id     String @id @default(cuid())
-  userId String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
-  createdAt     DateTime     @default(now())
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
   Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
   mmavahiId     String?
+
   Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
   mmhewcedariId String?
-  Mmselik      Mmselik?    @relation(fields: [mmselikId], references: [id])
+
+  Mmselik      Mmselik?      @relation(fields: [mmselikId], references: [id])
   mmselikId    String?
-  
-  Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
-  mmkedkarId    String?
- 
+
+  Mmkedkar     Mmkedkar?     @relation(fields: [mmkedkarId], references: [id])
+  mmkedkarId   String?
 }
+
 model Product {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  price     Float
-  imageUrl  String?
-  mmselikId   String   @db.ObjectId
-  mmselik     Mmselik  @relation(fields: [mmselikId], references: [id])
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  name       String
+  price      Float
+  imageUrl   String?
+  mmselikId  String
+  mmselik    Mmselik  @relation(fields: [mmselikId], references: [id], onDelete: Cascade)
+
+  createdAt  DateTime @default(now())
+
+  @@map("products")
 }
+
 model Mmmpeyam {
   id        String   @id @default(cuid())
   name      String
