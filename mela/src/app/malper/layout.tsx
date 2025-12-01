@@ -21,9 +21,12 @@ export default function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  return (<Container style={{background:"white"}}>
+  return (
     <>
-      <Navbar />
+   <Navbar />    <Alert variant="info" style={{ textAlign: "center", fontSize: "18px" }}>
+        Selam Aleykum dear Visitor, Welcome to Patikaiz Website
+      </Alert>
+   
       <div className="container-fluid">
         <Row>
           <Col md={9}>
@@ -43,7 +46,7 @@ export default function Layout({
       <div className="d-md-none">
         <MenuBar />
       </div>
-    </></Container>
+    </>
   );
 }
 

@@ -28,15 +28,18 @@ function Mmmnavbar() {
           <Nav className="me-auto">
             <Nav.Link href="/malper/mmavahi">Duvar Takvimleri</Nav.Link>
 
-            <NavDropdown title="Özel Günler" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/malper/mmhewcedari?tab=for-you">Anneler Günü</NavDropdown.Item>
-              <NavDropdown.Item href="/malper/mmhewcedari?tab=dayik">Babalar Günü</NavDropdown.Item>
-              <NavDropdown.Item href="/malper/mmhewcedari?tab=bav">Öğretmenler Günü</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/malper?tab=rojbun">
-                Diğer
-              </NavDropdown.Item>
-            </NavDropdown>
+
+
+
+
+            <Nav.Link href="/malper/mmhewcedari/hezkirin">Sevgi(li) Temalı </Nav.Link>
+            <Nav.Link href="/malper/mmhewcedari/stenbl">İstanbul Temalı</Nav.Link>
+            <Nav.Link href="/malper/mmhewcedari/reng">Manzara Temalı</Nav.Link>
+            <Nav.Link href="/malper/mmhewcedari/bav">Baba Temalı</Nav.Link>
+            <Nav.Link href="/malper/mmavahi/mmhewcedari/tn">Yalnızlık Temalı</Nav.Link>
+
+            <Nav.Link href="/malper/mmavahi/mmhewcedari/dayik">Manzara Temalı</Nav.Link>
+
 
             <NavDropdown title="Hediye Kutusu" id="basic-nav-dropdown-2">
               <NavDropdown.Item href="/malper?/tab=dunya-kuresi">Dünya Küresi</NavDropdown.Item>
