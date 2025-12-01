@@ -44,11 +44,7 @@ export default function PostMoreButton({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <DeletePostDialog
-        post={post}
-        open={showDeleteDialog}
-        onClose={() => setShowDeleteDialog(false)}
-      />
+   
     </>
   );
 }
