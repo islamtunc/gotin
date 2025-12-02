@@ -6,7 +6,6 @@
 // Elhamdullillahirabbulalemin
 // Es-selatu vesselamu ala rasulina Muhammedin 
 // Allahu Ekber, Allahu Ekber, Allahu Ekber, La ilahe illallah
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
@@ -18,6 +17,9 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
+// ---------------------------
+// USER
+// ---------------------------
 model User {
   id           String    @id @default(cuid())
   username     String    @unique
@@ -28,18 +30,24 @@ model User {
   avatarUrl    String?
   bio          String?
 
-  sessions   Session[]
-  mmavahi    Mmavahi[]
-  bookmarks  Bookmark[]
-  Mmhewcedari Mmhewcedari[]
-  Mmkedkar    Mmkedkar[]
-  Mmselik     Mmselik[]
+  sessions Session[]
+  bav      Bav[]
+  dayik    Dayik[]
+  stenbol  Stenbol[]
+  reng     Reng[]
+  mmselik  Mmselik[]
+  diwar    Diwar[]
+  diyari   Diyari[]
+  hezkirin Hezkirin[]
 
   createdAt DateTime @default(now())
 
   @@map("users")
 }
 
+// ---------------------------
+// SESSION
+// ---------------------------
 model Session {
   id        String   @id @default(cuid())
   userId    String
@@ -49,72 +57,35 @@ model Session {
   @@map("sessions")
 }
 
-model Mmavahi {
-  id          String    @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-  bookmarks   Bookmark[]
-  createdAt   DateTime  @default(now())
-
-  @@map("mmavahi")
-}
-
-model Mmhewcedari {
-  id          String    @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-  bookmarks   Bookmark[]
-  createdAt   DateTime  @default(now())
-
-  @@map("mmhewcedari")
-}
-
-model Mmkedkar {
-  id          String    @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-  bookmarks   Bookmark[]
-  createdAt   DateTime  @default(now())
-
-  @@map("mmkedkar")
-}
-
-
-model Mmselik {
-  id          String    @id @default(cuid())
-  content     String[]
-  userId      String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  attachments Media[]
-  bookmarks   Bookmark[]
-  products    Product[]
-  createdAt   DateTime  @default(now())
-}
-
-
+// ---------------------------
+// MEDIA
+// ---------------------------
 model Media {
-  id             String      @id @default(cuid())
-  type           MediaType
-  url            String
-  createdAt      DateTime    @default(now())
+  id        String      @id @default(cuid())
+  type      MediaType
+  url       String
+  createdAt DateTime    @default(now())
 
-  Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
-  mmavahiId     String?
+  bavId       String?
+  Bav         Bav? @relation(fields: [bavId], references: [id])
 
-  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
-  mmhewcedariId String?
+  dayikId     String?
+  Dayik       Dayik? @relation(fields: [dayikId], references: [id])
 
-  Mmkedkar      Mmkedkar?    @relation(fields: [mmkedkarId], references: [id])
-  mmkedkarId    String?
+  stenbolId   String?
+  Stenbol     Stenbol? @relation(fields: [stenbolId], references: [id])
 
-  Mmselik      Mmselik?      @relation(fields: [mmselikId], references: [id])
-  mmselikId    String?
+  rengId      String?
+  Reng        Reng? @relation(fields: [rengId], references: [id])
+
+  mmselikId   String?
+  Mmselik     Mmselik? @relation(fields: [mmselikId], references: [id])
+
+  diwarId     String?
+  Diwar       Diwar? @relation(fields: [diwarId], references: [id])
+
+  diyariId    String?
+  Diyari      Diyari? @relation(fields: [diyariId], references: [id])
 
   @@map("post_media")
 }
@@ -124,25 +95,80 @@ enum MediaType {
   VIDEO
 }
 
-model Bookmark {
-  id            String      @id @default(cuid())
-  userId        String
-  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt     DateTime    @default(now())
+// ---------------------------
+// BAV
+// ---------------------------
+model Bav {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
 
-  Mmavahi       Mmavahi?     @relation(fields: [mmavahiId], references: [id])
-  mmavahiId     String?
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  Mmhewcedari   Mmhewcedari? @relation(fields: [mmhewcedariId], references: [id])
-  mmhewcedariId String?
-
-  Mmselik      Mmselik?      @relation(fields: [mmselikId], references: [id])
-  mmselikId    String?
-
-  Mmkedkar     Mmkedkar?     @relation(fields: [mmkedkarId], references: [id])
-  mmkedkarId   String?
+  media     Media[]
 }
 
+// ---------------------------
+// DAYIK
+// ---------------------------
+model Dayik {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  media     Media[]
+}
+
+// ---------------------------
+// STENBOL
+// ---------------------------
+model Stenbol {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  media     Media[]
+}
+
+// ---------------------------
+// RENG
+// ---------------------------
+model Reng {
+  id        String   @id @default(cuid())
+  color     String
+  createdAt DateTime @default(now())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  media     Media[]
+}
+
+// ---------------------------
+// MMSelik
+// ---------------------------
+model Mmselik {
+  id          String    @id @default(cuid())
+  content     String[]
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  attachments Media[]
+  products    Product[]
+
+  createdAt   DateTime  @default(now())
+}
+
+// ---------------------------
+// PRODUCT (Mmselik)
+// ---------------------------
 model Product {
   id         String   @id @default(cuid())
   name       String
@@ -156,10 +182,42 @@ model Product {
   @@map("products")
 }
 
-model Mmmpeyam {
+// ---------------------------
+// DIWAR
+// ---------------------------
+model Diwar {
   id        String   @id @default(cuid())
-  name      String
-  email     String
-  message   String
+  title     String
+  content   String?
+  createdAt DateTime @default(now())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  media     Media[]
+}
+
+// ---------------------------
+// DIYARI
+// ---------------------------
+model Diyari {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  media     Media[]
+}
+
+// ---------------------------
+// HEZKIRIN
+// ---------------------------
+model Hezkirin {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 }
