@@ -1,12 +1,8 @@
-//Bismillahirrahmanirrahim 
+// Bismillahirrahmanirrahim 
 // Elhamdulillahirabbulalemin
 // Es-selatu vesselamu ala rasulina Muhammedin ve ala alihi ve sahbihi ecmain
-//Suphanallah, Elhamdulillah, Allahu Ekber
+// Suphanallah, Elhamdulillah, Allahu Ekber
 // Allah U Ekber, Allah U Ekber, Allah U Ekber, La ilahe illallah
-
-
-
-
 
 import prisma from "@/pirtukxane/prisma";
 import { UTApi } from "uploadthing/server";
@@ -22,11 +18,15 @@ export async function GET(req: Request) {
       );
     }
 
-    
-
     const unusedMedia = await prisma.media.findMany({
       where: {
-        diwarId: null,
+        bavId: null,
+        dayikId: null,
+        rengId: null,
+        diyari :null,
+        stenbol:null,
+        
+
         ...(process.env.NODE_ENV === "production"
           ? {
               createdAt: {
@@ -41,10 +41,12 @@ export async function GET(req: Request) {
       },
     });
 
-    new UTApi().deleteFiles(
+    await new UTApi().deleteFiles(
       unusedMedia.map(
         (m) =>
-          m.url.split(`/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/`)[1],
+          m.url.split(
+            `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/`
+          )[1],
       ),
     );
 
