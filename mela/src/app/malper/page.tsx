@@ -31,7 +31,70 @@ export default async function Page() {
               alt="Kişiye Özel Takvim"
               className="w-full h-40 object-cover rounded-t-lg mb-4"
             />
-            <h3 className="text-xl font-bold mb-2">Kişiye Özel Takvim</h3>
+            <h3 className="text-xl font-bold mb-2">Anne Temalı Takvim</h3>
+            <p className="text-gray-600">
+              Fotoğraflarınızla tamamen size özel duvar takviminizi oluşturun.
+            </p>
+            <a
+              href="/malper/takvim/ozel"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Hemen Oluştur
+            </a>
+          </div>
+            <div className="bg-white shadow-lg rounded-lg p-6">
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
+              alt="Kişiye Özel Takvim"
+              className="w-full h-40 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Baba Temalı Takvim</h3>
+            <p className="text-gray-600">
+              Fotoğraflarınızla tamamen size özel duvar takviminizi oluşturun.
+            </p>
+            <a
+              href="/malper/takvim/ozel"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Hemen Oluştur
+            </a>
+          </div>
+
+
+
+
+
+
+
+
+
+            <div className="bg-white shadow-lg rounded-lg p-6">
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
+              alt="Kişiye Özel Takvim"
+              className="w-full h-40 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Sevgi Temalı Takvim</h3>
+            <p className="text-gray-600">
+              Fotoğraflarınızla tamamen size özel duvar takviminizi oluşturun.
+            </p>
+            <a
+              href="/malper/takvim/ozel"
+              className="text-blue-500 hover:underline mt-4 block"
+            >
+              Hemen Oluştur
+            </a>
+          </div>
+
+
+
+            <div className="bg-white shadow-lg rounded-lg p-6">
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80"
+              alt="Kişiye Özel Takvim"
+              className="w-full h-40 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">İstanbul Temalı Takvim</h3>
             <p className="text-gray-600">
               Fotoğraflarınızla tamamen size özel duvar takviminizi oluşturun.
             </p>
@@ -50,7 +113,7 @@ export default async function Page() {
               alt="Minimal Takvim"
               className="w-full h-40 object-cover rounded-t-lg mb-4"
             />
-            <h3 className="text-xl font-bold mb-2">Minimalist Takvim</h3>
+            <h3 className="text-xl font-bold mb-2">Yalnızlık Temalı Takvim</h3>
             <p className="text-gray-600">
               Modern ve sade bir görünüm isteyenler için özel minimalist koleksiyon.
             </p>
@@ -69,7 +132,7 @@ export default async function Page() {
               alt="Kurdî Takvim"
               className="w-full h-40 object-cover rounded-t-lg mb-4"
             />
-            <h3 className="text-xl font-bold mb-2">Anne Temalı Takvim</h3>
+            <h3 className="text-xl font-bold mb-2">Manzara Temalı Takvim</h3>
             <p className="text-gray-600">
               Kürt kültürünü sevenler için eşsiz desen ve fotoğraflarla hazırlanan özel takvimler.
             </p>

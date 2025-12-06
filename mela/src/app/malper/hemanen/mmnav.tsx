@@ -10,12 +10,8 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Modal } from "./mmodel"
 import { NavDropdown } from 'react-bootstrap';
-import SearchField from '@/hemanen/SearchField';
-import Vsrtn from './yasal/mmvsrtn';
-import Frtn  from './yasal/mmfrtn';
-import  Bkrhnr from './yasal/mmbikarhnr';
+
 import { Alert } from 'react-bootstrap';
 function Mmmnavbar() {
 
@@ -28,26 +24,26 @@ function Mmmnavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/malper/mmavahi"> </Nav.Link>
+            <Nav.Link href="/malper/diwar"> Duvar Takvimleri</Nav.Link>
 
 
 
 
 
-            <Nav.Link href="/malper/mmhewcedari/hezkirin">Sevgi(li) Temalı </Nav.Link>
-            <Nav.Link href="/malper/mmhewcedari/stenbl">İstanbul Temalı</Nav.Link>
-            <Nav.Link href="/malper/mmhewcedari/reng">Manzara Temalı</Nav.Link>
-            <Nav.Link href="/malper/mmhewcedari/bav">Baba Temalı</Nav.Link>
-            <Nav.Link href="/malper/mmhewcedari/tn">Yalnızlık Temalı</Nav.Link>
+            <Nav.Link href="/malper/rojentaybet/hezkirin">Sevgi(li) Temalı </Nav.Link>
+            <Nav.Link href="/malper/rojentaybet/stenbl">İstanbul Temalı</Nav.Link>
+            <Nav.Link href="/malper/rojentaybet/reng">Manzara Temalı</Nav.Link>
+            <Nav.Link href="/malper/rojentaybet/bav">Baba Temalı</Nav.Link>
+            <Nav.Link href="/malper/rojentaybet/tn">Yalnızlık Temalı</Nav.Link>
 
-            <Nav.Link href="/malper/mmhewcedari/dayik">Manzara Temalı</Nav.Link>
+            <Nav.Link href="/malper/rojentaybet/dayik">Anne Temalı</Nav.Link>
 
 
             <NavDropdown title="Hediye Kutusu" id="basic-nav-dropdown-2">
-              <NavDropdown.Item href="/malper?/tab=dunya-kuresi">Dünya Küresi</NavDropdown.Item>
-              <NavDropdown.Item href="/malper?tab=kum-saati">Kum Saati</NavDropdown.Item>
+              <NavDropdown.Item href="/malper/diyari?tab=dunya-kuresi">Dünya Küresi</NavDropdown.Item>
+              <NavDropdown.Item href="/malper/diyari?tab=kum-saati">Kum Saati</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/malper?tab=defter-kalem">
+              <NavDropdown.Item href="/malper/diyari?tab=defter-kalem">
                 Defter + Kalem vs
               </NavDropdown.Item>
             </NavDropdown>
