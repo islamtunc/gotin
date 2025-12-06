@@ -26,7 +26,42 @@ export type UserData = Prisma.UserGetPayload<{
 
 /**
  * Mmavahi için include ayarları
- */
+ */export function getRengDataInclude(loggedInUserId: string) {
+  return {
+    user: {
+      select: getUserDataSelect(loggedInUserId),
+    },
+    attachments: true,
+    bookmarks: true,
+  } satisfies Prisma.RengInclude;
+}
+
+export type RengData = Prisma.RengGetPayload<{
+  include: ReturnType<typeof getDiwarDataInclude>;
+}>;
+
+export interface RengPage {
+  posts: RengData[];
+  nextCursor: string | null;
+}
+export function getStenbolDataInclude(loggedInUserId: string) {
+  return {
+    user: {
+      select: getUserDataSelect(loggedInUserId),
+    },
+    attachments: true,
+    bookmarks: true,
+  } satisfies Prisma.StenbolInclude;
+}
+
+export type StenbolData = Prisma.StenbolGetPayload<{
+  include: ReturnType<typeof getDiwarDataInclude>;
+}>;
+
+export interface StenbolPage {
+  posts: StenbolData[];
+  nextCursor: string | null;
+}
 export function getDiwarDataInclude(loggedInUserId: string) {
   return {
     user: {
@@ -34,18 +69,35 @@ export function getDiwarDataInclude(loggedInUserId: string) {
     },
     attachments: true,
     bookmarks: true,
-  } satisfies Prisma.DiwarInclude;
+  } satisfies Prisma.StenbolInclude;
 }
 
-export type DiwarData = Prisma.DiwarGetPayload<{
+export type StenbolData = Prisma.StenbolGetPayload<{
   include: ReturnType<typeof getDiwarDataInclude>;
 }>;
 
-export interface DiwarPage {
-  posts: DiwarData[];
+export interface StenbolPage {
+  posts: StenbolData[];
   nextCursor: string | null;
 }
+export function getHezkirinDataInclude(loggedInUserId: string) {
+  return {
+    user: {
+      select: getUserDataSelect(loggedInUserId),
+    },
+    attachments: true,
+    bookmarks: true,
+  } satisfies Prisma.HezkirinInclude;
+}
 
+export type HezkirinData = Prisma.HezkirinGetPayload<{
+  include: ReturnType<typeof getDiwarDataInclude>;
+}>;
+
+export interface HezkirinPage {
+  posts: HezkirinData[];
+  nextCursor: string | null;
+}
 /**
  * Mmselik için include ayarları
  */
